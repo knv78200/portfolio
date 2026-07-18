@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Point d'Appui</title>
+<meta name="description" content="Prendre rendez-vous au cabinet Point d'Appui. Adresse, horaires et formulaire de contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="mark"></span>Point d'Appui</a>
+    <ul class="navlinks">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="services.html">Soins</a></li>
+      <li><a href="cabinet.html">Le cabinet</a></li>
+      <li><a href="tarifs.html">Tarifs</a></li>
+      <li><a href="contact.html" class="cta active">Prendre RDV</a></li>
+    </ul>
+    <button class="burger" aria-expanded="false" aria-controls="mobile-panel" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mobile-panel">
+    <a href="index.html">Accueil</a>
+    <a href="services.html">Soins</a>
+    <a href="cabinet.html">Le cabinet</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="contact.html">Prendre RDV</a>
+  </div>
+</nav>
+
+<header class="pagehead">
+  <div class="arc" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow">Contact</div>
+    <h1>Prendre rendez-vous</h1>
+    <p class="lede">Par téléphone, ou via le formulaire ci-dessous — réponse sous 24h ouvrées.</p>
+  </div>
+</header>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="infoline">
+        <h3>Adresse</h3>
+        <p>12 rue des Tilleuls, 75000 Paris</p>
+      </div>
+      <div class="infoline">
+        <h3>Téléphone</h3>
+        <p>01 23 45 67 89</p>
+      </div>
+      <div class="infoline">
+        <h3>Horaires</h3>
+        <p>Lundi – Vendredi : 8h – 19h<br>Samedi : 9h – 13h</p>
+      </div>
+      <div class="infoline" style="border-bottom:none;">
+        <h3>Accès</h3>
+        <p>Cabinet accessible PMR, parking à proximité</p>
+      </div>
+    </div>
+
+    <form onsubmit="event.preventDefault(); alert('Formulaire de démonstration — à connecter à une adresse email réelle.');">
+      <div>
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit">Envoyer la demande</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Point d'Appui — Cabinet de kinésithérapie</span>
+    <span>12 rue des Tilleuls — Sur rendez-vous</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

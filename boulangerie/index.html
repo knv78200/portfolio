@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Fournil — Boulangerie artisanale</title>
+<meta name="description" content="Boulangerie artisanale, pain au levain et viennoiseries maison. Ouvert du mardi au dimanche.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --flour:#f1e9d8;
+    --crust:#3b2417;
+    --wheat:#c98a3d;
+    --ember:#8c3b2e;
+    --paper:#fbf7ee;
+    --line: rgba(59,36,23,0.16);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Work Sans', sans-serif; background:var(--flour); color:var(--crust); line-height:1.6;}
+  .display{font-family:'Fraunces', serif;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--ember); outline-offset:3px;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px;}
+
+  /* NAV */
+  nav{position:sticky; top:0; z-index:50; background:rgba(241,233,216,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; justify-content:space-between; align-items:center; height:68px;}
+  .brand{font-family:'Fraunces', serif; font-weight:700; font-size:20px; text-decoration:none; color:var(--crust);}
+  .navlinks{display:flex; gap:26px; list-style:none;}
+  .navlinks a{text-decoration:none; font-size:14px; color:var(--crust); opacity:0.75;}
+  .navlinks a:hover{opacity:1;}
+  .navlinks .cta{background:var(--ember); color:var(--paper); padding:9px 18px; border-radius:999px; opacity:1;}
+
+  /* HERO */
+  .hero{padding:80px 0 60px; position:relative;}
+  .badge{
+    position:absolute; top:8px; right:24px; width:118px; height:118px; border-radius:50%;
+    border:2.5px dashed var(--ember); display:flex; align-items:center; justify-content:center;
+    transform:rotate(10deg); color:var(--ember); text-align:center; font-family:'JetBrains Mono', monospace;
+    font-size:10.5px; text-transform:uppercase; letter-spacing:0.04em; line-height:1.5; font-weight:500;
+  }
+  .badge b{display:block; font-size:13px; margin:2px 0;}
+  .eyebrow{font-family:'JetBrains Mono', monospace; font-size:12.5px; text-transform:uppercase; letter-spacing:0.1em; color:var(--wheat); margin-bottom:18px;}
+  h1{font-family:'Fraunces', serif; font-weight:600; font-size:clamp(40px,7vw,72px); line-height:1.02; max-width:640px;}
+  h1 em{font-style:italic; color:var(--ember);}
+  .hero p.lede{max-width:460px; margin-top:22px; font-size:17px; color:#5a4433;}
+  .hero-cta{margin-top:34px; display:flex; gap:16px; flex-wrap:wrap; align-items:center;}
+  .btn{background:var(--crust); color:var(--paper); text-decoration:none; padding:14px 28px; border-radius:999px; font-size:14.5px; font-weight:500; display:inline-block;}
+  .btn-outline{border:1.5px solid var(--crust); color:var(--crust); text-decoration:none; padding:12.5px 26px; border-radius:999px; font-size:14.5px;}
+
+  /* SECTION */
+  .section{padding:64px 0;}
+  .section-head{margin-bottom:40px;}
+  .eyebrow-2{font-family:'JetBrains Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--wheat);}
+  .section h2{font-family:'Fraunces', serif; font-size:clamp(28px,4vw,40px); font-weight:600; margin-top:10px;}
+
+  /* RECEIPT / TICKET DU JOUR */
+  .ticket{
+    background:var(--paper); max-width:440px; margin:0 auto; padding:36px 30px 30px;
+    border-radius:2px; box-shadow:0 20px 44px -24px rgba(59,36,23,0.35);
+    position:relative;
+  }
+  .ticket::before{
+    content:""; position:absolute; top:-9px; left:0; right:0; height:18px;
+    background:
+      radial-gradient(circle at 10px 9px, transparent 9px, var(--flour) 9.5px) 0 0/20px 20px repeat-x;
+  }
+  .ticket-head{text-align:center; font-family:'Fraunces', serif; font-size:22px; font-weight:700; padding-bottom:14px; border-bottom:1px dashed var(--line);}
+  .ticket-sub{text-align:center; font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a7a68; margin-top:6px; letter-spacing:0.04em;}
+  .ticket-line{display:flex; justify-content:space-between; gap:12px; padding:13px 0; border-bottom:1px dashed var(--line); font-size:14.5px;}
+  .ticket-line:last-of-type{border-bottom:none;}
+  .ticket-line .name{font-weight:500;}
+  .ticket-line .desc{display:block; font-size:12.5px; color:#8a7a68; margin-top:2px; font-weight:400;}
+  .ticket-line .price{font-family:'JetBrains Mono', monospace; color:var(--ember); white-space:nowrap;}
+  .ticket-foot{margin-top:18px; padding-top:14px; border-top:1px dashed var(--line); text-align:center; font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a7a68; letter-spacing:0.03em;}
+
+  /* HISTOIRE */
+  .histoire{background:var(--crust); color:var(--flour);}
+  .histoire .wrap{padding:72px 24px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+  .histoire blockquote{font-family:'Fraunces', serif; font-size:clamp(22px,3vw,30px); font-weight:500; line-height:1.35; font-style:italic;}
+  .histoire p.role{margin-top:18px; font-family:'JetBrains Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--wheat);}
+  .histoire-text p{font-size:15px; color:rgba(241,233,216,0.75); margin-bottom:14px;}
+
+  /* HORAIRES / CONTACT */
+  .infos{padding:72px 0;}
+  .infos-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); max-width:700px; margin:40px auto 0;}
+  .infos-grid > div{background:var(--flour); padding:28px 30px;}
+  .infos-grid h3{font-family:'JetBrains Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--wheat); margin-bottom:14px;}
+  .infos-grid .row{display:flex; justify-content:space-between; font-size:14.5px; padding:6px 0;}
+  .infos-grid .row span:first-child{color:#5a4433;}
+
+  footer{background:var(--crust); color:rgba(241,233,216,0.5); font-family:'JetBrains Mono', monospace; font-size:12px; padding:22px 0; text-align:center; border-top:1px solid rgba(241,233,216,0.1);}
+
+  @media (max-width:720px){
+    .navlinks{display:none;}
+    .histoire .wrap{grid-template-columns:1fr;}
+    .infos-grid{grid-template-columns:1fr;}
+    .badge{width:92px; height:92px; font-size:9px; top:0; right:12px;}
+    .badge b{font-size:11px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="brand">Le Fournil</a>
+    <ul class="navlinks">
+      <li><a href="#aujourdhui">Aujourd'hui</a></li>
+      <li><a href="#histoire">Notre histoire</a></li>
+      <li><a href="#infos">Horaires</a></li>
+      <li><a href="#infos" class="cta">Nous trouver</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badge" aria-hidden="true"><span>FAIT MAISON<b>CHAQUE MATIN</b>DEPUIS 1998</span></div>
+    <div class="eyebrow">Boulangerie artisanale</div>
+    <h1>Du bon pain,<br>tous les <em>matins.</em></h1>
+    <p class="lede">Levain naturel, farines locales, et un four qui n'a jamais cessé de tourner depuis trois générations.</p>
+    <div class="hero-cta">
+      <a href="#aujourdhui" class="btn">Voir la sélection du jour</a>
+      <a href="#infos" class="btn-outline">Horaires & adresse</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="aujourdhui">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;">
+      <div class="eyebrow-2">À la une</div>
+      <h2>Ce qui sort du four ce matin</h2>
+    </div>
+
+    <div class="ticket">
+      <div class="ticket-head">Le Fournil</div>
+      <div class="ticket-sub">SÉLECTION DU JOUR</div>
+
+      <div class="ticket-line">
+        <span class="name">Baguette tradition<span class="desc">Farine T65, cuisson au feu de bois</span></span>
+        <span class="price">1,30 €</span>
+      </div>
+      <div class="ticket-line">
+        <span class="name">Pain au levain<span class="desc">Fermentation 24h, croûte épaisse</span></span>
+        <span class="price">4,20 €</span>
+      </div>
+      <div class="ticket-line">
+        <span class="name">Croissant pur beurre<span class="desc">Feuilletage maison, 18 tours</span></span>
+        <span class="price">1,50 €</span>
+      </div>
+      <div class="ticket-line">
+        <span class="name">Chausson aux pommes<span class="desc">Pommes de saison, cannelle</span></span>
+        <span class="price">2,10 €</span>
+      </div>
+      <div class="ticket-line">
+        <span class="name">Fougasse aux olives<span class="desc">Olives noires, huile d'olive</span></span>
+        <span class="price">3,80 €</span>
+      </div>
+
+      <div class="ticket-foot">Disponible jusqu'à épuisement — arrivez tôt le week-end</div>
+    </div>
+  </div>
+</section>
+
+<section class="histoire" id="histoire">
+  <div class="wrap">
+    <div>
+      <blockquote>« Un bon pain, ça ne se presse pas. On respecte le temps de la pâte, pas celui de la montre. »</blockquote>
+      <p class="role">— À la tête du fournil depuis 2009</p>
+    </div>
+    <div class="histoire-text">
+      <p>Ouvert en 1998, Le Fournil est resté une affaire de famille. Le levain qu'on utilise aujourd'hui est le même que celui lancé il y a plus de 25 ans, nourri chaque jour.</p>
+      <p>Les farines viennent de meuniers de la région, et les fournées sont pensées pour être vendues fraîches, jamais stockées.</p>
+    </div>
+  </div>
+</section>
+
+<section class="infos" id="infos">
+  <div class="wrap" style="text-align:center;">
+    <div class="eyebrow-2">Pratique</div>
+    <h2>Horaires & adresse</h2>
+
+    <div class="infos-grid">
+      <div>
+        <h3>Horaires</h3>
+        <div class="row"><span>Mardi – Vendredi</span><span>7h00 – 19h30</span></div>
+        <div class="row"><span>Samedi</span><span>7h00 – 20h00</span></div>
+        <div class="row"><span>Dimanche</span><span>7h00 – 13h00</span></div>
+        <div class="row"><span>Lundi</span><span>Fermé</span></div>
+      </div>
+      <div>
+        <h3>Nous trouver</h3>
+        <div class="row"><span>Adresse</span><span>12 rue du Marché</span></div>
+        <div class="row"><span>Téléphone</span><span>01 23 45 67 89</span></div>
+        <div class="row"><span>Commandes</span><span>Sur place ou par tél.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Le Fournil — Boulangerie artisanale</footer>
+
+</body>
+</html>

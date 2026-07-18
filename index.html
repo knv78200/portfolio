@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KNV.CORP — Sites vitrine pour artisans et indépendants, livrés en 5 jours</title>
+<meta name="description" content="Développeur freelance : sites vitrine simples, rapides et pensés mobile pour artisans, indépendants et petits commerces. Devis gratuit, livraison en 5 jours.">
+<meta property="og:title" content="KNV.CORP — Sites vitrine, livrés vite">
+<meta property="og:description" content="Sites vitrine simples et solides pour artisans et indépendants. Devis gratuit, livraison en 5 jours.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#14181a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2314181a'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23f0b429'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14181a;
+    --ink-2:#1d2326;
+    --paper:#ece6d8;
+    --paper-2:#e2dbc9;
+    --chalk:#f2efe4;
+    --signal:#f0b429;
+    --blueprint:#3b6ea5;
+    --rust:#b23a24;
+    --good:#5cc98a;
+    --line: rgba(242,239,228,0.14);
+    --line-dark: rgba(20,24,26,0.14);
+    --shadow: 0 18px 40px -20px rgba(20,24,26,0.35);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .mono{font-family:'JetBrains Mono', monospace;}
+  .display{font-family:'Big Shoulders Display', sans-serif; text-transform:uppercase; letter-spacing:0.01em;}
+
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  ul{list-style:none;}
+
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+
+  :focus-visible{outline:2px solid var(--signal); outline-offset:3px;}
+
+  .skip-link{
+    position:absolute; left:-999px; top:auto;
+    background:var(--signal); color:var(--ink); padding:12px 20px; z-index:200;
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:14px;
+  }
+  .skip-link:focus{left:16px; top:16px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:80;
+    background:rgba(20,24,26,0.92);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--signal);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .brand{
+    color:var(--chalk); font-family:'JetBrains Mono', monospace; font-weight:700;
+    font-size:15px; letter-spacing:0.02em; display:flex; align-items:center; gap:8px;
+    text-decoration:none;
+  }
+  .brand .dot{width:8px; height:8px; background:var(--signal); border-radius:50%; display:inline-block; flex:none;}
+  .navlinks{display:flex; gap:28px; align-items:center;}
+  .navlinks a{
+    color:var(--chalk); text-decoration:none; font-size:13px; font-family:'JetBrains Mono', monospace;
+    opacity:0.75; transition:opacity 0.2s;
+  }
+  .navlinks a:hover, .navlinks a:focus-visible{opacity:1;}
+  .nav-cta{
+    background:var(--signal) !important; color:var(--ink) !important; opacity:1 !important;
+    font-weight:700; padding:9px 16px; border-radius:2px;
+  }
+  .nav-cta:hover{transform:translateY(-1px);}
+
+  .burger{
+    display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px;
+  }
+  .burger span{width:22px; height:2px; background:var(--chalk); display:block; transition:transform 0.25s, opacity 0.25s;}
+  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .mobile-panel{
+    display:none; background:var(--ink); border-bottom:1px solid var(--line);
+    flex-direction:column; padding:8px 24px 20px;
+  }
+  .mobile-panel.open{display:flex;}
+  .mobile-panel a{
+    color:var(--chalk); text-decoration:none; font-family:'JetBrains Mono', monospace;
+    font-size:14px; padding:12px 0; border-bottom:1px solid var(--line);
+  }
+  .mobile-panel a:last-child{border-bottom:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--ink);
+    color:var(--chalk);
+    position:relative;
+    overflow:hidden;
+    padding:96px 0 88px;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:40px 40px;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse at 18% 15%, rgba(59,110,165,0.20), transparent 55%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative; z-index:2;}
+  .plaque{
+    display:inline-flex; align-items:center; gap:10px;
+    border:1px solid var(--line); padding:6px 12px; border-radius:2px;
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--signal);
+    margin-bottom:28px; text-transform:uppercase; letter-spacing:0.08em;
+  }
+  .plaque .bar{width:5px; height:5px; background:var(--signal); flex:none;}
+  .hero h1{
+    font-size:clamp(38px, 6.6vw, 80px);
+    line-height:0.97;
+    font-weight:900;
+    max-width:820px;
+  }
+  .hero h1 .accent{color:var(--signal);}
+  .hero p.lede{
+    max-width:520px; margin-top:24px; font-size:17px; color:rgba(242,239,228,0.72);
+  }
+  .hero-meta{
+    margin-top:48px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); max-width:620px;
+  }
+  .hero-meta div{background:var(--ink); padding:16px 18px;}
+  .hero-meta .k{font-family:'JetBrains Mono', monospace; font-size:11px; text-transform:uppercase; color:rgba(242,239,228,0.5); letter-spacing:0.06em;}
+  .hero-meta .v{font-family:'JetBrains Mono', monospace; font-size:15px; color:var(--chalk); margin-top:6px; display:flex; align-items:center; gap:6px;}
+  .hero-meta .v .pulse{width:7px; height:7px; border-radius:50%; background:var(--good); box-shadow:0 0 0 0 rgba(92,201,138,0.6); animation:pulse 2s infinite;}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(92,201,138,0.5);}
+    70%{box-shadow:0 0 0 8px rgba(92,201,138,0);}
+    100%{box-shadow:0 0 0 0 rgba(92,201,138,0);}
+  }
+  .hero-cta{margin-top:44px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--signal); color:var(--ink); text-decoration:none;
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:14px;
+    padding:14px 26px; border-radius:2px; display:inline-block;
+    transition:transform 0.15s, box-shadow 0.15s; box-shadow:0 0 0 rgba(0,0,0,0);
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:var(--shadow);}
+  .btn-ghost{
+    color:var(--chalk); text-decoration:none; font-family:'JetBrains Mono', monospace;
+    font-size:14px; border-bottom:1px solid var(--line); padding-bottom:2px; transition:border-color 0.2s;
+  }
+  .btn-ghost:hover{border-color:var(--signal); color:var(--signal);}
+
+  .stamp{
+    position:absolute; top:64px; right:60px;
+    width:132px; height:132px;
+    border:3px double var(--rust);
+    border-radius:50%;
+    color:var(--rust);
+    display:flex; align-items:center; justify-content:center;
+    transform:rotate(-14deg);
+    font-family:'JetBrains Mono', monospace;
+    text-align:center; font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:0.05em;
+    opacity:0.9;
+    line-height:1.4;
+  }
+  .stamp span{display:block;}
+  .stamp .big{font-size:15px; margin:3px 0;}
+
+  .trustbar{
+    border-top:1px solid var(--line); margin-top:64px; padding-top:24px;
+    display:flex; gap:36px; flex-wrap:wrap; color:rgba(242,239,228,0.5);
+    font-family:'JetBrains Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em;
+  }
+
+  /* ---------- SECTION LABELS ---------- */
+  .section{padding:96px 0;}
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  .section-label{
+    font-family:'JetBrains Mono', monospace; font-size:12px; text-transform:uppercase;
+    letter-spacing:0.1em; color:var(--blueprint); display:flex; align-items:center; gap:10px;
+    margin-bottom:14px;
+  }
+  .section-label::before{content:""; width:24px; height:2px; background:var(--blueprint); flex:none;}
+  .section h2{
+    font-family:'Big Shoulders Display', sans-serif; text-transform:uppercase;
+    font-size:clamp(28px,4vw,46px); font-weight:800; max-width:660px; line-height:1;
+  }
+  .section .section-sub{max-width:560px; margin-top:16px; color:#4a4a44; font-size:15.5px;}
+
+  /* ---------- COMMENT CA MARCHE ---------- */
+  .steps{margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--line-dark); border-left:1px solid var(--line-dark);}
+  .step{padding:30px 26px; border-right:1px solid var(--line-dark); border-bottom:1px solid var(--line-dark); position:relative; transition:background 0.2s;}
+  .step:hover{background:rgba(59,110,165,0.05);}
+  .step .num{font-family:'JetBrains Mono', monospace; color:var(--blueprint); font-size:13px; font-weight:700;}
+  .step h3{font-family:'Big Shoulders Display', sans-serif; text-transform:uppercase; font-size:23px; margin-top:10px; font-weight:700;}
+  .step p{margin-top:8px; font-size:14px; color:#4a4a44;}
+
+  /* ---------- CHANTIERS / PORTFOLIO ---------- */
+  .portfolio-grid{margin-top:56px; display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
+  .card{
+    background:var(--chalk); border:1px solid var(--line-dark); border-radius:2px;
+    overflow:hidden; position:relative; transition:transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
+  .card-head{
+    background:var(--ink); color:var(--chalk); padding:16px 20px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'JetBrains Mono', monospace; font-size:12px;
+  }
+  .tag{
+    background:rgba(240,180,41,0.15); color:var(--signal); border:1px solid rgba(240,180,41,0.4);
+    padding:3px 8px; border-radius:2px; font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em;
+  }
+  .card-body{padding:22px 20px;}
+  .card-body h3{font-family:'Big Shoulders Display', sans-serif; text-transform:uppercase; font-size:24px;}
+  .card-body p{margin-top:8px; font-size:14px; color:#4a4a44;}
+  .card-body .stack{margin-top:16px; display:flex; gap:8px; flex-wrap:wrap;}
+  .stack span{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--blueprint);
+    border:1px solid rgba(59,110,165,0.35); padding:3px 8px; border-radius:2px;
+  }
+  .card-link{
+    display:inline-block; margin-top:16px; font-family:'JetBrains Mono', monospace; font-size:12px;
+    color:var(--blueprint); text-decoration:none; border-bottom:1px solid var(--blueprint); padding-bottom:2px;
+  }
+  .card-link:hover{color:var(--ink); border-color:var(--ink);}
+
+  /* ---------- TEMOIGNAGE / REASSURANCE ---------- */
+  .reassure{background:var(--ink); color:var(--chalk); position:relative; overflow:hidden;}
+  .reassure::before{
+    content:""; position:absolute; inset:0;
+    background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:40px 40px; opacity:0.5;
+  }
+  .reassure .wrap{position:relative; z-index:2;}
+  .reassure-grid{margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .reassure-item{background:var(--ink); padding:30px 26px;}
+  .reassure-item .icon{color:var(--signal); font-family:'JetBrains Mono', monospace; font-size:22px; font-weight:700;}
+  .reassure-item h3{font-family:'Big Shoulders Display', sans-serif; text-transform:uppercase; font-size:21px; margin-top:14px;}
+  .reassure-item p{margin-top:8px; font-size:14px; color:rgba(242,239,228,0.65);}
+
+  /* ---------- TARIFS ---------- */
+  .pricing{margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .price-card{
+    background:var(--chalk); border:1px solid var(--line-dark); padding:32px 26px;
+    display:flex; flex-direction:column; position:relative; transition:transform 0.2s, box-shadow 0.2s;
+  }
+  .price-card:hover{transform:translateY(-4px);}
+  .price-card.highlight{border:2px solid var(--signal); box-shadow:var(--shadow);}
+  .price-card .flag{
+    position:absolute; top:-11px; right:20px; background:var(--signal); color:var(--ink);
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; font-weight:700;
+    padding:3px 10px; text-transform:uppercase; letter-spacing:0.05em;
+  }
+  .price-card h3{font-family:'JetBrains Mono', monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.06em; color:#4a4a44;}
+  .price-card .amount{font-family:'Big Shoulders Display', sans-serif; font-size:42px; font-weight:800; margin-top:10px;}
+  .price-card .amount span{font-family:'JetBrains Mono', monospace; font-size:13px; font-weight:400; color:#4a4a44;}
+  .price-card ul{margin-top:20px; flex:1;}
+  .price-card li{
+    font-size:13.5px; padding:9px 0; border-top:1px solid var(--line-dark); color:#333;
+    display:flex; gap:8px;
+  }
+  .price-card li::before{content:"—"; color:var(--blueprint); flex:none;}
+  .price-card li:first-child{border-top:none;}
+  .price-card a{
+    margin-top:22px; text-align:center; text-decoration:none; font-family:'JetBrains Mono', monospace;
+    font-size:13px; font-weight:700; padding:12px; border:1px solid var(--ink); border-radius:2px;
+    transition:background 0.2s, color 0.2s;
+  }
+  .price-card a:hover{background:var(--ink); color:var(--chalk);}
+  .price-card.highlight a{background:var(--ink); color:var(--chalk);}
+  .price-card.highlight a:hover{background:var(--blueprint); border-color:var(--blueprint);}
+  .price-note{margin-top:24px; font-size:13px; color:#5a5a52; font-family:'JetBrains Mono', monospace;}
+
+  /* ---------- FAQ ---------- */
+  .faq{margin-top:56px; border-top:1px solid var(--line-dark); max-width:760px;}
+  .faq-item{border-bottom:1px solid var(--line-dark);}
+  .faq-item summary{
+    cursor:pointer; padding:22px 4px; font-family:'Big Shoulders Display', sans-serif;
+    text-transform:uppercase; font-size:19px; font-weight:700; display:flex; justify-content:space-between; align-items:center;
+    list-style:none;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+"; font-family:'JetBrains Mono', monospace; color:var(--blueprint); font-size:22px; transition:transform 0.2s;}
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{padding:0 4px 22px; font-size:14.5px; color:#4a4a44; max-width:640px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--ink); color:var(--chalk); position:relative; overflow:hidden;}
+  .contact::before{
+    content:""; position:absolute; inset:0;
+    background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:40px 40px; opacity:0.6;
+  }
+  .contact .wrap{position:relative; z-index:2;}
+  .contact h2{max-width:600px;}
+  .contact-row{
+    margin-top:44px; display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;
+    border-top:1px solid var(--line); padding-top:28px;
+  }
+  .contact-status{font-family:'JetBrains Mono', monospace; font-size:13px; display:flex; align-items:center; gap:8px; color:rgba(242,239,228,0.7);}
+  .contact-status .dot{width:8px; height:8px; border-radius:50%; background:var(--good); animation:pulse 2s infinite;}
+
+  footer{background:var(--ink); color:rgba(242,239,228,0.45); font-family:'JetBrains Mono', monospace; font-size:12px; padding:24px 0; border-top:1px solid var(--line);}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+
+  @media (max-width:820px){
+    .navlinks{display:none;}
+    .burger{display:flex;}
+    .hero{padding:64px 0 56px;}
+    .hero-meta{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr; border-left:none;}
+    .step{border-right:none;}
+    .portfolio-grid{grid-template-columns:1fr;}
+    .pricing{grid-template-columns:1fr;}
+    .reassure-grid{grid-template-columns:1fr;}
+    .stamp{width:96px; height:96px; top:20px; right:20px; font-size:9px;}
+    .stamp .big{font-size:12px;}
+    .section{padding:64px 0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important; animation:none !important;}
+    .reveal{opacity:1; transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Aller au contenu</a>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="dot"></span>KNV.CORP</a>
+    <ul class="navlinks">
+      <li><a href="#chantiers">Chantiers</a></li>
+      <li><a href="#comment">Méthode</a></li>
+      <li><a href="#tarifs">Tarifs</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="nav-cta">Devis gratuit</a></li>
+    </ul>
+    <button class="burger" aria-expanded="false" aria-controls="mobile-panel" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-panel" id="mobile-panel">
+    <a href="#chantiers">Chantiers</a>
+    <a href="#comment">Méthode</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Devis gratuit</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="stamp" aria-hidden="true">
+      <span>
+        <span class="big">LIVRÉ</span>
+        EN 5 JOURS
+      </span>
+    </div>
+    <div class="plaque"><span class="bar"></span> Développeur — sites vitrine</div>
+    <h1>Un site pro, <span class="accent">livré vite.</span><br>Pas un chantier<br>qui traîne.</h1>
+    <p class="lede">Je construis des sites vitrine simples et solides pour les artisans, indépendants et petits commerces qui n'ont pas de temps à perdre — ni de budget à gaspiller sur du superflu.</p>
+
+    <div class="hero-meta">
+      <div>
+        <div class="k">Délai</div>
+        <div class="v">5 jours ouvrés</div>
+      </div>
+      <div>
+        <div class="k">Hébergement</div>
+        <div class="v">Inclus</div>
+      </div>
+      <div>
+        <div class="k">Statut</div>
+        <div class="v"><span class="pulse" aria-hidden="true"></span> Disponible</div>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Demander un devis →</a>
+      <a href="#chantiers" class="btn-ghost">Voir les chantiers livrés</a>
+    </div>
+
+    <div class="trustbar">
+      <span>Devis sous 24h</span>
+      <span>Sites responsives</span>
+      <span>Hébergement gratuit inclus</span>
+      <span>Sans engagement</span>
+    </div>
+  </div>
+</header>
+
+<section class="section reveal" id="comment">
+  <div class="wrap">
+    <div class="section-label">Méthode</div>
+    <h2>Trois étapes. Aucune surprise.</h2>
+    <p class="section-sub">Pas de jargon, pas d'allers-retours interminables. Vous savez à chaque étape où en est votre site.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">01 / DEVIS</div>
+        <h3>On cadre</h3>
+        <p>Un échange rapide sur vos besoins réels : ce qu'il faut sur le site, ce qui ne sert à rien. Devis fixe, sans mauvaise surprise.</p>
+      </div>
+      <div class="step">
+        <div class="num">02 / MAQUETTE</div>
+        <h3>On construit</h3>
+        <p>Je code le site, adapté mobile et ordinateur. Vous recevez une version à valider avant mise en ligne.</p>
+      </div>
+      <div class="step">
+        <div class="num">03 / LIVRAISON</div>
+        <h3>On livre</h3>
+        <p>Mise en ligne, nom de domaine si besoin, et un point rapide pour vous montrer comment mettre à jour vos contenus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="chantiers" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="section-label">Chantiers livrés</div>
+    <h2>Ce que j'ai déjà construit</h2>
+    <p class="section-sub">Deux exemples concrets, un par formule — pour voir exactement ce que vous obtenez.</p>
+
+    <div class="portfolio-grid">
+      <div class="card">
+        <div class="card-head">
+          <span>FORMULE ESSENTIEL</span>
+          <span class="tag">Site vitrine — 1 page</span>
+        </div>
+        <div class="card-body">
+          <h3>Le Fournil — Boulangerie</h3>
+          <p>Site vitrine 1 page pour un commerce local : sélection du jour, horaires et adresse. Hébergement inclus, livré en 5 jours.</p>
+          <div class="stack"><span>HTML/CSS</span><span>Responsive</span><span>GitHub Pages</span></div>
+          <a href="boulangerie/" class="card-link">Voir le site →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <span>FORMULE VITRINE</span>
+          <span class="tag">Site vitrine — 5 pages</span>
+        </div>
+        <div class="card-body">
+          <h3>Point d'Appui — Cabinet de kiné</h3>
+          <p>Site 5 pages pour un indépendant avec plusieurs services à présenter : soins, cabinet, tarifs, et prise de rendez-vous.</p>
+          <div class="stack"><span>HTML/CSS/JS</span><span>Multi-pages</span><span>Formulaire</span></div>
+          <a href="kinesitherapie/" class="card-link">Voir le site →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="reassure section reveal">
+  <div class="wrap">
+    <div class="section-label" style="color:var(--signal);">Pourquoi ce fonctionnement</div>
+    <h2>Fait pour les petites structures, pas pour les grands comptes</h2>
+    <div class="reassure-grid">
+      <div class="reassure-item">
+        <div class="icon">01</div>
+        <h3>Prix maîtrisé</h3>
+        <p>Pas de frais d'hébergement mensuel à vous facturer en plus — je m'appuie sur des solutions gratuites et fiables.</p>
+      </div>
+      <div class="reassure-item">
+        <div class="icon">02</div>
+        <h3>Délai tenu</h3>
+        <p>5 jours ouvrés du devis validé à la mise en ligne, sur un projet standard. Pas de chantier qui traîne des mois.</p>
+      </div>
+      <div class="reassure-item">
+        <div class="icon">03</div>
+        <h3>Autonomie ensuite</h3>
+        <p>À la livraison, vous savez modifier vos textes et photos vous-même — ou je m'en occupe via la formule suivi mensuel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="tarifs">
+  <div class="wrap">
+    <div class="section-label">Tarifs</div>
+    <h2>Un prix clair. Pas de ligne cachée.</h2>
+    <p class="section-sub">Trois formules simples. Le tarif exact dépend de votre projet — le devis reste toujours gratuit.</p>
+
+    <div class="pricing">
+      <div class="price-card">
+        <h3>Essentiel</h3>
+        <p style="font-size:13px; color:#5a5a52; margin-top:6px;">Pour se lancer avec une présence en ligne simple.</p>
+        <div class="amount">180€ <span>/ à partir de</span></div>
+        <ul>
+          <li>1 page unique</li>
+          <li>Design responsive</li>
+          <li>Formulaire de contact</li>
+          <li>Hébergement inclus</li>
+        </ul>
+        <a href="#contact">Demander un devis</a>
+      </div>
+      <div class="price-card highlight">
+        <div class="flag">Le plus choisi</div>
+        <h3>Vitrine</h3>
+        <p style="font-size:13px; color:#5a5a52; margin-top:6px;">Le format le plus adapté à un commerce ou un indépendant.</p>
+        <div class="amount">290€ <span>/ à partir de</span></div>
+        <ul>
+          <li>Jusqu'à 5 pages</li>
+          <li>Design responsive</li>
+          <li>Galerie photo</li>
+          <li>Nom de domaine personnalisé</li>
+          <li>Hébergement inclus</li>
+        </ul>
+        <a href="#contact">Demander un devis</a>
+      </div>
+      <div class="price-card">
+        <h3>Suivi mensuel</h3>
+        <p style="font-size:13px; color:#5a5a52; margin-top:6px;">Pour garder un site à jour sans y penser.</p>
+        <div class="amount">25€ <span>/ mois</span></div>
+        <ul>
+          <li>Mises à jour de contenu</li>
+          <li>Maintenance technique</li>
+          <li>Support par message</li>
+        </ul>
+        <a href="#contact">Demander un devis</a>
+      </div>
+    </div>
+    <p class="price-note">Un acompte de 30% est demandé à la validation du devis, le solde à la livraison.</p>
+  </div>
+</section>
+
+<section class="section reveal" id="faq" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="section-label">FAQ</div>
+    <h2>Questions fréquentes</h2>
+
+    <div class="faq">
+      <details class="faq-item">
+        <summary>Je n'ai pas encore de photos ni de textes, c'est un problème ?</summary>
+        <p>Non. On peut démarrer avec ce que vous avez et compléter au fur et à mesure. Je peux aussi vous conseiller sur les textes à prévoir.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Le nom de domaine est-il obligatoire ?</summary>
+        <p>Non, mais recommandé pour l'image professionnelle. Sans domaine personnalisé, votre site reste accessible via une adresse gratuite fournie par l'hébergeur.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Que se passe-t-il si je veux modifier le site plus tard ?</summary>
+        <p>Vous pouvez le faire vous-même si vous êtes à l'aise, ou passer par la formule de suivi mensuel pour que je m'en charge.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Combien de temps pour recevoir un devis ?</summary>
+        <p>Sous 24h après votre message, avec un prix fixe pour l'ensemble du projet.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap section" style="padding-top:88px; padding-bottom:88px;">
+    <div class="section-label" style="color:var(--signal);">Contact</div>
+    <h2>On en parle ?</h2>
+    <p class="lede" style="margin-top:16px;">Décrivez votre projet en quelques lignes — commerce, activité, ce que vous voulez sur votre site. Réponse sous 24h.</p>
+    <div class="hero-cta">
+      <a href="mailto:kerim.akgun78@gmail.com?subject=Demande%20de%20devis%20-%20Site%20vitrine" class="btn-primary">Écrire un email →</a>
+    </div>
+
+    <div class="contact-row">
+      <div class="contact-status"><span class="dot" aria-hidden="true"></span> Disponible pour nouveaux projets</div>
+      <div class="mono" style="font-size:13px; color:rgba(242,239,228,0.6);">Basé en France — clients à distance bienvenus</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 KNV.CORP</span>
+    <span>Sites codés à la main, hébergés sur GitHub Pages</span>
+  </div>
+</footer>
+
+<script>
+  // Menu mobile
+  var burger = document.querySelector('.burger');
+  var panel = document.getElementById('mobile-panel');
+  burger.addEventListener('click', function(){
+    var open = panel.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  panel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      panel.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Reveal au scroll
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+
+</body>
+</html>
