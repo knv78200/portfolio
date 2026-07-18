@@ -336,6 +336,22 @@
     .stamp{width:96px; height:96px; top:20px; right:20px; font-size:9px;}
     .stamp .big{font-size:12px;}
     .section{padding:64px 0;}
+
+    /* Fix : section contact trop aérée sur mobile */
+    .contact .wrap.section{
+      padding-top:48px !important;
+      padding-bottom:56px !important;
+    }
+    .contact .btn-primary{
+      display:block;
+      text-align:center;
+      width:100%;
+    }
+    .contact-row{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:14px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce){
