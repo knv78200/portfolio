@@ -3,44 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Point d'Appui</title>
-<meta name="description" content="Prendre rendez-vous au cabinet Point d'Appui. Adresse, horaires et formulaire de contact.">
+<title>Réserver — FORGE</title>
+<meta name="description" content="Réservez votre séance d'essai gratuite à la salle FORGE, Mantes-la-Jolie. Adresse, horaires et formulaire de contact.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a href="index.html" class="brand"><span class="mark"></span>Point d'Appui</a>
+    <a href="index.html" class="brand"><span class="dot"></span>FORGE</a>
     <ul class="navlinks">
       <li><a href="index.html">Accueil</a></li>
-      <li><a href="services.html">Soins</a></li>
-      <li><a href="cabinet.html">Le cabinet</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="coachs.html">Coachs</a></li>
       <li><a href="tarifs.html">Tarifs</a></li>
       <li class="status-pill" data-status><span class="dot" aria-hidden="true"></span><span class="status-text">Horaires…</span></li>
-      <li><a href="contact.html" class="cta active">Prendre RDV</a></li>
+      <li><a href="contact.html" class="cta active">Essai gratuit</a></li>
     </ul>
     <button class="burger" aria-expanded="false" aria-controls="mobile-panel" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-panel" id="mobile-panel">
     <a href="index.html">Accueil</a>
-    <a href="services.html">Soins</a>
-    <a href="cabinet.html">Le cabinet</a>
+    <a href="cours.html">Cours</a>
+    <a href="coachs.html">Coachs</a>
     <a href="tarifs.html">Tarifs</a>
-    <a href="contact.html">Prendre RDV</a>
+    <a href="contact.html">Essai gratuit</a>
   </div>
 </nav>
 
 <header class="pagehead">
-  <div class="arc" aria-hidden="true"></div>
   <div class="mesh" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span></div>
   <div class="wrap">
-    <div class="eyebrow">Contact</div>
-    <h1>Prendre rendez-vous</h1>
-    <p class="lede">Par téléphone, ou via le formulaire ci-dessous — réponse sous 24h ouvrées.</p>
+    <div class="eyebrow">Réserver</div>
+    <h1>Votre séance<br>d'essai <em>gratuite.</em></h1>
+    <p class="lede">Remplissez le formulaire ou passez directement à la salle — un coach vous accueille sans rendez-vous aux heures d'ouverture.</p>
     <div class="status-pill" data-status style="margin-top:18px;"><span class="dot" aria-hidden="true"></span><span class="status-text">Horaires…</span></div>
   </div>
 </header>
@@ -50,19 +49,19 @@
     <div>
       <div class="infoline">
         <h3>Adresse</h3>
-        <p>12 rue des Tilleuls, 75000 Paris</p>
+        <p>14 avenue Danton, 78200 Mantes-la-Jolie</p>
       </div>
       <div class="infoline">
         <h3>Téléphone</h3>
-        <p>01 23 45 67 89</p>
+        <p>01 30 12 34 56</p>
       </div>
       <div class="infoline">
         <h3>Horaires</h3>
-        <p>Lundi – Vendredi : 8h – 19h<br>Samedi : 9h – 13h</p>
+        <p>Lundi – Vendredi : 6h – 22h<br>Samedi : 8h – 18h<br>Dimanche : 9h – 13h</p>
       </div>
       <div class="infoline" style="border-bottom:none;">
         <h3>Accès</h3>
-        <p>Cabinet accessible PMR, parking à proximité</p>
+        <p>Parking gratuit sur place, arrêt de bus à 2 minutes à pied</p>
       </div>
     </div>
 
@@ -76,18 +75,27 @@
         <input type="email" id="email" name="email" required>
       </div>
       <div>
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+        <label for="objectif">Votre objectif</label>
+        <select id="objectif" name="objectif">
+          <option>Perte de poids</option>
+          <option>Prise de muscle</option>
+          <option>Remise en forme générale</option>
+          <option>Préparation sportive</option>
+        </select>
       </div>
-      <button type="submit">Envoyer la demande</button>
+      <div>
+        <label for="message">Message (optionnel)</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+      </div>
+      <button type="submit">Réserver ma séance d'essai</button>
     </form>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Point d'Appui — Cabinet de kinésithérapie</span>
-    <span>12 rue des Tilleuls — Sur rendez-vous</span>
+    <span>© 2026 FORGE — Salle de sport</span>
+    <span>Mantes-la-Jolie — Ouvert 7j/7</span>
   </div>
 </footer>
 

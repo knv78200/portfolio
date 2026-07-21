@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MÈCHE — Salon de coiffure</title>
+<meta name="description" content="Salon de coiffure à Mantes-la-Jolie : coupe, coloration, balayage. Réservation en ligne simple, résultats sur-mesure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noir:#1c1a1a;
+    --noir-2:#292525;
+    --blush:#f3e3da;
+    --blush-2:#ead2c4;
+    --rose:#b5695a;
+    --rose-deep:#8f4d40;
+    --cream:#fbf6f1;
+    --gold:#a9895a;
+    --line: rgba(28,26,26,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Jost', sans-serif; background:var(--blush); color:var(--noir); line-height:1.6;}
+  .display{font-family:'Bodoni Moda', serif;}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  ul{list-style:none;}
+  :focus-visible{outline:2px solid var(--rose); outline-offset:3px;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+
+  /* NAV */
+  nav{position:sticky; top:0; z-index:70; background:rgba(243,227,218,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; justify-content:space-between; align-items:center; height:76px;}
+  .brand{font-family:'Bodoni Moda', serif; font-weight:600; font-size:23px; letter-spacing:0.04em; text-decoration:none; color:var(--noir);}
+  .navlinks{display:flex; gap:28px; align-items:center;}
+  .navlinks a{position:relative; text-decoration:none; font-size:14px; color:var(--noir); opacity:0.7; transition:opacity 0.2s;}
+  .navlinks a:hover{opacity:1;}
+  .navlinks a:not(.cta)::after{
+    content:""; position:absolute; left:0; right:100%; bottom:-4px; height:1px; background:var(--rose);
+    transition:right 0.25s cubic-bezier(0.22,1,0.36,1);
+  }
+  .navlinks a:not(.cta):hover::after{right:0;}
+  .navlinks .cta{background:var(--noir); color:var(--cream); padding:10px 20px; border-radius:2px; opacity:1; transition:background 0.2s, transform 0.2s;}
+  .navlinks .cta:hover{background:var(--rose-deep); transform:translateY(-2px);}
+  .status-pill{display:inline-flex; align-items:center; gap:7px; font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; opacity:0.85; font-weight:500;}
+  .status-pill .dot{width:6px; height:6px; border-radius:50%; background:#6c8a5a; flex:none;}
+  .status-pill.closed .dot{background:#a89a86;}
+  .status-pill.open .dot{animation:pulseDot 2.2s ease infinite;}
+  @keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(108,138,90,0.5);} 70%{box-shadow:0 0 0 7px rgba(108,138,90,0);} 100%{box-shadow:0 0 0 0 rgba(108,138,90,0);}}
+  .burger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px;}
+  .burger span{width:20px; height:1.5px; background:var(--noir); display:block; transition:transform 0.25s, opacity 0.25s;}
+  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+  .mobile-panel{display:none; flex-direction:column; background:var(--blush); border-bottom:1px solid var(--line); padding:8px 24px 20px;}
+  .mobile-panel.open{display:flex;}
+  .mobile-panel a{padding:13px 0; text-decoration:none; color:var(--noir); border-bottom:1px solid var(--line); font-size:15px;}
+  .mobile-panel a:last-child{border-bottom:none;}
+
+  /* HERO */
+  .hero{padding:88px 0 72px; position:relative; overflow:hidden;}
+  .hero .mesh{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;}
+  .hero .blob{position:absolute; border-radius:50%; filter:blur(75px); opacity:0.4; will-change:transform;}
+  .hero .blob.b1{width:420px; height:420px; background:var(--rose); top:-160px; right:-80px; animation:drift1 24s ease-in-out infinite;}
+  .hero .blob.b2{width:320px; height:320px; background:var(--gold); bottom:-150px; left:2%; opacity:0.28; animation:drift2 28s ease-in-out infinite;}
+  @keyframes drift1{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-36px,30px) scale(1.12);}}
+  @keyframes drift2{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(28px,-22px) scale(1.16);}}
+  .hero .wrap{position:relative; z-index:1; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
+  .eyebrow{font-size:12.5px; text-transform:uppercase; letter-spacing:0.14em; color:var(--rose-deep); font-weight:600; margin-bottom:20px; display:flex; align-items:center; gap:10px;}
+  .eyebrow::before{content:""; width:0; height:1.5px; background:var(--gold); transition:width 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s;}
+  .hero .eyebrow::before{width:22px; transition-delay:0s;}
+  .reveal.in .eyebrow::before{width:22px;}
+  h1{font-family:'Bodoni Moda', serif; font-weight:600; font-size:clamp(40px,5.6vw,66px); line-height:1.04; letter-spacing:-0.01em;}
+  h1 em{font-style:italic; color:var(--rose-deep);}
+  .lede{max-width:440px; margin-top:24px; font-size:16.5px; color:#4a3f3a;}
+  .hero-cta{margin-top:36px; display:flex; gap:18px; flex-wrap:wrap; align-items:center;}
+  .btn{background:var(--noir); color:var(--cream); text-decoration:none; padding:15px 30px; border-radius:2px; font-size:14.5px; font-weight:500; display:inline-flex; align-items:center; gap:8px; transition:background 0.2s, transform 0.2s;}
+  .btn:hover{background:var(--rose-deep); transform:translateY(-2px);}
+  .btn span{transition:transform 0.25s cubic-bezier(0.22,1,0.36,1);}
+  .btn:hover span{transform:translateX(4px);}
+  .btn-outline{border:1px solid var(--noir); color:var(--noir); text-decoration:none; padding:14px 29px; border-radius:2px; font-size:14.5px; transition:background 0.2s, color 0.2s, transform 0.2s;}
+  .btn-outline:hover{background:var(--noir); color:var(--cream); transform:translateY(-2px);}
+
+  .hero-visual{position:relative; aspect-ratio:4/5; border-radius:4px; overflow:hidden; background:linear-gradient(155deg, var(--rose), var(--noir) 120%);}
+  .hero-visual::after{content:"MÈCHE"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Bodoni Moda', serif; font-size:15px; letter-spacing:0.3em; color:rgba(251,246,241,0.55); text-transform:uppercase;}
+  .hero-badge{
+    position:absolute; bottom:-18px; left:-18px; background:var(--cream); border:1px solid var(--line);
+    padding:16px 20px; border-radius:2px; box-shadow:0 20px 40px -22px rgba(28,26,26,0.35);
+  }
+  .hero-badge b{display:block; font-family:'Bodoni Moda', serif; font-size:22px;}
+  .hero-badge span{font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6a5c53;}
+
+  @keyframes riseIn{from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:translateY(0);}}
+  .hero .eyebrow{animation:riseIn 0.7s cubic-bezier(0.22,1,0.36,1) both;}
+  .hero h1{animation:riseIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.08s both;}
+  .hero .lede{animation:riseIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.16s both;}
+  .hero .hero-cta{animation:riseIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.24s both;}
+  .hero-visual{animation:riseIn 0.8s cubic-bezier(0.22,1,0.36,1) 0.2s both;}
+  .hero-badge{animation:riseIn 0.8s cubic-bezier(0.22,1,0.36,1) 0.4s both;}
+
+  /* SECTION */
+  .section{padding:88px 0;}
+  .section-head{margin-bottom:48px;}
+  .eyebrow-2{font-size:12px; text-transform:uppercase; letter-spacing:0.1em; color:var(--rose-deep); font-weight:600; display:flex; align-items:center; gap:9px;}
+  .eyebrow-2::before{content:""; width:0; height:1.5px; background:var(--gold); transition:width 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s;}
+  .reveal.in .eyebrow-2::before{width:18px;}
+  .section h2{font-family:'Bodoni Moda', serif; font-size:clamp(28px,3.6vw,40px); font-weight:600; margin-top:12px; letter-spacing:-0.01em;}
+  .section .sub{max-width:520px; margin-top:14px; color:#4a3f3a; font-size:15.5px;}
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* apparition en cascade des grilles */
+  .prix-grid > div, .galerie-item, .avis-card, .stats > .stat, .equipe-card{
+    opacity:0; transform:translateY(16px); transition:opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.in .prix-grid > div, .reveal.in .galerie-item, .reveal.in .avis-card,
+  .reveal.in .stats > .stat, .reveal.in .equipe-card{opacity:1; transform:translateY(0);}
+  .prix-grid > div:nth-child(1), .galerie-item:nth-child(1), .avis-card:nth-child(1), .stats > .stat:nth-child(1), .equipe-card:nth-child(1){transition-delay:0.05s;}
+  .prix-grid > div:nth-child(2), .galerie-item:nth-child(2), .avis-card:nth-child(2), .stats > .stat:nth-child(2), .equipe-card:nth-child(2){transition-delay:0.13s;}
+  .prix-grid > div:nth-child(3), .galerie-item:nth-child(3), .avis-card:nth-child(3), .stats > .stat:nth-child(3), .equipe-card:nth-child(3){transition-delay:0.21s;}
+  .prix-grid > div:nth-child(4), .galerie-item:nth-child(4){transition-delay:0.29s;}
+  .prix-grid > div:nth-child(5){transition-delay:0.37s;}
+  .prix-grid > div:nth-child(6){transition-delay:0.45s;}
+
+  /* ---------- PRESTATIONS ---------- */
+  .prix-cat{margin-top:44px;}
+  .prix-cat h3{font-family:'Bodoni Moda', serif; font-size:20px; font-weight:600; margin-bottom:18px;}
+  .prix-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:0; border-top:1px solid var(--line);}
+  .prix-grid > div{
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px; padding:18px 0;
+    border-bottom:1px solid var(--line); transition:padding-left 0.25s cubic-bezier(0.22,1,0.36,1);
+  }
+  .prix-grid > div:nth-child(odd){padding-right:24px;}
+  .prix-grid > div:nth-child(even){padding-left:24px;}
+  .prix-grid > div:hover{padding-left:8px;}
+  .prix-name{font-weight:500;}
+  .prix-name small{display:block; font-size:12.5px; color:#7a6a60; margin-top:3px; font-weight:400;}
+  .prix-amount{font-family:'Bodoni Moda', serif; font-weight:600; color:var(--rose-deep); white-space:nowrap;}
+
+  /* ---------- GALERIE ---------- */
+  .galerie{margin-top:8px; display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  .galerie-item{
+    aspect-ratio:0.8; position:relative; overflow:hidden; border-radius:3px;
+    background:linear-gradient(160deg, var(--rose), var(--noir-2));
+    display:flex; align-items:flex-end; padding:16px; transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
+  }
+  .galerie-item:nth-child(2){background:linear-gradient(160deg, var(--gold), var(--noir));}
+  .galerie-item:nth-child(3){background:linear-gradient(160deg, var(--noir-2), var(--rose-deep));}
+  .galerie-item:nth-child(4){background:linear-gradient(160deg, var(--rose-deep), var(--noir));}
+  .galerie-item::before{content:""; position:absolute; inset:0; background:rgba(28,26,26,0.1); transition:background 0.35s;}
+  .galerie-item:hover::before{background:rgba(28,26,26,0);}
+  .galerie-item:hover{transform:translateY(-6px) scale(1.02); z-index:2;}
+  .galerie-item span{position:relative; z-index:1; color:var(--cream); font-size:12.5px; letter-spacing:0.03em; transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);}
+  .galerie-item:hover span{transform:translateY(-4px);}
+
+  /* tilt + spotlight */
+  .prix-grid > div, .avis-card, .equipe-card, .galerie-item{position:relative;}
+  .tilt::after{
+    content:""; position:absolute; inset:0; opacity:0; transition:opacity 0.3s; pointer-events:none; border-radius:inherit;
+    background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%), rgba(181,105,90,0.18), transparent 62%);
+  }
+  .tilt:hover::after{opacity:1;}
+
+  /* ---------- STATS ---------- */
+  .stats{margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; text-align:center; border-top:1px solid var(--line); padding-top:44px;}
+  .stat b{display:block; font-family:'Bodoni Moda', serif; font-size:clamp(32px,4vw,46px); font-weight:600; color:var(--rose-deep);}
+  .stat span{font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:#6a5c53; margin-top:8px; display:block;}
+
+  /* ---------- AVIS ---------- */
+  .avis-grid{margin-top:0; display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .avis-card{background:var(--cream); border:1px solid var(--line); padding:28px 24px; border-radius:3px; transition:transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s;}
+  .avis-card:hover{transform:translateY(-5px); box-shadow:0 18px 32px -20px rgba(28,26,26,0.25);}
+  .avis-stars{color:var(--gold); font-size:13px; letter-spacing:2px;}
+  .avis-card p{margin-top:14px; font-size:14.5px; color:#453b36; line-height:1.55;}
+  .avis-card .who{margin-top:16px; font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--rose-deep); font-weight:600;}
+
+  /* ---------- EQUIPE ---------- */
+  .equipe{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .equipe-card{text-align:center; transition:transform 0.3s cubic-bezier(0.22,1,0.36,1);}
+  .equipe-card:hover{transform:translateY(-6px);}
+  .equipe-photo{aspect-ratio:1; border-radius:50%; max-width:160px; margin:0 auto; background:linear-gradient(160deg, var(--blush-2), var(--rose)); display:flex; align-items:center; justify-content:center; font-family:'Bodoni Moda', serif; color:rgba(28,26,26,0.4); font-size:11px; text-transform:uppercase; letter-spacing:0.06em;}
+  .equipe-card h3{font-family:'Bodoni Moda', serif; font-size:19px; font-weight:600; margin-top:18px;}
+  .equipe-card .role{font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--rose-deep); margin-top:4px;}
+  .equipe-card p{margin-top:10px; font-size:14px; color:#4a3f3a;}
+
+  /* ---------- RESERVATION / CONTACT ---------- */
+  .reserver{background:var(--noir); color:var(--cream); position:relative; overflow:hidden;}
+  .reserver::before{
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:0.045; z-index:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;
+  }
+  .reserver .wrap{position:relative; z-index:1;}
+  .reserver-grid{margin-top:44px; display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  .infoline{padding:17px 0; border-bottom:1px solid rgba(251,246,241,0.15);}
+  .infoline h3{font-size:11.5px; text-transform:uppercase; letter-spacing:0.07em; color:var(--gold); font-weight:600;}
+  .infoline p{margin-top:7px; font-size:15px; color:rgba(251,246,241,0.85);}
+  .reserver .status-pill{margin-top:8px;}
+  .reserver .status-pill span:not(.dot){color:rgba(251,246,241,0.7);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--noir); color:rgba(251,246,241,0.45); font-size:12.5px; padding:26px 0; border-top:1px solid rgba(251,246,241,0.1);}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  /* barre de reservation flottante mobile */
+  .call-bar{display:none; position:fixed; left:0; right:0; bottom:0; z-index:80; background:var(--noir); padding:12px 20px; text-align:center; box-shadow:0 -8px 24px -12px rgba(28,26,26,0.4);}
+  .call-bar a{color:var(--cream); text-decoration:none; font-weight:500; font-size:14.5px; display:flex; align-items:center; justify-content:center; gap:8px;}
+
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr; gap:40px;}
+    .hero-visual{max-width:360px; margin:0 auto;}
+  }
+  @media (max-width:720px){
+    .navlinks{display:none;}
+    .burger{display:flex;}
+    .prix-grid{grid-template-columns:1fr;}
+    .prix-grid > div:nth-child(odd){padding-right:0;}
+    .prix-grid > div:nth-child(even){padding-left:0;}
+    .galerie{grid-template-columns:repeat(2,1fr);}
+    .stats{grid-template-columns:1fr; gap:20px;}
+    .avis-grid{grid-template-columns:1fr;}
+    .equipe{grid-template-columns:1fr; gap:36px;}
+    .reserver-grid{grid-template-columns:1fr; gap:32px;}
+    .call-bar{display:block;}
+    body{padding-bottom:56px;}
+    .section{padding:64px 0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important; animation:none !important;}
+    .reveal, .prix-grid > div, .galerie-item, .avis-card, .stats > .stat, .equipe-card{opacity:1; transform:none;}
+    .hero .mesh{display:none;}
+    .eyebrow::before, .eyebrow-2::before{width:18px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="brand">MÈCHE</a>
+    <ul class="navlinks">
+      <li><a href="#prestations">Prestations</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#equipe">Équipe</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li class="status-pill" data-status><span class="dot" aria-hidden="true"></span><span class="status-text">Horaires…</span></li>
+      <li><a href="#reserver" class="cta">Réserver</a></li>
+    </ul>
+    <button class="burger" aria-expanded="false" aria-controls="mobile-panel" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mobile-panel">
+    <a href="#prestations">Prestations</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#equipe">Équipe</a>
+    <a href="#avis">Avis</a>
+    <a href="#reserver">Réserver</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="mesh" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span></div>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Salon de coiffure — Mantes-la-Jolie</div>
+      <h1>Une coupe qui vous <em>ressemble.</em></h1>
+      <p class="lede">Coupe, coloration, balayage — un salon à taille humaine où l'on prend le temps de comprendre ce que vous voulez, avant de couper.</p>
+      <div class="hero-cta">
+        <a href="#reserver" class="btn">Réserver en ligne <span>→</span></a>
+        <a href="#prestations" class="btn-outline">Voir les prestations</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-badge"><b>4,9/5</b><span>Sur 210 avis</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="section reveal" id="prestations">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-2">Prestations</div>
+      <h2>Des tarifs clairs, aucune surprise en caisse</h2>
+      <p class="sub">Un diagnostic est toujours proposé avant coloration ou balayage, pour ajuster le tarif exact à la longueur et à l'épaisseur de votre chevelure.</p>
+    </div>
+
+    <div class="prix-cat">
+      <h3>Coupe & brushing</h3>
+      <div class="prix-grid">
+        <div><span class="prix-name">Coupe femme<small>Shampoing, coupe, brushing</small></span><span class="prix-amount">45 €</span></div>
+        <div><span class="prix-name">Coupe homme<small>Shampoing, coupe, coiffage</small></span><span class="prix-amount">28 €</span></div>
+        <div><span class="prix-name">Brushing seul<small>Cheveux mi-longs à longs</small></span><span class="prix-amount">30 €</span></div>
+        <div><span class="prix-name">Coupe enfant<small>Jusqu'à 12 ans</small></span><span class="prix-amount">20 €</span></div>
+      </div>
+    </div>
+
+    <div class="prix-cat">
+      <h3>Couleur</h3>
+      <div class="prix-grid">
+        <div><span class="prix-name">Coloration racines<small>Application + brushing</small></span><span class="prix-amount">65 €</span></div>
+        <div><span class="prix-name">Balayage<small>À partir de, selon longueur</small></span><span class="prix-amount">90 €</span></div>
+        <div><span class="prix-name">Patine / gloss<small>Neutralise et fait briller</small></span><span class="prix-amount">25 €</span></div>
+        <div><span class="prix-name">Soin réparateur<small>En complément d'une couleur</small></span><span class="prix-amount">18 €</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="galerie" style="background:var(--cream); padding-top:56px; padding-bottom:56px;">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:32px;">
+      <div class="eyebrow-2">Réalisations</div>
+      <h2>Un aperçu de nos coupes</h2>
+    </div>
+    <div class="galerie">
+      <div class="galerie-item"><span>Balayage miel</span></div>
+      <div class="galerie-item"><span>Coupe carré</span></div>
+      <div class="galerie-item"><span>Coloration cuivrée</span></div>
+      <div class="galerie-item"><span>Dégradé homme</span></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b class="count" data-target="9">0</b><span>Ans d'expérience</span></div>
+      <div class="stat"><b class="count" data-target="3200">0</b><span>Clients coiffés</span></div>
+      <div class="stat"><b class="count" data-target="49">0</b><span>Note sur 5 (x10)</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="avis">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-2">Ils en parlent</div>
+      <h2>L'avis de nos clients</h2>
+    </div>
+    <div class="avis-grid">
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p>« Le meilleur balayage que j'ai eu, exactement le résultat que je voulais montrer en photo. »</p>
+        <div class="who">— Léa, cliente depuis 2 ans</div>
+      </div>
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p>« Accueil chaleureux, coupe impeccable et des conseils honnêtes sur ce qui m'irait vraiment. »</p>
+        <div class="who">— Yanis, habitué</div>
+      </div>
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p>« Prise de rendez-vous simple en ligne, jamais d'attente sur place. Un vrai gain de temps. »</p>
+        <div class="who">— Sarah, cliente fidèle</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="equipe" style="background:var(--cream); padding-top:56px; padding-bottom:56px;">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;">
+      <div class="eyebrow-2" style="justify-content:center;">L'équipe</div>
+      <h2>Des mains expertes, une écoute réelle</h2>
+    </div>
+    <div class="equipe">
+      <div class="equipe-card">
+        <div class="equipe-photo" aria-hidden="true">Photo</div>
+        <h3>Camille</h3>
+        <div class="role">Fondatrice — Coloriste</div>
+        <p>Spécialiste balayage et techniques de coloration naturelle, 9 ans d'expérience.</p>
+      </div>
+      <div class="equipe-card">
+        <div class="equipe-photo" aria-hidden="true">Photo</div>
+        <h3>Thomas</h3>
+        <div class="role">Coiffeur — Barbier</div>
+        <p>Coupes homme sur-mesure, dégradés précis et taille de barbe.</p>
+      </div>
+      <div class="equipe-card">
+        <div class="equipe-photo" aria-hidden="true">Photo</div>
+        <h3>Inès</h3>
+        <div class="role">Coiffeuse</div>
+        <p>Coupes femme et enfant, chignons et coiffures d'événement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reserver reveal" id="reserver">
+  <div class="wrap">
+    <div class="eyebrow-2" style="color:var(--gold);">Réserver</div>
+    <h2 style="color:var(--cream);">On vous attend au salon</h2>
+    <p class="sub" style="color:rgba(251,246,241,0.75);">Réservation en ligne 24h/24, ou par téléphone aux heures d'ouverture.</p>
+    <div class="hero-cta">
+      <a href="tel:0130456789" class="btn" style="background:var(--rose-deep);">Appeler le salon <span>→</span></a>
+      <a href="#" class="btn-outline" style="border-color:rgba(251,246,241,0.4); color:var(--cream);">Réserver en ligne</a>
+    </div>
+
+    <div class="reserver-grid">
+      <div>
+        <div class="infoline">
+          <h3>Adresse</h3>
+          <p>8 place Saint-Maclou, 78200 Mantes-la-Jolie</p>
+        </div>
+        <div class="infoline">
+          <h3>Téléphone</h3>
+          <p>01 30 45 67 89</p>
+        </div>
+        <div class="infoline" style="border-bottom:none;">
+          <h3>Statut</h3>
+          <div class="status-pill" data-status><span class="dot" aria-hidden="true"></span><span class="status-text">Horaires…</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="infoline">
+          <h3>Horaires</h3>
+          <p>Mardi – Vendredi : 9h – 19h<br>Samedi : 9h – 18h</p>
+        </div>
+        <div class="infoline" style="border-bottom:none;">
+          <h3>Fermeture</h3>
+          <p>Dimanche et lundi</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 MÈCHE — Salon de coiffure</span>
+    <span>Mantes-la-Jolie — Sur rendez-vous</span>
+  </div>
+</footer>
+
+<div class="call-bar"><a href="#reserver">Réserver un créneau →</a></div>
+
+<script>
+  // Menu mobile
+  var burger = document.querySelector('.burger');
+  var panel = document.getElementById('mobile-panel');
+  burger.addEventListener('click', function(){
+    var open = panel.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  panel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      panel.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Apparition en cascade au defilement
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // Statut ouvert / ferme (Mar-Ven 9h-19h, Sam 9h-18h, Dim-Lun ferme)
+  (function(){
+    var now = new Date();
+    var day = now.getDay();
+    var hour = now.getHours() + now.getMinutes() / 60;
+    var open = false;
+    if (day >= 2 && day <= 5) { open = hour >= 9 && hour < 19; }
+    else if (day === 6) { open = hour >= 9 && hour < 18; }
+    var label = open ? 'Salon ouvert' : 'Salon fermé';
+    document.querySelectorAll('.status-pill[data-status]').forEach(function(pill){
+      pill.classList.add(open ? 'open' : 'closed');
+      var text = pill.querySelector('.status-text');
+      if (text) text.textContent = label;
+    });
+  })();
+
+  // Compteurs animes
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    if (reduceMotion || isNaN(target)) { el.textContent = target; return; }
+    var duration = 1000, start = null;
+    function step(ts){
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) {
+    var countObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          countObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.stat .count[data-target]').forEach(function(el){ countObserver.observe(el); });
+  } else {
+    document.querySelectorAll('.stat .count[data-target]').forEach(function(el){ el.textContent = el.getAttribute('data-target'); });
+  }
+
+  // Tilt 3D + spotlight (souris fine uniquement)
+  var pointerFine = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+  if (pointerFine && !reduceMotion) {
+    document.querySelectorAll('.avis-card, .galerie-item, .prix-grid > div').forEach(function(el){
+      el.classList.add('tilt');
+      el.addEventListener('mousemove', function(e){
+        var r = el.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width;
+        var py = (e.clientY - r.top) / r.height;
+        el.style.setProperty('--mx', (px * 100) + '%');
+        el.style.setProperty('--my', (py * 100) + '%');
+      });
+    });
+  }
+</script>
+
+</body>
+</html>

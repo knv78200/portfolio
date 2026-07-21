@@ -39,11 +39,31 @@
     transition:right 0.25s cubic-bezier(0.22,1,0.36,1);
   }
   .navlinks a:not(.cta):hover::after{right:0;}
-  .navlinks .cta{background:var(--ember); color:var(--paper); padding:9px 18px; border-radius:2px; opacity:1; transition:background 0.2s;}
-  .navlinks .cta:hover{background:var(--crust);}
+  .navlinks .cta{background:var(--ember); color:var(--paper); padding:9px 18px; border-radius:2px; opacity:1; transition:background 0.2s, transform 0.2s;}
+  .navlinks .cta:hover{background:var(--crust); transform:translateY(-2px);}
+
+  .status-pill{
+    display:inline-flex; align-items:center; gap:7px; font-family:'Space Mono', monospace; font-size:11px;
+    text-transform:uppercase; letter-spacing:0.04em; opacity:0.85;
+  }
+  .status-pill .dot{width:6px; height:6px; border-radius:50%; background:#5c7a4a; flex:none;}
+  .status-pill.closed .dot{background:#9a8a72;}
+  .status-pill.open .dot{animation:pulseDot 2.2s ease infinite;}
+  @keyframes pulseDot{
+    0%{box-shadow:0 0 0 0 rgba(92,122,74,0.55);}
+    70%{box-shadow:0 0 0 7px rgba(92,122,74,0);}
+    100%{box-shadow:0 0 0 0 rgba(92,122,74,0);}
+  }
 
   /* HERO */
-  .hero{padding:76px 0 64px; position:relative;}
+  .hero{padding:76px 0 64px; position:relative; overflow:hidden;}
+  .hero .mesh{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;}
+  .hero .blob{position:absolute; border-radius:50%; filter:blur(70px); opacity:0.28; will-change:transform;}
+  .hero .blob.b1{width:380px; height:380px; background:var(--wheat); top:-140px; right:-60px; animation:drift1 24s ease-in-out infinite;}
+  .hero .blob.b2{width:300px; height:300px; background:var(--ember); bottom:-140px; left:8%; opacity:0.18; animation:drift2 27s ease-in-out infinite;}
+  @keyframes drift1{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-30px,26px) scale(1.1);}}
+  @keyframes drift2{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(24px,-18px) scale(1.14);}}
+  .hero .wrap{position:relative; z-index:1;}
   .badge{
     position:absolute; top:12px; right:24px; width:112px; height:112px; border-radius:50%;
     border:1.5px solid var(--ember); display:flex; align-items:center; justify-content:center;
@@ -96,6 +116,73 @@
   .ticket-line .price{font-family:'Space Mono', monospace; color:var(--ember); white-space:nowrap;}
   .ticket-foot{margin-top:18px; padding-top:14px; border-top:1px dashed var(--line); text-align:center; font-family:'Space Mono', monospace; font-size:10.5px; color:#7a6650; letter-spacing:0.02em;}
 
+  /* apparition en cascade des lignes du ticket */
+  .ticket-line{opacity:0; transform:translateY(10px); transition:opacity 0.5s ease, transform 0.5s ease, padding-left 0.25s cubic-bezier(0.22,1,0.36,1);}
+  .reveal.in .ticket-line{opacity:1; transform:translateY(0);}
+  .ticket-line:nth-of-type(1){transition-delay:0.05s;}
+  .ticket-line:nth-of-type(2){transition-delay:0.13s;}
+  .ticket-line:nth-of-type(3){transition-delay:0.21s;}
+  .ticket-line:nth-of-type(4){transition-delay:0.29s;}
+  .ticket-line:nth-of-type(5){transition-delay:0.37s;}
+
+  /* apparition en cascade des grilles */
+  .savoir-item, .galerie-item, .avis-card{
+    opacity:0; transform:translateY(16px); transition:opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.in .savoir-item, .reveal.in .galerie-item, .reveal.in .avis-card{opacity:1; transform:translateY(0);}
+  .savoir-item:nth-child(1), .galerie-item:nth-child(1), .avis-card:nth-child(1){transition-delay:0.05s;}
+  .savoir-item:nth-child(2), .galerie-item:nth-child(2), .avis-card:nth-child(2){transition-delay:0.15s;}
+  .savoir-item:nth-child(3), .galerie-item:nth-child(3), .avis-card:nth-child(3){transition-delay:0.25s;}
+  .galerie-item:nth-child(4){transition-delay:0.35s;}
+  .galerie-item:hover, .avis-card:hover{transform:translateY(-5px) scale(1.03);}
+
+  /* ---------- SAVOIR-FAIRE ---------- */
+  .savoir{margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--line); padding-top:36px;}
+  .savoir-item{padding:0 30px; border-right:1px solid var(--line); text-align:center;}
+  .savoir-item:first-child{padding-left:0;}
+  .savoir-item:last-child{border-right:none; padding-right:0;}
+  .savoir-item .num{font-family:'Space Mono', monospace; color:var(--wheat); font-size:12px; letter-spacing:0.04em;}
+  .savoir-item h3{font-family:'Fraunces', serif; font-size:20px; font-weight:600; margin-top:12px;}
+  .savoir-item p{margin-top:10px; font-size:14px; color:var(--crust-2);}
+
+  .stats{margin-top:52px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; text-align:center;}
+  .stat b{display:block; font-family:'Fraunces', serif; font-size:clamp(30px,4vw,42px); font-weight:600; color:var(--ember);}
+  .stat span{font-family:'Space Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--crust-2); margin-top:6px; display:block;}
+
+  /* ---------- GALERIE ---------- */
+  .galerie{margin-top:0; display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  .galerie-item{
+    aspect-ratio:1; position:relative; overflow:hidden; border-radius:3px;
+    background:linear-gradient(155deg, var(--wheat), var(--crust-2));
+    display:flex; align-items:flex-end; padding:16px;
+  }
+  .galerie-item:nth-child(2){background:linear-gradient(155deg, var(--ember), var(--crust));}
+  .galerie-item:nth-child(3){background:linear-gradient(155deg, #c98a3d, var(--crust-2));}
+  .galerie-item:nth-child(4){background:linear-gradient(155deg, var(--crust-2), var(--ember));}
+  .galerie-item span{
+    font-family:'Space Mono', monospace; font-size:11px; color:var(--paper); letter-spacing:0.03em;
+    position:relative; z-index:1; transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
+  }
+  .galerie-item::before{
+    content:""; position:absolute; inset:0; background:rgba(51,33,15,0.15);
+    transition:background 0.35s;
+  }
+  .galerie-item:hover::before{background:rgba(51,33,15,0);}
+  .galerie-item:hover span{transform:translateY(-4px);}
+  .galerie-item{transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);}
+  .galerie-item:hover{z-index:2;}
+
+  /* ---------- AVIS CLIENTS ---------- */
+  .avis-grid{margin-top:0; display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .avis-card{
+    background:var(--paper); border:1px solid var(--line); padding:26px 24px;
+    transition:transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s;
+  }
+  .avis-card:hover{box-shadow:0 18px 32px -20px rgba(51,33,15,0.35);}
+  .avis-stars{color:var(--wheat); font-size:13px; letter-spacing:2px;}
+  .avis-card p{margin-top:14px; font-size:14.5px; color:var(--crust-2); line-height:1.55;}
+  .avis-card .who{margin-top:16px; font-family:'Space Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--wheat);}
+
   /* HISTOIRE */
   .histoire{background:var(--crust); color:var(--flour);}
   .histoire .wrap{padding:72px 24px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
@@ -115,6 +202,14 @@
 
   footer{background:var(--crust); color:rgba(242,232,211,0.45); font-family:'Space Mono', monospace; font-size:11.5px; padding:24px 0; text-align:center; border-top:1px solid rgba(242,232,211,0.1);}
 
+  /* barre d'appel flottante mobile */
+  .call-bar{
+    display:none; position:fixed; left:0; right:0; bottom:0; z-index:60;
+    background:var(--crust); padding:12px 20px; text-align:center;
+    box-shadow:0 -8px 24px -12px rgba(51,33,15,0.4);
+  }
+  .call-bar a{color:var(--paper); text-decoration:none; font-weight:600; font-size:14.5px; display:flex; align-items:center; justify-content:center; gap:8px;}
+
   @media (max-width:720px){
     .navlinks{display:none;}
     .histoire .wrap{grid-template-columns:1fr;}
@@ -122,12 +217,20 @@
     .infos-grid{grid-template-columns:1fr;}
     .badge{width:88px; height:88px; font-size:8.5px; top:0; right:0;}
     .badge b{font-size:10.5px;}
+    .savoir{grid-template-columns:1fr; gap:28px;}
+    .savoir-item{padding:0; border-right:none; text-align:left;}
+    .stats{grid-template-columns:1fr; gap:20px;}
+    .galerie{grid-template-columns:repeat(2,1fr);}
+    .avis-grid{grid-template-columns:1fr;}
+    .call-bar{display:block;}
+    body{padding-bottom:56px;}
   }
 
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{transition:none !important; animation:none !important;}
-    .reveal{opacity:1; transform:none;}
+    .reveal, .ticket-line{opacity:1; transform:none;}
+    .hero .mesh{display:none;}
   }
 </style>
 </head>
@@ -138,14 +241,20 @@
     <a href="#" class="brand">Le Fournil</a>
     <ul class="navlinks">
       <li><a href="#aujourdhui">Aujourd'hui</a></li>
-      <li><a href="#histoire">Notre histoire</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#avis">Avis</a></li>
       <li><a href="#infos">Horaires</a></li>
+      <li class="status-pill" id="status-pill"><span class="dot" aria-hidden="true"></span><span id="status-text">Horaires…</span></li>
       <li><a href="#infos" class="cta">Nous trouver</a></li>
     </ul>
   </div>
 </nav>
 
 <header class="hero">
+  <div class="mesh" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+  </div>
   <div class="wrap">
     <div class="badge" aria-hidden="true"><span>FAIT MAISON<b>CHAQUE MATIN</b>DEPUIS 1998</span></div>
     <div class="eyebrow">Boulangerie artisanale</div>
@@ -192,6 +301,71 @@
 
       <div class="ticket-foot">Disponible jusqu'à épuisement — arrivez tôt le week-end</div>
     </div>
+
+    <div class="savoir">
+      <div class="savoir-item">
+        <div class="num">01</div>
+        <h3>Pétrissage lent</h3>
+        <p>Farines de meuniers locaux, pétries à faible vitesse pour préserver le goût du grain.</p>
+      </div>
+      <div class="savoir-item">
+        <div class="num">02</div>
+        <h3>Fermentation 24h</h3>
+        <p>Le levain naturel travaille une journée entière avant la mise au four, sans additif.</p>
+      </div>
+      <div class="savoir-item">
+        <div class="num">03</div>
+        <h3>Cuisson au feu de bois</h3>
+        <p>Four traditionnel, croûte épaisse et mie alvéolée, comme il y a trois générations.</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b class="count" data-target="27">0</b><span>Ans d'existence</span></div>
+      <div class="stat"><b class="count" data-target="15">0</b><span>Variétés de pain</span></div>
+      <div class="stat"><b class="count" data-target="3">0</b><span>Générations</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="galerie" style="background:var(--paper); padding-top:56px; padding-bottom:56px;">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;">
+      <div class="eyebrow-2">En vitrine</div>
+      <h2>Un aperçu du fournil</h2>
+    </div>
+    <div class="galerie">
+      <div class="galerie-item"><span>Pains du jour</span></div>
+      <div class="galerie-item"><span>Viennoiseries</span></div>
+      <div class="galerie-item"><span>Le fournil</span></div>
+      <div class="galerie-item"><span>Le four à bois</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="avis">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;">
+      <div class="eyebrow-2">Ils en parlent</div>
+      <h2>L'avis de nos habitués</h2>
+    </div>
+    <div class="avis-grid">
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p>« Le meilleur pain au levain du quartier, et de loin. La croûte craque exactement comme il faut. »</p>
+        <div class="who">— Camille, cliente depuis 2019</div>
+      </div>
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p>« Les croissants sont bluffants, feuilletage impeccable. On y passe tous les dimanches matin. »</p>
+        <div class="who">— Karim, habitué</div>
+      </div>
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p>« Accueil chaleureux, produits toujours frais. On sent le vrai savoir-faire artisanal. »</p>
+        <div class="who">— Sophie, cliente fidèle</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -212,6 +386,7 @@
   <div class="wrap" style="text-align:center;">
     <div class="eyebrow-2">Pratique</div>
     <h2>Horaires & adresse</h2>
+    <div class="status-pill" id="status-pill-2" style="justify-content:center; margin-top:14px;"><span class="dot" aria-hidden="true"></span><span id="status-text-2">Horaires…</span></div>
 
     <div class="infos-grid">
       <div>
@@ -233,6 +408,10 @@
 
 <footer>© 2026 Le Fournil — Boulangerie artisanale</footer>
 
+<div class="call-bar">
+  <a href="tel:0123456789">Appeler le fournil — 01 23 45 67 89</a>
+</div>
+
 <script>
   // Apparition en cascade au defilement
   if ('IntersectionObserver' in window) {
@@ -247,6 +426,57 @@
     document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
   } else {
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // Statut ouvert / ferme en temps reel
+  (function(){
+    var now = new Date();
+    var day = now.getDay();
+    var hour = now.getHours() + now.getMinutes() / 60;
+    var open = false;
+    if (day === 1) { open = false; }
+    else if (day >= 2 && day <= 5) { open = hour >= 7 && hour < 19.5; }
+    else if (day === 6) { open = hour >= 7 && hour < 20; }
+    else if (day === 0) { open = hour >= 7 && hour < 13; }
+
+    var label = open ? 'Ouvert actuellement' : 'Fermé actuellement';
+    [['status-pill', 'status-text'], ['status-pill-2', 'status-text-2']].forEach(function(ids){
+      var pill = document.getElementById(ids[0]);
+      var text = document.getElementById(ids[1]);
+      if (!pill || !text) return;
+      pill.classList.add(open ? 'open' : 'closed');
+      text.textContent = label;
+    });
+  })();
+
+  // Compteurs animes (annees, varietes, generations)
+  var reduceMotionBk = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function animateBkCount(el){
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    if (reduceMotionBk || isNaN(target)) { el.textContent = target; return; }
+    var duration = 1000, start = null;
+    function step(ts){
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) {
+    var bkCountObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          animateBkCount(entry.target);
+          bkCountObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.stat .count[data-target]').forEach(function(el){ bkCountObserver.observe(el); });
+  } else {
+    document.querySelectorAll('.stat .count[data-target]').forEach(function(el){ el.textContent = el.getAttribute('data-target'); });
   }
 </script>
 

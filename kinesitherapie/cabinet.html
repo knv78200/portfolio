@@ -20,6 +20,7 @@
       <li><a href="services.html">Soins</a></li>
       <li><a href="cabinet.html" class="active">Le cabinet</a></li>
       <li><a href="tarifs.html">Tarifs</a></li>
+      <li class="status-pill" data-status><span class="dot" aria-hidden="true"></span><span class="status-text">Horaires…</span></li>
       <li><a href="contact.html" class="cta">Prendre RDV</a></li>
     </ul>
     <button class="burger" aria-expanded="false" aria-controls="mobile-panel" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
@@ -35,6 +36,7 @@
 
 <header class="pagehead">
   <div class="arc" aria-hidden="true"></div>
+  <div class="mesh" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span></div>
   <div class="wrap">
     <div class="eyebrow">Le cabinet</div>
     <h1>Un lieu pensé pour la récupération, pas pour l'attente.</h1>
@@ -48,11 +50,25 @@
   </div>
 </section>
 
-<section class="section reveal" style="padding-top:0;">
+<section class="section reveal">
   <div class="wrap">
     <div class="eyebrow" style="margin-bottom:8px;">Le praticien</div>
     <h2>Diplômé d'État, formé en continu</h2>
-    <p class="sub">Kinésithérapeute diplômé, avec des formations complémentaires en thérapie manuelle et en kinésithérapie du sport. Le cabinet a ouvert avec une conviction simple : chaque corps récupère à son propre rythme.</p>
+    <div class="bio-card">
+      <div class="photoblock bio-photo" aria-hidden="true">Photo du praticien</div>
+      <div>
+        <p class="sub" style="margin-top:0;">Kinésithérapeute diplômé, avec des formations complémentaires en thérapie manuelle et en kinésithérapie du sport. Le cabinet a ouvert avec une conviction simple : chaque corps récupère à son propre rythme.</p>
+        <ul class="bio-list">
+          <li>Diplôme d'État de masso-kinésithérapie</li>
+          <li>Formation complémentaire en thérapie manuelle</li>
+          <li>Spécialisation kiné du sport</li>
+          <li>12 ans d'exercice, dont 6 ans en cabinet libéral</li>
+        </ul>
+        <div class="hero-cta">
+          <a href="contact.html" class="btn">Prendre rendez-vous</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -62,6 +78,8 @@
     <span>12 rue des Tilleuls — Sur rendez-vous</span>
   </div>
 </footer>
+
+<div class="call-bar"><a href="contact.html">Prendre rendez-vous →</a></div>
 
 <script src="script.js"></script>
 </body>
