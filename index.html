@@ -225,6 +225,7 @@
 
   /* révélation robotique caractère par caractère */
   .chars{display:inline-block;}
+  .word{display:inline-block;white-space:nowrap;}
   .chr{display:inline-block;opacity:0;transform:translateY(0.55em) rotateX(-82deg);filter:blur(4px);transform-origin:50% 100%;animation:chrIn .55s var(--ease) forwards;animation-play-state:paused;}
   .reveal.in .chr{animation-play-state:running;}
   @keyframes chrIn{
@@ -482,7 +483,8 @@
 <section class="section reveal" id="comment">
   <div class="wrap">
     <div class="section-label">Méthode</div>
-    <h2>Trois étapes. Aucune surprise.</h2>
+    <h2>Trois étapes,
+        Aucune surprise.</h2>
     <p class="section-sub">Pas de jargon, pas d'allers-retours interminables. Vous savez à chaque étape où en est votre site.</p>
     <div class="steps">
       <div class="step">
@@ -534,7 +536,8 @@
         <span class="corner tl"></span><span class="corner br"></span>
         <div class="card-head"><span>FORMULE ESSENTIEL</span><span class="tag">Site vitrine — 1 page</span></div>
         <div class="card-body">
-          <h3>MÈCHE — Salon de coiffure</h3>
+          <h3>MÈCHE — 
+              Salon de coiffure</h3>
           <p>Site vitrine 1 page pour un salon de coiffure : prestations, galerie, avis clients et réservation en ligne.</p>
           <div class="stack"><span>HTML/CSS</span><span>Responsive</span><span>GitHub Pages</span></div>
           <a href="coiffure/" class="card-link">Voir le site <span>→</span></a>
@@ -759,18 +762,34 @@
   if (!reduce){
     var sels = '.section h2, .contact h2, .price-card h3, .card-body h3, .reassure-item h3, .step h3, .tarifs-sub h3';
     document.querySelectorAll(sels).forEach(function(el){
-      var text = el.textContent;
-      if(!text || !text.trim()) return;
+      var text = el.textContent.replace(/\s+/g,' ').trim();
+      if(!text) return;
       el.setAttribute('aria-label', text);
       el.textContent = '';
       var holder = document.createElement('span');
       holder.className = 'chars'; holder.setAttribute('aria-hidden','true');
-      Array.prototype.forEach.call(text, function(ch,i){
-        var s = document.createElement('span');
-        s.className = 'chr';
-        s.textContent = (ch === ' ') ? ' ' : ch;
-        s.style.animationDelay = (i*0.022)+'s';
-        holder.appendChild(s);
+      var words = text.split(' ');
+      var i = 0;
+      words.forEach(function(word, wi){
+        var wordSpan = document.createElement('span');
+        wordSpan.className = 'word';
+        Array.prototype.forEach.call(word, function(ch){
+          var s = document.createElement('span');
+          s.className = 'chr';
+          s.textContent = ch;
+          s.style.animationDelay = (i*0.022)+'s';
+          wordSpan.appendChild(s);
+          i++;
+        });
+        holder.appendChild(wordSpan);
+        if(wi < words.length-1){
+          var space = document.createElement('span');
+          space.className = 'chr';
+          space.textContent = ' ';
+          space.style.animationDelay = (i*0.022)+'s';
+          holder.appendChild(space);
+          i++;
+        }
       });
       el.appendChild(holder);
     });
