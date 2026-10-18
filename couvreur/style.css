@@ -37,6 +37,8 @@ h1, h2, h3 { font-weight: 800; font-stretch: 115%; line-height: 1.05; letter-spa
 h3 { font-size: 1.15rem; font-stretch: 105%; line-height: 1.25; }
 a { color: var(--tuile); text-underline-offset: 0.2em; }
 :focus-visible { outline: 3px solid var(--tuile); outline-offset: 3px; border-radius: 4px; }
+/* Sur les zones sombres, contour blanc : le tuile ne se verrait pas assez */
+.entete :focus-visible, .hero :focus-visible, .chantiers :focus-visible, .pied :focus-visible, .barre-appel :focus-visible { outline-color: #fff; }
 
 .conteneur { width: min(100% - 2 * var(--gouttiere), 1100px); margin-inline: auto; }
 
@@ -144,7 +146,8 @@ blockquote footer { margin-top: 12px; color: var(--zinc-fonce); font-size: 0.95r
 .form-demo { display: grid; gap: 16px; padding: 26px; background: #fff; border: 1px solid #dde3e6; border-radius: 18px; box-shadow: var(--ombre); }
 .champ { display: grid; gap: 6px; }
 label { font-weight: 600; }
-input, textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #cfd7db; border-radius: 10px; background: var(--clair); color: var(--encre); font: inherit; font-size: 1rem; transition: border-color 0.15s, box-shadow 0.15s; }
+input, textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #7f8b93; border-radius: 10px; background: var(--clair); color: var(--encre); font: inherit; font-size: 1rem; transition: border-color 0.15s, box-shadow 0.15s; }
+input::placeholder, textarea::placeholder { color: var(--zinc-fonce); opacity: 1; }
 input:focus, textarea:focus { border-color: var(--tuile); outline: none; box-shadow: 0 0 0 4px rgba(181, 71, 42, 0.18); }
 .statut:empty { padding: 0; }
 .statut { padding: 10px 12px; border-radius: 10px; background: var(--zinc); font-weight: 600; }
@@ -156,6 +159,7 @@ input:focus, textarea:focus { border-color: var(--tuile); outline: none; box-sha
 /* ---------- Barre d'appel (téléphone) ---------- */
 .barre-appel { display: none; }
 @media (max-width: 859px) {
+  html { scroll-padding-bottom: 90px; } /* la barre du bas ne cache pas l'élément sélectionné */
   body { padding-bottom: 76px; }
   .barre-appel {
     position: fixed; inset: auto 0 0 0; z-index: 10;

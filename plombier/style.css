@@ -40,6 +40,8 @@ h1, h2, h3 { font-weight: 750; font-stretch: 92%; line-height: 1.08; text-wrap: 
 h3 { font-size: 1.2rem; line-height: 1.25; }
 a { color: var(--eau); text-underline-offset: 0.2em; }
 :focus-visible { outline: 3px solid var(--eau); outline-offset: 3px; }
+/* Sur les zones sombres, contour blanc : le bleu ne se verrait pas assez */
+.hero :focus-visible, .pied :focus-visible, .barre-appel :focus-visible { outline-color: #fff; }
 
 .conteneur { width: min(100% - 2 * var(--gouttiere), 1100px); margin-inline: auto; }
 .etroit { width: min(100% - 2 * var(--gouttiere), 760px); }
@@ -142,7 +144,8 @@ blockquote footer { margin-top: 12px; color: var(--doux); font-size: 0.95rem; }
 .form-demo { display: grid; gap: 16px; padding: 26px; background: #fff; border: 1px solid #dbe4ec; border-radius: 20px; box-shadow: var(--ombre); }
 .champ { display: grid; gap: 6px; }
 label { font-weight: 600; }
-input, textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #c3d3e2; border-radius: 10px; background: var(--blanc); color: var(--encre); font: inherit; font-size: 1rem; }
+input, textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #7d8ea0; border-radius: 10px; background: var(--blanc); color: var(--encre); font: inherit; font-size: 1rem; }
+input::placeholder, textarea::placeholder { color: var(--doux); opacity: 1; }
 input:focus, textarea:focus { border-color: var(--eau); outline: none; box-shadow: 0 0 0 4px rgba(23, 105, 194, 0.18); }
 .statut:empty { padding: 0; }
 .statut { padding: 10px 12px; border-radius: 10px; background: var(--eau-pale); font-weight: 600; }
@@ -154,6 +157,7 @@ input:focus, textarea:focus { border-color: var(--eau); outline: none; box-shado
 /* ---------- Barre d'appel (téléphone) ---------- */
 .barre-appel { display: none; }
 @media (max-width: 859px) {
+  html { scroll-padding-bottom: 90px; } /* la barre du bas ne cache pas l'élément sélectionné */
   body { padding-bottom: 76px; }
   .barre-appel {
     position: fixed; inset: auto 0 0 0; z-index: 10;

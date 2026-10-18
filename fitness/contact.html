@@ -8,9 +8,8 @@
 <meta name="format-detection" content="telephone=no">
 <title>Réserver — FORGE</title>
 <meta name="description" content="Réservez votre séance d'essai gratuite à la salle FORGE, Mantes-la-Jolie. Adresse, horaires et formulaire de contact.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Polices hébergées dans le site (plus de Google Fonts) -->
+<link rel="stylesheet" href="../fonts/demos.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -39,6 +38,7 @@
   </div>
 </nav>
 
+<main>
 <header class="pagehead">
   <div class="mesh" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span></div>
   <div class="wrap">
@@ -53,19 +53,19 @@
   <div class="wrap contact-grid">
     <div>
       <div class="infoline">
-        <h3>Adresse</h3>
+        <h2>Adresse</h2>
         <p>14 avenue Danton, 78200 Mantes-la-Jolie</p>
       </div>
       <div class="infoline">
-        <h3>Téléphone</h3>
+        <h2>Téléphone</h2>
         <p>01 30 12 34 56</p>
       </div>
       <div class="infoline">
-        <h3>Horaires</h3>
+        <h2>Horaires</h2>
         <p>Lundi – Vendredi : 6h – 22h<br>Samedi : 8h – 18h<br>Dimanche : 9h – 13h</p>
       </div>
       <div class="infoline" style="border-bottom:none;">
-        <h3>Accès</h3>
+        <h2>Accès</h2>
         <p>Parking gratuit sur place, arrêt de bus à 2 minutes à pied</p>
       </div>
     </div>
@@ -73,11 +73,11 @@
     <form onsubmit="event.preventDefault(); alert('Formulaire de démonstration — à connecter à une adresse email réelle.');">
       <div>
         <label for="nom">Nom</label>
-        <input type="text" id="nom" name="nom" required>
+        <input type="text" id="nom" name="nom" autocomplete="name" required>
       </div>
       <div>
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" autocomplete="email" required>
       </div>
       <div>
         <label for="objectif">Votre objectif</label>
@@ -96,6 +96,7 @@
     </form>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">

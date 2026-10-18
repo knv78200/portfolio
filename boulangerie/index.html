@@ -8,15 +8,15 @@
 <meta name="format-detection" content="telephone=no">
 <title>Le Fournil — Boulangerie artisanale</title>
 <meta name="description" content="Boulangerie artisanale, pain au levain et viennoiseries maison. Ouvert du mardi au dimanche.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!-- Polices hébergées dans le site (plus de Google Fonts) -->
+<link rel="stylesheet" href="../fonts/demos.css">
 <style>
   :root{
     --flour:#f2e8d3;
     --crust:#33210f;
     --crust-2:#432c17;
     --wheat:#a9702e;
+    --wheat-text:#855620; /* --wheat assombri pour le petit texte sur fond clair (contraste AA) */
     --ember:#9c4023;
     --paper:#faf3e2;
     --line: rgba(51,33,15,0.18);
@@ -74,7 +74,7 @@
     font-size:10px; text-transform:uppercase; letter-spacing:0.03em; line-height:1.6; font-weight:400;
   }
   .badge b{display:block; font-size:12.5px; margin:2px 0; font-weight:700;}
-  .eyebrow{font-family:'Space Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--wheat); margin-bottom:20px;}
+  .eyebrow{font-family:'Space Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--wheat-text); margin-bottom:20px;}
   h1{font-family:'Fraunces', serif; font-weight:600; font-size:clamp(38px,6.4vw,64px); line-height:1.06; max-width:600px;}
   h1 em{font-style:italic; color:var(--ember); font-weight:500;}
   .hero p.lede{max-width:460px; margin-top:24px; font-size:16.5px; color:var(--crust-2);}
@@ -96,7 +96,7 @@
   /* SECTION */
   .section{padding:64px 0;}
   .section-head{margin-bottom:44px;}
-  .eyebrow-2{font-family:'Space Mono', monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--wheat);}
+  .eyebrow-2{font-family:'Space Mono', monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--wheat-text);}
   .section h2{font-family:'Fraunces', serif; font-size:clamp(26px,3.6vw,36px); font-weight:600; margin-top:10px;}
 
   /* apparition au defilement */
@@ -110,7 +110,7 @@
     position:relative;
   }
   .ticket-head{text-align:center; font-family:'Fraunces', serif; font-size:21px; font-weight:600; padding-bottom:14px; border-bottom:1px dashed var(--line);}
-  .ticket-sub{text-align:center; font-family:'Space Mono', monospace; font-size:10.5px; color:var(--wheat); margin-top:8px; letter-spacing:0.06em;}
+  .ticket-sub{text-align:center; font-family:'Space Mono', monospace; font-size:10.5px; color:var(--wheat-text); margin-top:8px; letter-spacing:0.06em;}
   .ticket-line{display:flex; justify-content:space-between; gap:12px; padding:13px 0; border-bottom:1px dashed var(--line); font-size:14.5px; transition:padding-left 0.25s cubic-bezier(0.22,1,0.36,1);}
   .ticket-line:hover{padding-left:8px;}
   .ticket-line:last-of-type{border-bottom:none;}
@@ -144,7 +144,7 @@
   .savoir-item{padding:0 30px; border-right:1px solid var(--line); text-align:center;}
   .savoir-item:first-child{padding-left:0;}
   .savoir-item:last-child{border-right:none; padding-right:0;}
-  .savoir-item .num{font-family:'Space Mono', monospace; color:var(--wheat); font-size:12px; letter-spacing:0.04em;}
+  .savoir-item .num{font-family:'Space Mono', monospace; color:var(--wheat-text); font-size:12px; letter-spacing:0.04em;}
   .savoir-item h3{font-family:'Fraunces', serif; font-size:20px; font-weight:600; margin-top:12px;}
   .savoir-item p{margin-top:10px; font-size:14px; color:var(--crust-2);}
 
@@ -184,13 +184,14 @@
   .avis-card:hover{box-shadow:0 18px 32px -20px rgba(51,33,15,0.35);}
   .avis-stars{color:var(--wheat); font-size:13px; letter-spacing:2px;}
   .avis-card p{margin-top:14px; font-size:14.5px; color:var(--crust-2); line-height:1.55;}
-  .avis-card .who{margin-top:16px; font-family:'Space Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--wheat);}
+  .avis-card .who{margin-top:16px; font-family:'Space Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--wheat-text);}
+  .avis-demo{margin-top:8px; font-size:13px; color:var(--crust-2);}
 
   /* HISTOIRE */
   .histoire{background:var(--crust); color:var(--flour);}
   .histoire .wrap{padding:72px 24px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
   .histoire blockquote{font-family:'Fraunces', serif; font-size:clamp(21px,2.8vw,27px); font-weight:500; line-height:1.4; font-style:italic;}
-  .histoire p.role{margin-top:18px; font-family:'Space Mono', monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--wheat);}
+  .histoire p.role{margin-top:18px; font-family:'Space Mono', monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:#d09a55;}
   .histoire-text{border-left:1px solid rgba(242,232,211,0.2); padding-left:36px;}
   .histoire-text p{font-size:15px; color:rgba(242,232,211,0.7); margin-bottom:14px;}
 
@@ -198,12 +199,12 @@
   .infos{padding:72px 0;}
   .infos-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); max-width:700px; margin:40px auto 0;}
   .infos-grid > div{background:var(--flour); padding:28px 30px;}
-  .infos-grid h3{font-family:'Space Mono', monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--wheat); margin-bottom:16px;}
+  .infos-grid h3{font-family:'Space Mono', monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--wheat-text); margin-bottom:16px;}
   .infos-grid .row{display:flex; justify-content:space-between; font-size:14.5px; padding:7px 0; transition:padding-left 0.25s cubic-bezier(0.22,1,0.36,1);}
   .infos-grid .row:hover{padding-left:6px;}
   .infos-grid .row span:first-child{color:var(--crust-2); opacity:0.75;}
 
-  footer{background:var(--crust); color:rgba(242,232,211,0.45); font-family:'Space Mono', monospace; font-size:11.5px; padding:24px 0; text-align:center; border-top:1px solid rgba(242,232,211,0.1);}
+  footer{background:var(--crust); color:rgba(242,232,211,0.6); font-family:'Space Mono', monospace; font-size:11.5px; padding:24px 0; text-align:center; border-top:1px solid rgba(242,232,211,0.1);}
 
   /* barre d'appel flottante mobile */
   .call-bar{
@@ -272,6 +273,7 @@
   </div>
 </header>
 
+<main>
 <section class="section reveal" id="aujourdhui">
   <div class="wrap">
     <div class="section-head" style="text-align:center;">
@@ -353,20 +355,21 @@
     <div class="section-head" style="text-align:center;">
       <div class="eyebrow-2">Ils en parlent</div>
       <h2>L'avis de nos habitués</h2>
+      <p class="avis-demo">Exemples d'avis (démo)</p>
     </div>
     <div class="avis-grid">
       <div class="avis-card">
-        <div class="avis-stars">★★★★★</div>
+        <div class="avis-stars" role="img" aria-label="5 étoiles sur 5">★★★★★</div>
         <p>« Le meilleur pain au levain du quartier, et de loin. La croûte craque exactement comme il faut. »</p>
         <div class="who">— Camille, cliente depuis 2019</div>
       </div>
       <div class="avis-card">
-        <div class="avis-stars">★★★★★</div>
+        <div class="avis-stars" role="img" aria-label="5 étoiles sur 5">★★★★★</div>
         <p>« Les croissants sont bluffants, feuilletage impeccable. On y passe tous les dimanches matin. »</p>
         <div class="who">— Karim, habitué</div>
       </div>
       <div class="avis-card">
-        <div class="avis-stars">★★★★★</div>
+        <div class="avis-stars" role="img" aria-label="5 étoiles sur 5">★★★★★</div>
         <p>« Accueil chaleureux, produits toujours frais. On sent le vrai savoir-faire artisanal. »</p>
         <div class="who">— Sophie, cliente fidèle</div>
       </div>
@@ -410,6 +413,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer>© 2026 Le Fournil — Boulangerie artisanale</footer>
 

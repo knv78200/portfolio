@@ -1,0 +1,14 @@
+/* Polices des anciennes démos (boulangerie, kiné, coiffure, fitness), hébergées dans le site :
+   plus aucune donnée envoyée à Google Fonts. Licence libre SIL OFL (voir fonts/demos/licences/).
+   Le navigateur ne télécharge que les polices réellement utilisées par la page. */
+@font-face { font-family: "Fraunces"; src: url("demos/fraunces.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Karla"; src: url("demos/karla.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: "Space Mono"; src: url("demos/space-mono-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Space Mono"; src: url("demos/space-mono-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Lora"; src: url("demos/lora.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: "Work Sans"; src: url("demos/work-sans.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Bodoni Moda"; src: url("demos/bodoni-moda.woff2") format("woff2"); font-weight: 400 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Bodoni Moda"; src: url("demos/bodoni-moda-italique.woff2") format("woff2"); font-weight: 400 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Jost"; src: url("demos/jost.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Bebas Neue"; src: url("demos/bebas-neue.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Manrope"; src: url("demos/manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }

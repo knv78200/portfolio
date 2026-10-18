@@ -7,10 +7,9 @@
 <meta name="robots" content="noindex">
 <meta name="format-detection" content="telephone=no">
 <title>MÈCHE — Salon de coiffure</title>
-<meta name="description" content="Salon de coiffure à Mantes-la-Jolie : coupe, coloration, balayage. Réservation en ligne simple, résultats sur-mesure.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="Salon de coiffure à Mantes-la-Jolie : coupe, coloration, balayage. Réservation par téléphone, résultats sur-mesure.">
+<!-- Polices hébergées dans le site (plus de Google Fonts) -->
+<link rel="stylesheet" href="../fonts/demos.css">
 <style>
   :root{
     --noir:#1c1a1a;
@@ -140,7 +139,7 @@
   .prix-grid > div:nth-child(even){padding-left:24px;}
   .prix-grid > div:hover{padding-left:8px;}
   .prix-name{font-weight:500;}
-  .prix-name small{display:block; font-size:12.5px; color:#7a6a60; margin-top:3px; font-weight:400;}
+  .prix-name small{display:block; font-size:12.5px; color:#6b5c53; margin-top:3px; font-weight:400;}
   .prix-amount{font-family:'Bodoni Moda', serif; font-weight:600; color:var(--rose-deep); white-space:nowrap;}
 
   /* ---------- GALERIE ---------- */
@@ -176,9 +175,10 @@
   .avis-grid{margin-top:0; display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
   .avis-card{background:var(--cream); border:1px solid var(--line); padding:28px 24px; border-radius:3px; transition:transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s;}
   .avis-card:hover{transform:translateY(-5px); box-shadow:0 18px 32px -20px rgba(28,26,26,0.25);}
-  .avis-stars{color:var(--gold); font-size:13px; letter-spacing:2px;}
+  .avis-stars{color:#7d6440; font-size:13px; letter-spacing:2px;}
   .avis-card p{margin-top:14px; font-size:14.5px; color:#453b36; line-height:1.55;}
   .avis-card .who{margin-top:16px; font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--rose-deep); font-weight:600;}
+  .avis-demo{margin-top:10px; font-size:13px; color:#4a3f3a;}
 
   /* ---------- EQUIPE ---------- */
   .equipe{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
@@ -205,7 +205,7 @@
   .reserver .status-pill span:not(.dot){color:rgba(251,246,241,0.7);}
 
   /* ---------- FOOTER ---------- */
-  footer{background:var(--noir); color:rgba(251,246,241,0.45); font-size:12.5px; padding:26px 0; border-top:1px solid rgba(251,246,241,0.1);}
+  footer{background:var(--noir); color:rgba(251,246,241,0.6); font-size:12.5px; padding:26px 0; border-top:1px solid rgba(251,246,241,0.1);}
   footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
 
   /* barre de reservation flottante mobile */
@@ -280,11 +280,12 @@
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
-      <div class="hero-badge"><b>4,9/5</b><span>Sur 210 avis</span></div>
+      <div class="hero-badge"><b>4,9/5</b><span>Note (exemple)</span></div>
     </div>
   </div>
 </header>
 
+<main>
 <section class="section reveal" id="prestations">
   <div class="wrap">
     <div class="section-head">
@@ -331,7 +332,7 @@
     <div class="stats">
       <div class="stat"><b class="count" data-target="9">0</b><span>Ans d'expérience</span></div>
       <div class="stat"><b class="count" data-target="3200">0</b><span>Clients coiffés</span></div>
-      <div class="stat"><b class="count" data-target="49">0</b><span>Note sur 5 (x10)</span></div>
+      <div class="stat"><b class="count" data-target="49">0</b><span>Note sur 5 (x10, exemple)</span></div>
     </div>
   </div>
 </section>
@@ -341,21 +342,22 @@
     <div class="section-head">
       <div class="eyebrow-2">Ils en parlent</div>
       <h2>L'avis de nos clients</h2>
+      <p class="avis-demo">Exemples d'avis (démo)</p>
     </div>
     <div class="avis-grid">
       <div class="avis-card">
-        <div class="avis-stars">★★★★★</div>
+        <div class="avis-stars" role="img" aria-label="5 étoiles sur 5">★★★★★</div>
         <p>« Le meilleur balayage que j'ai eu, exactement le résultat que je voulais montrer en photo. »</p>
         <div class="who">— Léa, cliente depuis 2 ans</div>
       </div>
       <div class="avis-card">
-        <div class="avis-stars">★★★★★</div>
+        <div class="avis-stars" role="img" aria-label="5 étoiles sur 5">★★★★★</div>
         <p>« Accueil chaleureux, coupe impeccable et des conseils honnêtes sur ce qui m'irait vraiment. »</p>
         <div class="who">— Yanis, habitué</div>
       </div>
       <div class="avis-card">
-        <div class="avis-stars">★★★★★</div>
-        <p>« Prise de rendez-vous simple en ligne, jamais d'attente sur place. Un vrai gain de temps. »</p>
+        <div class="avis-stars" role="img" aria-label="5 étoiles sur 5">★★★★★</div>
+        <p>« Rendez-vous facile par téléphone, jamais d'attente sur place. Un vrai gain de temps. »</p>
         <div class="who">— Sarah, cliente fidèle</div>
       </div>
     </div>
@@ -428,6 +430,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">

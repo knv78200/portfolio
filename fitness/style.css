@@ -116,7 +116,7 @@ h1 em{font-style:normal; color:var(--lime);}
 .card{background:var(--noir-2); border:1px solid var(--line); padding:28px 26px; border-radius:3px; position:relative; transition:transform 0.3s var(--ease), border-color 0.3s;}
 .card:hover{transform:translateY(-6px); border-color:rgba(198,255,61,0.4);}
 .card .num{font-family:'Space Mono', monospace; color:var(--lime); font-size:12px; letter-spacing:0.04em;}
-.card h3{font-family:'Bebas Neue', sans-serif; font-size:24px; font-weight:400; margin-top:14px; text-transform:uppercase; letter-spacing:0.01em;}
+.card h3, .card h2{font-family:'Bebas Neue', sans-serif; font-size:24px; font-weight:400; margin-top:14px; text-transform:uppercase; letter-spacing:0.01em;}
 .card p{margin-top:10px; font-size:14px; color:#b7b6ac;}
 .card .tag{display:inline-block; margin-top:14px; font-family:'Space Mono', monospace; font-size:10.5px; color:var(--lime); border:1px solid rgba(198,255,61,0.35); padding:3px 9px; border-radius:2px;}
 
@@ -156,7 +156,7 @@ h1 em{font-style:normal; color:var(--lime);}
 .price-card:hover{transform:translateY(-6px); z-index:2;}
 .price-card.highlight{background:var(--noir-3);}
 .price-card .flag{position:absolute; top:20px; right:20px; color:var(--lime); font-family:'Space Mono', monospace; font-size:10.5px; font-weight:500; letter-spacing:0.03em;}
-.price-card h3{font-family:'Bebas Neue', sans-serif; font-size:22px; letter-spacing:0.02em; color:var(--paper); text-transform:uppercase;}
+.price-card h3, .price-card h2{font-family:'Bebas Neue', sans-serif; font-size:22px; letter-spacing:0.02em; color:var(--paper); text-transform:uppercase; font-weight:700; margin-top:0;}
 .price-card .desc{font-size:13px; color:var(--muted); margin-top:8px;}
 .price-card .amount{font-family:'Bebas Neue', sans-serif; font-size:56px; font-weight:400; margin-top:18px; line-height:1; color:var(--lime);}
 .price-card .amount span{display:block; margin-top:8px; font-family:'Space Mono', monospace; font-size:12px; font-weight:400; color:var(--muted); text-transform:none; letter-spacing:0;}
@@ -190,7 +190,7 @@ h1 em{font-style:normal; color:var(--lime);}
 /* ---------- CONTACT / FORM ---------- */
 .contact-grid{margin-top:44px; display:grid; grid-template-columns:1fr 1fr; gap:56px;}
 .infoline{padding:17px 0; border-bottom:1px solid var(--line);}
-.infoline h3{font-family:'Space Mono', monospace; font-weight:500; font-size:11.5px; text-transform:uppercase; letter-spacing:0.07em; color:var(--lime);}
+.infoline h3, .infoline h2{font-family:'Space Mono', monospace; font-weight:500; font-size:11.5px; text-transform:uppercase; letter-spacing:0.07em; color:var(--lime); margin-top:0;}
 .infoline p{margin-top:7px; font-size:15px; color:var(--paper);}
 form{display:flex; flex-direction:column; gap:16px;}
 form label{font-size:12.5px; font-family:'Space Mono', monospace; font-weight:500; text-transform:uppercase; letter-spacing:0.06em; color:var(--lime); margin-bottom:7px; display:block;}
@@ -202,7 +202,7 @@ form input:focus, form select:focus, form textarea:focus{border-color:var(--lime
 form button{background:var(--lime); color:var(--noir); border:none; padding:14px; border-radius:3px; font-size:14.5px; font-weight:700; cursor:pointer; margin-top:6px; transition:background 0.2s, transform 0.2s;}
 form button:hover{background:var(--lime-deep); transform:translateY(-2px);}
 
-footer{background:var(--noir); color:rgba(242,241,234,0.4); font-size:12.5px; padding:28px 0; border-top:1px solid var(--line);}
+footer{background:var(--noir); color:rgba(242,241,234,0.6); font-size:12.5px; padding:28px 0; border-top:1px solid var(--line);}
 footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
 
 /* barre CTA flottante mobile */

@@ -129,7 +129,7 @@ a { color: var(--accent-fonce); text-underline-offset: 0.2em; }
 .barre-mobile { display: none; }
 
 @media (max-width: 759px) {
-  html { scroll-padding-top: 16px; }
+  html { scroll-padding-top: 16px; scroll-padding-bottom: 96px; } /* la barre du bas ne cache pas l'élément sélectionné */
   .entete { position: static; }
   .menu {
     width: calc(100% + 2 * var(--gouttiere));
@@ -429,7 +429,7 @@ label { font-weight: 600; }
 input, textarea {
   width: 100%;
   padding: 13px 16px;
-  border: 1.5px solid var(--trait);
+  border: 1.5px solid #8f877b; /* assez foncé pour bien voir où écrire (contraste 3:1) */
   border-radius: 12px;
   background: var(--fond);
   color: var(--texte);
@@ -456,6 +456,7 @@ textarea { resize: vertical; min-height: 120px; }
 
 .secours p { font-weight: 700; }
 .secours ul { display: grid; gap: 8px; margin: 10px 0 0; padding: 0; list-style: none; font-size: 1.125rem; }
+.secours a { display: inline-block; padding-block: 10px; overflow-wrap: anywhere; } /* plus facile à toucher, l'adresse ne déborde pas */
 
 /* ---------- Pied de page ---------- */
 .pied {
@@ -477,6 +478,8 @@ textarea { resize: vertical; min-height: 120px; }
 .page-texte h3 { margin: 28px 0 6px; }
 .page-texte p { max-width: 70ch; color: var(--texte-doux); }
 .page-texte p + p { margin-top: 10px; }
+.page-texte ul { max-width: 70ch; margin: 10px 0; padding-left: 1.2em; color: var(--texte-doux); }
+.page-texte li + li { margin-top: 6px; }
 
 /* ---------- Animations utiles ----------
    Uniquement si le visiteur n'a pas demandé à réduire les animations. */
