@@ -16,6 +16,9 @@ Notes de travail. Ce fichier n'est pas publié sur le site (exclu dans `_config.
 - [ ] **Polices Google** : les démos chargent leurs polices depuis `fonts.googleapis.com`, ce qui envoie l'adresse IP des visiteurs à Google. Les héberger dans le site.
 - [ ] **Faux numéros de téléphone** dans `coiffure/` : ils ressemblent à de vrais numéros et sont cliquables (risque d'appeler un inconnu). Les remplacer par des numéros fictifs officiels ou les rendre non cliquables. Retirer aussi les liens « Réserver en ligne » qui ne mènent nulle part.
 
+- [ ] **Numéros des démos couvreur et plombier** (01 99 00 12 34 et 01 99 00 56 78) : vérifier que la plage 01 99 00 xx xx est bien réservée à la fiction par l'ARCEP.
+- [ ] **Anciennes démos** (boulangerie, kiné, coiffure, fitness) : ajouter le même bandeau « Site de démonstration, entreprise fictive » avec un lien retour, et la balise `noindex`, comme sur les démos couvreur et plombier.
+
 ## Modèle de devis (à créer)
 
 Phrase à inclure dans le devis :
