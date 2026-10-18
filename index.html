@@ -16,9 +16,8 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Logo KNV.CORP">
-  <!-- Couleur de la barre du navigateur sur téléphone, selon le thème -->
-  <meta name="theme-color" content="#f4f2ee" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+  <!-- Couleur de la barre du navigateur sur téléphone -->
+  <meta name="theme-color" content="#faf8f5">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
@@ -31,11 +30,7 @@
   <div class="conteneur entete-interieur">
     <a class="marque" href="#accueil">
       <img class="marque-rond rond" src="images/logo-rond.png" width="40" height="40" alt="">
-      <!-- Le logo change de couleur avec le thème clair / sombre du téléphone -->
-      <picture>
-        <source srcset="images/logo-sombre.png" media="(prefers-color-scheme: dark)">
-        <img class="marque-texte" src="images/logo-clair.png" width="931" height="205" alt="KNV.CORP">
-      </picture>
+      <img class="marque-texte" src="images/logo-clair.png" width="931" height="205" alt="KNV.CORP">
     </a>
     <nav class="menu" aria-label="Menu principal">
       <ul>
@@ -54,11 +49,10 @@
   <!-- ===================== ACCUEIL ===================== -->
   <!-- Si tu changes le prix de la formule Essentiel, change aussi « 179 € » ici et dans la description en haut du fichier -->
   <section id="accueil" class="hero">
-    <div class="conteneur">
+    <div class="conteneur hero-grille">
+      <div class="hero-texte">
       <!-- Le point final est remplacé par le carré orange du logo -->
       <h1>Votre site professionnel, sans le prix d'une <span class="fin">agence<span class="point">.</span></span></h1>
-      <!-- Logo rond en grand, sur ordinateur seulement -->
-      <img class="hero-logo rond" src="images/logo-rond.png" width="512" height="512" alt="">
       <p class="accroche">Commerce, cabinet, entreprise du bâtiment, indépendant… Je crée le site internet de votre activité à partir de 179 €, en ligne en 5 jours ouvrés. Vous vous concentrez sur votre métier, je m'occupe du reste.</p>
       <p class="actions">
         <a class="bouton" href="#devis">Demander un devis gratuit</a>
@@ -70,45 +64,71 @@
         <li>Hébergement inclus</li>
         <li>Basé à Mantes-la-Jolie, je travaille à distance partout en France</li>
       </ul>
+      </div>
+
+      <!-- Maquette de téléphone avec la capture d'une démo (captures dans images/demos/) -->
+      <div class="hero-visuel">
+        <figure class="telephone">
+          <img src="images/demos/couvreur.webp" width="780" height="1688" alt="Aperçu sur téléphone de la démo Couverture Vasseur">
+        </figure>
+      </div>
     </div>
   </section>
 
   <!-- ===================== EXEMPLES ===================== -->
-  <!-- Pour ajouter une démo : copier un bloc <li> et changer le nom, le texte et le lien -->
+  <!-- Pour ajouter une démo : copier un bloc <li>, changer le nom, le texte, le lien et la capture (images/demos/) -->
   <section id="exemples" class="section">
     <div class="conteneur">
       <h2>Exemples de sites</h2>
       <p class="chapo">Ce sont des démos que j'ai créées pour vous montrer le résultat. Ce ne sont pas des sites de clients.</p>
       <ul class="exemples">
         <li>
-          <h3>Couverture Vasseur, couvreur</h3>
-          <p>Formule Essentiel, 1 page : services, réalisations, zone d'intervention et demande de devis.</p>
-          <a class="lien" href="couvreur/">Voir la démo Couverture Vasseur</a>
+          <figure class="capture"><img src="images/demos/couvreur.webp" width="780" height="1688" alt="" loading="lazy"></figure>
+          <div class="texte">
+            <h3>Couverture Vasseur, couvreur</h3>
+            <p>Formule Essentiel, 1 page : services, réalisations, zone d'intervention et demande de devis.</p>
+            <a class="lien" href="couvreur/">Voir la démo Couverture Vasseur</a>
+          </div>
         </li>
         <li>
-          <h3>Plomberie Delcourt, plombier</h3>
-          <p>Formule Essentiel, 1 page : dépannage, tarifs indicatifs, zone d'intervention et demande de devis.</p>
-          <a class="lien" href="plombier/">Voir la démo Plomberie Delcourt</a>
+          <figure class="capture"><img src="images/demos/plombier.webp" width="780" height="1688" alt="" loading="lazy"></figure>
+          <div class="texte">
+            <h3>Plomberie Delcourt, plombier</h3>
+            <p>Formule Essentiel, 1 page : dépannage, tarifs indicatifs, zone d'intervention et demande de devis.</p>
+            <a class="lien" href="plombier/">Voir la démo Plomberie Delcourt</a>
+          </div>
         </li>
         <li>
-          <h3>Le Fournil, boulangerie</h3>
-          <p>Formule Essentiel, 1 page : produits du jour, horaires et adresse.</p>
-          <a class="lien" href="boulangerie/">Voir la démo Le Fournil</a>
+          <figure class="capture"><img src="images/demos/boulangerie.webp" width="780" height="1688" alt="" loading="lazy"></figure>
+          <div class="texte">
+            <h3>Le Fournil, boulangerie</h3>
+            <p>Formule Essentiel, 1 page : produits du jour, horaires et adresse.</p>
+            <a class="lien" href="boulangerie/">Voir la démo Le Fournil</a>
+          </div>
         </li>
         <li>
-          <h3>Point d'Appui, cabinet de kinésithérapie</h3>
-          <p>Formule Vitrine, 5 pages : soins, cabinet, tarifs et prise de contact.</p>
-          <a class="lien" href="kinesitherapie/">Voir la démo Point d'Appui</a>
+          <figure class="capture"><img src="images/demos/kinesitherapie.webp" width="780" height="1688" alt="" loading="lazy"></figure>
+          <div class="texte">
+            <h3>Point d'Appui, cabinet de kinésithérapie</h3>
+            <p>Formule Vitrine, 5 pages : soins, cabinet, tarifs et prise de contact.</p>
+            <a class="lien" href="kinesitherapie/">Voir la démo Point d'Appui</a>
+          </div>
         </li>
         <li>
-          <h3>MÈCHE, salon de coiffure</h3>
-          <p>Formule Essentiel, 1 page : prestations, photos et contact.</p>
-          <a class="lien" href="coiffure/">Voir la démo MÈCHE</a>
+          <figure class="capture"><img src="images/demos/coiffure.webp" width="780" height="1688" alt="" loading="lazy"></figure>
+          <div class="texte">
+            <h3>MÈCHE, salon de coiffure</h3>
+            <p>Formule Essentiel, 1 page : prestations, photos et contact.</p>
+            <a class="lien" href="coiffure/">Voir la démo MÈCHE</a>
+          </div>
         </li>
         <li>
-          <h3>FORGE, salle de sport</h3>
-          <p>Formule Vitrine, 5 pages : cours, coachs, abonnements et contact.</p>
-          <a class="lien" href="fitness/">Voir la démo FORGE</a>
+          <figure class="capture"><img src="images/demos/fitness.webp" width="780" height="1688" alt="" loading="lazy"></figure>
+          <div class="texte">
+            <h3>FORGE, salle de sport</h3>
+            <p>Formule Vitrine, 5 pages : cours, coachs, abonnements et contact.</p>
+            <a class="lien" href="fitness/">Voir la démo FORGE</a>
+          </div>
         </li>
       </ul>
     </div>
