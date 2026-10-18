@@ -7,7 +7,8 @@ Notes de travail. Ce fichier n'est pas publié sur le site (exclu dans `_config.
 - [ ] **Téléphone de GitHub** dans `mentions-legales.html` (+1 877 448 4820) : vérifier le numéro sur github.com.
 - [ ] **Formspree et transfert des données aux États-Unis** : demander à Formspree quelle garantie s'applique (clauses contractuelles types ou Data Privacy Framework) et l'écrire dans la politique de confidentialité (commentaire `À COMPLÉTER` dans `mentions-legales.html`). Sans garantie, passer à un service de formulaire hébergé en Europe.
 - [x] **Identifiant Formspree** : `mwlvznrw`, en place dans `index.html`.
-- [ ] **Test réel du formulaire** : vérifier que reCAPTCHA est désactivé (Settings > Spam protection), puis envoyer une demande avec un email seul et une avec un téléphone seul, et vérifier qu'elles arrivent dans Gmail.
+- [x] **Test réel du formulaire, email seul** : accepté par Formspree le 18/10/2026 (reCAPTCHA désactivé).
+- [ ] **Test réel du formulaire, téléphone seul**, depuis le site en ligne, et vérifier qu'il arrive dans Gmail.
 - [ ] **SIRET et adresse** dans `mentions-legales.html`, dès que la micro-entreprise est créée.
 
 ## Démos
