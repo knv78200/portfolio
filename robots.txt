@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://knvcorp-portfolio.fr/sitemap.xml

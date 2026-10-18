@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pages à faire connaître à Google (les démos sont exclues : elles sont en noindex) -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://knvcorp-portfolio.fr/</loc></url>
+  <url><loc>https://knvcorp-portfolio.fr/mentions-legales.html</loc></url>
+  <url><loc>https://knvcorp-portfolio.fr/cgv.html</loc></url>
+</urlset>
