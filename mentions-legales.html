@@ -6,14 +6,27 @@
   <title>Mentions légales et confidentialité | KNV.CORP</title>
   <meta name="description" content="Mentions légales et politique de confidentialité du site KNV.CORP.">
   <link rel="canonical" href="https://knvcorp-portfolio.fr/mentions-legales.html">
+  <meta name="theme-color" content="#f4f2ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="page-texte">
 
-<header>
-  <a href="./">KNV.CORP, retour à l'accueil</a>
+<header class="entete">
+  <div class="conteneur entete-interieur">
+    <a class="marque" href="./">
+      <img class="marque-rond rond" src="images/logo-rond.png" width="40" height="40" alt="">
+      <picture>
+        <source srcset="images/logo-sombre.png" media="(prefers-color-scheme: dark)">
+        <img class="marque-texte" src="images/logo-clair.png" width="931" height="205" alt="KNV.CORP, retour à l'accueil">
+      </picture>
+    </a>
+  </div>
 </header>
 
-<main>
+<main class="conteneur etroit">
   <h1>Mentions légales et confidentialité</h1>
 
   <!-- ===================== MENTIONS LÉGALES ===================== -->
@@ -77,9 +90,14 @@
   </section>
 </main>
 
-<footer>
-  <p><a href="./">Retour à l'accueil</a></p>
-  <p>© 2026 KNV.CORP</p>
+<footer class="pied">
+  <div class="conteneur pied-interieur">
+    <img class="pied-logo rond" src="images/logo-rond.png" width="56" height="56" alt="">
+    <div>
+      <p><a href="./">Retour à l'accueil</a></p>
+      <p>© 2026 KNV.CORP</p>
+    </div>
+  </div>
 </footer>
 
 </body>

@@ -12,282 +12,327 @@
   <meta property="og:url" content="https://knvcorp-portfolio.fr/">
   <meta property="og:title" content="Des sites vitrine pour les artisans, à prix d'artisan | KNV.CORP">
   <meta property="og:description" content="À partir de 179 €, en ligne en 5 jours ouvrés. Devis gratuit sous 24 h.">
-  <!-- À FAIRE avec le design : favicon, image d'aperçu (og:image), feuille de style -->
+  <meta property="og:image" content="https://knvcorp-portfolio.fr/images/apercu.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Logo KNV.CORP">
+  <!-- Couleur de la barre du navigateur sur téléphone, selon le thème -->
+  <meta name="theme-color" content="#f4f2ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<a href="#contenu">Aller au contenu</a>
+<a class="evitement" href="#contenu">Aller au contenu</a>
 
-<header>
-  <!-- Le logo remplacera ce texte -->
-  <a href="#accueil">KNV.CORP</a>
-  <nav aria-label="Menu principal">
-    <ul>
-      <li><a href="#exemples">Exemples</a></li>
-      <li><a href="#methode">Méthode</a></li>
-      <li><a href="#tarifs">Tarifs</a></li>
-      <li><a href="#faq">Questions</a></li>
-      <li><a href="#devis">Devis gratuit</a></li>
-    </ul>
-  </nav>
+<header class="entete">
+  <div class="conteneur entete-interieur">
+    <a class="marque" href="#accueil">
+      <img class="marque-rond rond" src="images/logo-rond.png" width="40" height="40" alt="">
+      <!-- Le logo change de couleur avec le thème clair / sombre du téléphone -->
+      <picture>
+        <source srcset="images/logo-sombre.png" media="(prefers-color-scheme: dark)">
+        <img class="marque-texte" src="images/logo-clair.png" width="931" height="205" alt="KNV.CORP">
+      </picture>
+    </a>
+    <nav class="menu" aria-label="Menu principal">
+      <ul>
+        <li><a href="#exemples">Exemples</a></li>
+        <li><a href="#methode">Méthode</a></li>
+        <li><a href="#tarifs">Tarifs</a></li>
+        <li><a href="#faq">Questions</a></li>
+        <li><a class="menu-devis" href="#devis">Devis gratuit</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <main id="contenu">
 
   <!-- ===================== ACCUEIL ===================== -->
   <!-- Si tu changes le prix de la formule Essentiel, change aussi « 179 € » ici et dans la description en haut du fichier -->
-  <section id="accueil">
-    <h1>Des sites vitrine pour les artisans, à prix d'artisan.</h1>
-    <p>Couvreur, plombier, menuisier, électricien, maçon, peintre… Je crée le site internet de votre entreprise à partir de 179 €, en ligne en 5 jours ouvrés. Vous restez sur vos chantiers, je m'occupe du reste.</p>
-    <p>
-      <a href="#devis">Demander un devis gratuit</a>
-      <a href="https://wa.me/33676307231?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20un%20site%20internet.">Écrire sur WhatsApp</a>
-    </p>
-    <ul>
-      <li>Devis gratuit sous 24 h</li>
-      <li>En ligne en 5 jours ouvrés</li>
-      <li>Hébergement inclus</li>
-      <li>Basé à Mantes-la-Jolie, je travaille à distance partout en France</li>
-    </ul>
+  <section id="accueil" class="hero">
+    <div class="conteneur">
+      <!-- Le point final est remplacé par le carré orange du logo -->
+      <h1>Des sites vitrine pour les artisans, à prix d'artisan<span class="point">.</span></h1>
+      <!-- Logo rond en grand, sur ordinateur seulement -->
+      <img class="hero-logo rond" src="images/logo-rond.png" width="512" height="512" alt="">
+      <p class="accroche">Couvreur, plombier, menuisier, électricien, maçon, peintre… Je crée le site internet de votre entreprise à partir de 179 €, en ligne en 5 jours ouvrés. Vous restez sur vos chantiers, je m'occupe du reste.</p>
+      <p class="actions">
+        <a class="bouton" href="#devis">Demander un devis gratuit</a>
+        <a class="bouton bouton-ligne" href="https://wa.me/33676307231?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20un%20site%20internet.">Écrire sur WhatsApp</a>
+      </p>
+      <ul class="atouts">
+        <li>Devis gratuit sous 24 h</li>
+        <li>En ligne en 5 jours ouvrés</li>
+        <li>Hébergement inclus</li>
+        <li>Basé à Mantes-la-Jolie, je travaille à distance partout en France</li>
+      </ul>
+    </div>
   </section>
 
   <!-- ===================== EXEMPLES ===================== -->
   <!-- Pour ajouter une démo : copier un bloc <li> et changer le nom, le texte et le lien -->
-  <section id="exemples">
-    <h2>Exemples de sites</h2>
-    <p>Ce sont des démos que j'ai créées pour vous montrer le résultat. Ce ne sont pas des sites de clients.</p>
-    <ul>
-      <li>
-        <h3>Couverture Vasseur, couvreur</h3>
-        <p>Formule Essentiel, 1 page : services, réalisations, zone d'intervention et demande de devis.</p>
-        <a href="couvreur/">Voir la démo Couverture Vasseur</a>
-      </li>
-      <li>
-        <h3>Plomberie Delcourt, plombier</h3>
-        <p>Formule Essentiel, 1 page : dépannage, tarifs indicatifs, zone d'intervention et demande de devis.</p>
-        <a href="plombier/">Voir la démo Plomberie Delcourt</a>
-      </li>
-      <li>
-        <h3>Le Fournil, boulangerie</h3>
-        <p>Formule Essentiel, 1 page : produits du jour, horaires et adresse.</p>
-        <a href="boulangerie/">Voir la démo Le Fournil</a>
-      </li>
-      <li>
-        <h3>Point d'Appui, cabinet de kinésithérapie</h3>
-        <p>Formule Vitrine, 5 pages : soins, cabinet, tarifs et prise de contact.</p>
-        <a href="kinesitherapie/">Voir la démo Point d'Appui</a>
-      </li>
-      <li>
-        <h3>MÈCHE, salon de coiffure</h3>
-        <p>Formule Essentiel, 1 page : prestations, photos et contact.</p>
-        <a href="coiffure/">Voir la démo MÈCHE</a>
-      </li>
-      <li>
-        <h3>FORGE, salle de sport</h3>
-        <p>Formule Vitrine, 5 pages : cours, coachs, abonnements et contact.</p>
-        <a href="fitness/">Voir la démo FORGE</a>
-      </li>
-    </ul>
+  <section id="exemples" class="section">
+    <div class="conteneur">
+      <h2>Exemples de sites</h2>
+      <p class="chapo">Ce sont des démos que j'ai créées pour vous montrer le résultat. Ce ne sont pas des sites de clients.</p>
+      <ul class="exemples">
+        <li>
+          <h3>Couverture Vasseur, couvreur</h3>
+          <p>Formule Essentiel, 1 page : services, réalisations, zone d'intervention et demande de devis.</p>
+          <a class="lien" href="couvreur/">Voir la démo Couverture Vasseur</a>
+        </li>
+        <li>
+          <h3>Plomberie Delcourt, plombier</h3>
+          <p>Formule Essentiel, 1 page : dépannage, tarifs indicatifs, zone d'intervention et demande de devis.</p>
+          <a class="lien" href="plombier/">Voir la démo Plomberie Delcourt</a>
+        </li>
+        <li>
+          <h3>Le Fournil, boulangerie</h3>
+          <p>Formule Essentiel, 1 page : produits du jour, horaires et adresse.</p>
+          <a class="lien" href="boulangerie/">Voir la démo Le Fournil</a>
+        </li>
+        <li>
+          <h3>Point d'Appui, cabinet de kinésithérapie</h3>
+          <p>Formule Vitrine, 5 pages : soins, cabinet, tarifs et prise de contact.</p>
+          <a class="lien" href="kinesitherapie/">Voir la démo Point d'Appui</a>
+        </li>
+        <li>
+          <h3>MÈCHE, salon de coiffure</h3>
+          <p>Formule Essentiel, 1 page : prestations, photos et contact.</p>
+          <a class="lien" href="coiffure/">Voir la démo MÈCHE</a>
+        </li>
+        <li>
+          <h3>FORGE, salle de sport</h3>
+          <p>Formule Vitrine, 5 pages : cours, coachs, abonnements et contact.</p>
+          <a class="lien" href="fitness/">Voir la démo FORGE</a>
+        </li>
+      </ul>
+    </div>
   </section>
 
   <!-- ===================== MÉTHODE ===================== -->
-  <section id="methode">
-    <h2>Comment ça se passe</h2>
-    <p>Tout se fait par email ou sur WhatsApp. Pas besoin de rendez-vous, vous répondez quand vous avez le temps.</p>
-    <ol>
-      <li>
-        <h3>Vous me décrivez votre activité</h3>
-        <p>Par le formulaire, par email ou sur WhatsApp. Je vous envoie un devis gratuit sous 24 h, avec un prix fixe.</p>
-      </li>
-      <li>
-        <h3>Je crée votre site</h3>
-        <p>Vous recevez un lien pour voir votre site avant sa mise en ligne. Vous demandez les changements, je les fais.</p>
-      </li>
-      <li>
-        <h3>Votre site est en ligne</h3>
-        <p>5 jours ouvrés après réception de l'acompte, de vos textes et de vos photos. Ensuite, je fais vos modifications avec le suivi mensuel.</p>
-      </li>
-    </ol>
+  <section id="methode" class="section section-alt">
+    <div class="conteneur">
+      <h2>Comment ça se passe</h2>
+      <p class="chapo">Tout se fait par email ou sur WhatsApp. Pas besoin de rendez-vous, vous répondez quand vous avez le temps.</p>
+      <ol class="etapes">
+        <li>
+          <h3>Vous me décrivez votre activité</h3>
+          <p>Par le formulaire, par email ou sur WhatsApp. Je vous envoie un devis gratuit sous 24 h, avec un prix fixe.</p>
+        </li>
+        <li>
+          <h3>Je crée votre site</h3>
+          <p>Vous recevez un lien pour voir votre site avant sa mise en ligne. Vous demandez les changements, je les fais.</p>
+        </li>
+        <li>
+          <h3>Votre site est en ligne</h3>
+          <p>5 jours ouvrés après réception de l'acompte, de vos textes et de vos photos. Ensuite, je fais vos modifications avec le suivi mensuel.</p>
+        </li>
+      </ol>
+    </div>
   </section>
 
   <!-- ===================== TARIFS ===================== -->
   <!-- Les prix sont écrits en dur ici (pas de compteur animé) pour que Google et tous les téléphones les voient -->
-  <section id="tarifs">
-    <h2>Tarifs</h2>
-    <p>Le prix exact dépend de votre projet. Il est écrit sur le devis, qui est gratuit.</p>
+  <section id="tarifs" class="section">
+    <div class="conteneur">
+      <h2>Tarifs</h2>
+      <p class="chapo">Le prix exact dépend de votre projet. Il est écrit sur le devis, qui est gratuit.</p>
 
-    <article>
-      <h3>Essentiel</h3>
-      <p>Pour être trouvé sur internet avec un site simple.</p>
-      <p><strong>À partir de 179 €</strong></p>
-      <ul>
-        <li>1 page</li>
-        <li>Lisible sur téléphone et ordinateur</li>
-        <li>Formulaire de contact</li>
-        <li>Mise en place de votre nom de domaine</li>
-        <li>Hébergement inclus</li>
-      </ul>
-      <a href="#devis">Demander un devis Essentiel</a>
-    </article>
+      <div class="formules">
+        <article class="formule">
+          <h3>Essentiel</h3>
+          <p>Pour être trouvé sur internet avec un site simple.</p>
+          <p class="prix"><span>À partir de</span> <strong>179 €</strong></p>
+          <ul class="inclus">
+            <li>1 page</li>
+            <li>Lisible sur téléphone et ordinateur</li>
+            <li>Formulaire de contact</li>
+            <li>Mise en place de votre nom de domaine</li>
+            <li>Hébergement inclus</li>
+          </ul>
+          <a class="bouton bouton-ligne" href="#devis">Demander un devis Essentiel</a>
+        </article>
 
-    <article>
-      <h3>Vitrine</h3>
-      <p>Pour présenter vos services, vos réalisations et votre zone d'intervention.</p>
-      <p><strong>À partir de 289 €</strong></p>
-      <ul>
-        <li>Jusqu'à 5 pages</li>
-        <li>Lisible sur téléphone et ordinateur</li>
-        <li>Galerie photos de vos chantiers</li>
-        <li>Formulaire de contact</li>
-        <li>Mise en place de votre nom de domaine</li>
-        <li>Hébergement inclus</li>
-      </ul>
-      <a href="#devis">Demander un devis Vitrine</a>
-    </article>
+        <article class="formule">
+          <h3>Vitrine</h3>
+          <p>Pour présenter vos services, vos réalisations et votre zone d'intervention.</p>
+          <p class="prix"><span>À partir de</span> <strong>289 €</strong></p>
+          <ul class="inclus">
+            <li>Jusqu'à 5 pages</li>
+            <li>Lisible sur téléphone et ordinateur</li>
+            <li>Galerie photos de vos chantiers</li>
+            <li>Formulaire de contact</li>
+            <li>Mise en place de votre nom de domaine</li>
+            <li>Hébergement inclus</li>
+          </ul>
+          <a class="bouton bouton-ligne" href="#devis">Demander un devis Vitrine</a>
+        </article>
 
-    <!-- Le suivi mensuel est l'offre à mettre en avant (revenu régulier) -->
-    <article id="suivi">
-      <h3>Suivi mensuel</h3>
-      <p>Pour garder un site à jour sans y penser.</p>
-      <p><strong>25 € par mois</strong></p>
-      <ul>
-        <li>Mises à jour : textes, photos, horaires, nouveaux chantiers</li>
-        <li>Maintenance technique</li>
-        <li>Je vérifie que votre site reste en ligne</li>
-        <li>Réponse à vos demandes par message</li>
-      </ul>
-      <a href="#devis">Demander le suivi mensuel</a>
-    </article>
+        <!-- Le suivi mensuel est l'offre à mettre en avant (revenu régulier) : couleurs inversées -->
+        <article id="suivi" class="formule formule-phare">
+          <h3>Suivi mensuel</h3>
+          <p>Pour garder un site à jour sans y penser.</p>
+          <p class="prix"><strong>25 €</strong> <span>par mois</span></p>
+          <ul class="inclus">
+            <li>Mises à jour : textes, photos, horaires, nouveaux chantiers</li>
+            <li>Maintenance technique</li>
+            <li>Je vérifie que votre site reste en ligne</li>
+            <li>Réponse à vos demandes par message</li>
+          </ul>
+          <a class="bouton" href="#devis">Demander le suivi mensuel</a>
+        </article>
+      </div>
 
-    <p>Paiement : 30 % d'acompte à la validation du devis, le reste à la livraison. Seul coût en plus : le nom de domaine (votre adresse internet), environ 10 € par an, acheté à votre nom. Prix nets, TVA non applicable (article 293 B du CGI).</p>
-    <p>Offre réservée aux professionnels.</p>
+      <p class="note">Paiement : 30 % d'acompte à la validation du devis, le reste à la livraison. Seul coût en plus : le nom de domaine (votre adresse internet), environ 10 € par an, acheté à votre nom. Prix nets, TVA non applicable (article 293 B du CGI).</p>
+      <p class="note">Offre réservée aux professionnels.</p>
+    </div>
   </section>
 
   <!-- ===================== AVIS CLIENTS ===================== -->
   <!-- Masqué tant qu'il n'y a pas de vrai avis. Pour l'afficher : retirer le mot « hidden ». Jamais de faux avis. -->
-  <section id="avis" hidden>
-    <h2>Ils m'ont fait confiance</h2>
-    <!-- <blockquote><p>Texte de l'avis</p><footer>Prénom, métier, ville</footer></blockquote> -->
+  <section id="avis" class="section" hidden>
+    <div class="conteneur">
+      <h2>Ils m'ont fait confiance</h2>
+      <!-- <blockquote><p>Texte de l'avis</p><footer>Prénom, métier, ville</footer></blockquote> -->
+    </div>
   </section>
 
   <!-- ===================== QUESTIONS FRÉQUENTES ===================== -->
   <!-- Pour ajouter une question : copier un bloc <details> -->
-  <section id="faq">
-    <h2>Questions fréquentes</h2>
+  <section id="faq" class="section section-alt">
+    <div class="conteneur etroit">
+      <h2>Questions fréquentes</h2>
 
-    <details>
-      <summary>Je n'ai pas de photos de mes chantiers, c'est un problème ?</summary>
-      <p>Non. On démarre avec ce que vous avez. Je vous explique comment prendre de bonnes photos avec votre téléphone, et on les ajoute au fur et à mesure.</p>
-    </details>
+      <details>
+        <summary>Je n'ai pas de photos de mes chantiers, c'est un problème ?</summary>
+        <p>Non. On démarre avec ce que vous avez. Je vous explique comment prendre de bonnes photos avec votre téléphone, et on les ajoute au fur et à mesure.</p>
+      </details>
 
-    <details>
-      <summary>Je n'ai pas de textes, c'est un problème ?</summary>
-      <p>Non. Vous me décrivez votre activité en quelques lignes, par message, et j'écris les textes. Vous les relisez avant la mise en ligne.</p>
-    </details>
+      <details>
+        <summary>Je n'ai pas de textes, c'est un problème ?</summary>
+        <p>Non. Vous me décrivez votre activité en quelques lignes, par message, et j'écris les textes. Vous les relisez avant la mise en ligne.</p>
+      </details>
 
-    <details>
-      <summary>Pourquoi c'est si peu cher ?</summary>
-      <p>Je travaille seul, sans locaux ni frais d'agence. Votre site est hébergé gratuitement sur un service fiable, et j'utilise des outils modernes qui me font gagner du temps. Vous ne payez que le travail.</p>
-    </details>
+      <details>
+        <summary>Pourquoi c'est si peu cher ?</summary>
+        <p>Je travaille seul, sans locaux ni frais d'agence. Votre site est hébergé gratuitement sur un service fiable, et j'utilise des outils modernes qui me font gagner du temps. Vous ne payez que le travail.</p>
+      </details>
 
-    <details>
-      <summary>Y a-t-il des frais cachés ?</summary>
-      <p>Non. Le seul coût en plus est le nom de domaine (votre adresse internet, par exemple www.votre-entreprise.fr) : environ 10 € par an. L'hébergement est inclus.</p>
-    </details>
+      <details>
+        <summary>Y a-t-il des frais cachés ?</summary>
+        <p>Non. Le seul coût en plus est le nom de domaine (votre adresse internet, par exemple www.votre-entreprise.fr) : environ 10 € par an. L'hébergement est inclus.</p>
+      </details>
 
-    <details>
-      <summary>Le nom de domaine est-il obligatoire ?</summary>
-      <p>Non, mais il fait plus professionnel. Sans lui, votre site reste en ligne à une adresse gratuite, moins facile à retenir.</p>
-    </details>
+      <details>
+        <summary>Le nom de domaine est-il obligatoire ?</summary>
+        <p>Non, mais il fait plus professionnel. Sans lui, votre site reste en ligne à une adresse gratuite, moins facile à retenir.</p>
+      </details>
 
-    <details>
-      <summary>Le site m'appartient-il ?</summary>
-      <p>Oui. Le nom de domaine est enregistré à votre nom, sur votre compte. Après le paiement complet, le site et ses contenus sont à vous. C'est écrit dans le devis.</p>
-    </details>
+      <details>
+        <summary>Le site m'appartient-il ?</summary>
+        <p>Oui. Le nom de domaine est enregistré à votre nom, sur votre compte. Après le paiement complet, le site et ses contenus sont à vous. C'est écrit dans le devis.</p>
+      </details>
 
-    <details>
-      <summary>Comment on travaille sans se voir ?</summary>
-      <p>Tout se fait par email ou sur WhatsApp. Vous recevez un simple lien pour voir votre site avant sa mise en ligne, et vous me dites ce qu'il faut changer.</p>
-    </details>
+      <details>
+        <summary>Comment on travaille sans se voir ?</summary>
+        <p>Tout se fait par email ou sur WhatsApp. Vous recevez un simple lien pour voir votre site avant sa mise en ligne, et vous me dites ce qu'il faut changer.</p>
+      </details>
 
-    <details>
-      <summary>Et si je veux modifier le site plus tard ?</summary>
-      <p>Prenez le suivi mensuel à 25 € par mois, et je m'en charge. Sans suivi mensuel, chaque modification est facturée sur devis.</p>
-    </details>
+      <details>
+        <summary>Et si je veux modifier le site plus tard ?</summary>
+        <p>Prenez le suivi mensuel à 25 € par mois, et je m'en charge. Sans suivi mensuel, chaque modification est facturée sur devis.</p>
+      </details>
 
-    <details>
-      <summary>Combien de temps pour recevoir un devis ?</summary>
-      <p>Sous 24 h après votre message, avec un prix fixe pour tout le projet.</p>
-    </details>
+      <details>
+        <summary>Combien de temps pour recevoir un devis ?</summary>
+        <p>Sous 24 h après votre message, avec un prix fixe pour tout le projet.</p>
+      </details>
+    </div>
   </section>
 
   <!-- ===================== DEVIS / CONTACT ===================== -->
-  <section id="devis">
-    <h2>Demander un devis gratuit</h2>
-    <p>Réponse sous 24 h. Sans engagement.</p>
+  <section id="devis" class="section section-devis">
+    <div class="conteneur devis-grille">
+      <div class="devis-intro">
+        <h2>Demander un devis gratuit</h2>
+        <p class="chapo">Réponse sous 24 h. Sans engagement.</p>
+      </div>
 
-    <!-- Formulaire Formspree (compte knv.corp.78@gmail.com).
-         Dans Formspree, Settings > Spam protection : reCAPTCHA doit rester désactivé, sinon l'envoi sans quitter la page échoue (le champ _gotcha suffit contre les robots). -->
-    <form id="form-devis" action="https://formspree.io/f/mwlvznrw" method="POST">
-      <input type="hidden" name="_subject" value="Nouvelle demande de devis (site KNV.CORP)">
+      <!-- Formulaire Formspree (compte knv.corp.78@gmail.com).
+           Dans Formspree, Settings > Spam protection : reCAPTCHA doit rester désactivé, sinon l'envoi sans quitter la page échoue (le champ _gotcha suffit contre les robots). -->
+      <form id="form-devis" class="formulaire" action="https://formspree.io/f/mwlvznrw" method="POST">
+        <input type="hidden" name="_subject" value="Nouvelle demande de devis (site KNV.CORP)">
 
-      <p>
-        <label for="nom">Votre nom</label><br>
-        <input id="nom" name="nom" type="text" autocomplete="name" required>
-      </p>
-      <p>
-        <label for="metier">Votre métier</label><br>
-        <input id="metier" name="metier" type="text" placeholder="Ex. : couvreur" required>
-      </p>
-      <p>
-        <label for="ville">Votre ville</label><br>
-        <input id="ville" name="ville" type="text" autocomplete="address-level2" required>
-      </p>
-
-      <fieldset>
-        <legend>Comment vous répondre ? (au moins un des deux)</legend>
-        <p>
-          <label for="email">Email</label><br>
-          <input id="email" name="email" type="email" autocomplete="email">
+        <p class="champ">
+          <label for="nom">Votre nom</label>
+          <input id="nom" name="nom" type="text" autocomplete="name" required>
         </p>
-        <p>
-          <label for="telephone">Téléphone</label><br>
-          <input id="telephone" name="telephone" type="tel" autocomplete="tel">
+        <p class="champ">
+          <label for="metier">Votre métier</label>
+          <input id="metier" name="metier" type="text" placeholder="Ex. : couvreur" required>
         </p>
-      </fieldset>
+        <p class="champ">
+          <label for="ville">Votre ville</label>
+          <input id="ville" name="ville" type="text" autocomplete="address-level2" required>
+        </p>
 
-      <p>
-        <label for="message">Ce que vous voulez sur votre site (facultatif)</label><br>
-        <textarea id="message" name="message" rows="5" placeholder="Ex. : présenter mes services, montrer mes chantiers, être trouvé dans ma ville…"></textarea>
-      </p>
+        <fieldset>
+          <legend>Comment vous répondre ? (au moins un des deux)</legend>
+          <p class="champ">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email">
+          </p>
+          <p class="champ">
+            <label for="telephone">Téléphone</label>
+            <input id="telephone" name="telephone" type="tel" autocomplete="tel">
+          </p>
+        </fieldset>
 
-      <!-- Piège anti-robots : champ invisible pour les humains, les robots le remplissent et Formspree les ignore -->
-      <p hidden>
-        <label for="gotcha">Ne pas remplir ce champ</label>
-        <input id="gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
-      </p>
+        <p class="champ">
+          <label for="message">Ce que vous voulez sur votre site (facultatif)</label>
+          <textarea id="message" name="message" rows="5" placeholder="Ex. : présenter mes services, montrer mes chantiers, être trouvé dans ma ville…"></textarea>
+        </p>
 
-      <p><small>Vos informations servent uniquement à vous répondre. <a href="mentions-legales.html#confidentialite">Politique de confidentialité</a></small></p>
+        <!-- Piège anti-robots : champ invisible pour les humains, les robots le remplissent et Formspree les ignore -->
+        <p hidden>
+          <label for="gotcha">Ne pas remplir ce champ</label>
+          <input id="gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+        </p>
 
-      <button type="submit">Envoyer ma demande</button>
-      <!-- Message d'état (envoi, succès, erreur), lu aussi par les lecteurs d'écran -->
-      <p id="form-statut" role="status" aria-live="polite"></p>
-    </form>
+        <p class="mention"><small>Vos informations servent uniquement à vous répondre. <a href="mentions-legales.html#confidentialite">Politique de confidentialité</a></small></p>
 
-    <!-- Solutions de secours, toujours visibles -->
-    <p>Vous préférez écrire directement ?</p>
-    <ul>
-      <li><a href="mailto:knv.corp.78@gmail.com?subject=Demande%20de%20devis">knv.corp.78@gmail.com</a></li>
-      <li><a href="https://wa.me/33676307231?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20un%20site%20internet.">Écrire sur WhatsApp</a></li>
-    </ul>
+        <button class="bouton" type="submit">Envoyer ma demande</button>
+        <!-- Message d'état (envoi, succès, erreur), lu aussi par les lecteurs d'écran -->
+        <p id="form-statut" class="statut" role="status" aria-live="polite"></p>
+      </form>
+
+      <!-- Solutions de secours, toujours visibles -->
+      <div class="secours">
+        <p>Vous préférez écrire directement ?</p>
+        <ul>
+          <li><a class="lien" href="mailto:knv.corp.78@gmail.com?subject=Demande%20de%20devis">knv.corp.78@gmail.com</a></li>
+          <li><a class="lien" href="https://wa.me/33676307231?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20un%20site%20internet.">Écrire sur WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
   </section>
 
 </main>
 
-<footer>
-  <p>KNV.CORP, Kerim, Mantes-la-Jolie (Yvelines). Sites vitrine faits sur mesure pour les professionnels.</p>
-  <p><a href="mentions-legales.html">Mentions légales et confidentialité</a></p>
-  <p>© 2026 KNV.CORP</p>
+<footer class="pied">
+  <div class="conteneur pied-interieur">
+    <img class="pied-logo rond" src="images/logo-rond.png" width="56" height="56" alt="">
+    <div>
+      <p>KNV.CORP, Kerim, Mantes-la-Jolie (Yvelines). Sites vitrine faits sur mesure pour les professionnels.</p>
+      <p><a href="mentions-legales.html">Mentions légales et confidentialité</a></p>
+      <p>© 2026 KNV.CORP</p>
+    </div>
+  </div>
 </footer>
 
 <script>
@@ -323,7 +368,7 @@
       form.reset();
       statut.textContent = 'Message envoyé, je vous réponds sous 24 h.';
     } catch {
-      statut.textContent = "Le message n'est pas parti. Réessayez, ou écrivez-moi directement par email ou sur WhatsApp (liens juste en dessous).";
+      statut.textContent = "Le message n'est pas parti. Réessayez, ou écrivez-moi à knv.corp.78@gmail.com ou sur WhatsApp.";
     } finally {
       bouton.disabled = false;
       bouton.textContent = texteBouton;
