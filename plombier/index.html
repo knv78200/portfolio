@@ -170,6 +170,9 @@
 </nav>
 
 <script>
+  // Démo : les numéros sont fictifs, on bloque l'appel pour ne pas appeler un inconnu
+  document.querySelectorAll('a[href^="tel:"]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); alert("Démo : ce numéro est fictif, l'appel est désactivé."); }));
+
   // Démo : on affiche un message au lieu d'envoyer
   document.querySelector('.form-demo').addEventListener('submit', (e) => {
     e.preventDefault();

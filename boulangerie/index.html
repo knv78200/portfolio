@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Démo : entreprise fictive, ne doit pas apparaître dans Google ; numéros non transformés en liens sur iPhone -->
+<meta name="robots" content="noindex">
+<meta name="format-detection" content="telephone=no">
 <title>Le Fournil — Boulangerie artisanale</title>
 <meta name="description" content="Boulangerie artisanale, pain au levain et viennoiseries maison. Ouvert du mardi au dimanche.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -235,6 +238,8 @@
 </style>
 </head>
 <body>
+<!-- Bandeau obligatoire sur chaque démo -->
+<p class="bandeau-demo" style="margin:0;padding:8px 16px;background:#111;color:#f4f2ee;font:500 14px/1.4 system-ui,sans-serif;text-align:center"><strong>Site de démonstration.</strong> Le Fournil est une entreprise fictive. <a href="../" style="color:#f0764f">Retour à KNV.CORP</a></p>
 
 <nav>
   <div class="wrap">
@@ -480,5 +485,9 @@
   }
 </script>
 
+<script>
+  // Démo : les numéros sont fictifs, on bloque l'appel pour ne pas appeler un inconnu
+  document.querySelectorAll('a[href^="tel:"]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); alert("Démo : ce numéro est fictif, l'appel est désactivé."); }));
+</script>
 </body>
 </html>

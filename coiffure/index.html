@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Démo : entreprise fictive, ne doit pas apparaître dans Google ; numéros non transformés en liens sur iPhone -->
+<meta name="robots" content="noindex">
+<meta name="format-detection" content="telephone=no">
 <title>MÈCHE — Salon de coiffure</title>
 <meta name="description" content="Salon de coiffure à Mantes-la-Jolie : coupe, coloration, balayage. Réservation en ligne simple, résultats sur-mesure.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -239,6 +242,8 @@
 </style>
 </head>
 <body>
+<!-- Bandeau obligatoire sur chaque démo -->
+<p class="bandeau-demo" style="margin:0;padding:8px 16px;background:#111;color:#f4f2ee;font:500 14px/1.4 system-ui,sans-serif;text-align:center"><strong>Site de démonstration.</strong> MÈCHE est une entreprise fictive. <a href="../" style="color:#f0764f">Retour à KNV.CORP</a></p>
 
 <nav>
   <div class="wrap">
@@ -270,7 +275,7 @@
       <h1>Une coupe qui vous <em>ressemble.</em></h1>
       <p class="lede">Coupe, coloration, balayage — un salon à taille humaine où l'on prend le temps de comprendre ce que vous voulez, avant de couper.</p>
       <div class="hero-cta">
-        <a href="#reserver" class="btn">Réserver en ligne <span>→</span></a>
+        <a href="#reserver" class="btn">Réserver <span>→</span></a>
         <a href="#prestations" class="btn-outline">Voir les prestations</a>
       </div>
     </div>
@@ -390,10 +395,9 @@
   <div class="wrap">
     <div class="eyebrow-2" style="color:var(--gold);">Réserver</div>
     <h2 style="color:var(--cream);">On vous attend au salon</h2>
-    <p class="sub" style="color:rgba(251,246,241,0.75);">Réservation en ligne 24h/24, ou par téléphone aux heures d'ouverture.</p>
+    <p class="sub" style="color:rgba(251,246,241,0.75);">Réservation par téléphone aux heures d'ouverture.</p>
     <div class="hero-cta">
       <a href="tel:0130456789" class="btn" style="background:var(--rose-deep);">Appeler le salon <span>→</span></a>
-      <a href="#" class="btn-outline" style="border-color:rgba(251,246,241,0.4); color:var(--cream);">Réserver en ligne</a>
     </div>
 
     <div class="reserver-grid">
@@ -526,5 +530,9 @@
   }
 </script>
 
+<script>
+  // Démo : les numéros sont fictifs, on bloque l'appel pour ne pas appeler un inconnu
+  document.querySelectorAll('a[href^="tel:"]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); alert("Démo : ce numéro est fictif, l'appel est désactivé."); }));
+</script>
 </body>
 </html>

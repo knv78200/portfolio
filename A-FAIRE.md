@@ -4,8 +4,8 @@ Notes de travail. Ce fichier n'est pas publié sur le site (exclu dans `_config.
 
 ## À vérifier avant la mise en ligne
 
-- [ ] **Téléphone de GitHub** dans `mentions-legales.html` (+1 877 448 4820) : vérifier le numéro sur github.com.
-- [ ] **Formspree et transfert des données aux États-Unis** : demander à Formspree quelle garantie s'applique (clauses contractuelles types ou Data Privacy Framework) et l'écrire dans la politique de confidentialité (commentaire `À COMPLÉTER` dans `mentions-legales.html`). Sans garantie, passer à un service de formulaire hébergé en Europe.
+- [~] **Téléphone de GitHub** dans `mentions-legales.html` (+1 877 448 4820) : vérifié le 18/10/2026 sur des annuaires (c'est le service commercial de GitHub), mais il n'apparaît pas sur github.com. Acceptable pour les mentions légales ; à remplacer si GitHub publie un numéro officiel.
+- [ ] **Formspree et transfert des données aux États-Unis** : leur politique de confidentialité (vérifiée le 18/10/2026) dit seulement qu'ils « prennent des mesures » pour protéger les données, sans citer de garantie précise. **Kerim** : écrire à Formspree (support@formspree.io) pour demander leur DPA (accord de traitement des données) et la garantie de transfert (clauses contractuelles types ou Data Privacy Framework), puis me donner la réponse pour compléter `mentions-legales.html`.
 - [x] **Identifiant Formspree** : `mwlvznrw`, en place dans `index.html`.
 - [x] **Test réel du formulaire, email seul** : reçu dans Gmail le 18/10/2026. Attention : un message avec « test » et une fausse adresse part dans l'onglet Spam de Formspree, sans email.
 - [ ] **Test réel du formulaire, téléphone seul**, depuis le site en ligne, et vérifier qu'il arrive dans Gmail.
@@ -13,11 +13,15 @@ Notes de travail. Ce fichier n'est pas publié sur le site (exclu dans `_config.
 
 ## Démos
 
-- [ ] **Polices Google** : les démos chargent leurs polices depuis `fonts.googleapis.com`, ce qui envoie l'adresse IP des visiteurs à Google. Les héberger dans le site.
-- [ ] **Faux numéros de téléphone** dans `coiffure/` : ils ressemblent à de vrais numéros et sont cliquables (risque d'appeler un inconnu). Les remplacer par des numéros fictifs officiels ou les rendre non cliquables. Retirer aussi les liens « Réserver en ligne » qui ne mènent nulle part.
+- [ ] **Polices Google des 4 anciennes démos** (boulangerie, kiné, coiffure, fitness) : elles chargent leurs polices depuis `fonts.googleapis.com`, ce qui envoie l'adresse IP des visiteurs à Google. À héberger dans le site (téléchargement à valider par Kerim) ou à remplacer.
+- [x] **Faux numéros** : dans toutes les démos, un clic sur un numéro affiche « numéro fictif » au lieu d'appeler (18/10/2026). Les iPhone ne transforment plus les numéros en liens dans les anciennes démos.
+- [x] **Liens morts de la démo coiffure** : bouton « Réserver en ligne » retiré, texte « réservation 24h/24 » corrigé.
+- [x] **Numéros 01 99 00 xx xx** (couvreur, plombier) : aucune source officielle de l'ARCEP trouvée qui confirme une plage réservée à la fiction ; l'appel est donc bloqué (voir « Faux numéros »).
+- [x] **Anciennes démos** : bandeau « Site de démonstration, entreprise fictive » avec lien retour, et balise `noindex`, ajoutés sur les 12 pages.
 
-- [ ] **Numéros des démos couvreur et plombier** (01 99 00 12 34 et 01 99 00 56 78) : vérifier que la plage 01 99 00 xx xx est bien réservée à la fiction par l'ARCEP.
-- [ ] **Anciennes démos** (boulangerie, kiné, coiffure, fitness) : ajouter le même bandeau « Site de démonstration, entreprise fictive » avec un lien retour, et la balise `noindex`, comme sur les démos couvreur et plombier.
+## Outils
+
+- Les captures des démos (`images/demos/`) se refont avec Edge en mode invisible (script Node, format téléphone 390 × 844). À refaire après toute modification d'une démo.
 
 ## Modèle de devis (à créer)
 

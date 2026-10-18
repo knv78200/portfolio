@@ -168,10 +168,9 @@ a { color: var(--accent-fonce); text-underline-offset: 0.2em; }
     var(--fond);
   overflow: hidden;
 }
-.hero-grille { display: grid; gap: 40px; align-items: center; }
-@media (min-width: 900px) { .hero-grille { grid-template-columns: 1.1fr 1fr; gap: 56px; } }
 
 .hero h1 {
+  max-width: 15ch;
   font-size: clamp(2.5rem, 1.2rem + 5.4vw, 4.4rem);
   line-height: 0.98;
   overflow-wrap: break-word; /* un mot trop long passe à la ligne au lieu de déborder */
@@ -213,56 +212,6 @@ a { color: var(--accent-fonce); text-underline-offset: 0.2em; }
 }
 .atouts li::before { content: ""; flex: none; width: 8px; height: 8px; background: var(--degrade); }
 @media (max-width: 559px) { .atouts { gap: 6px; font-size: 0.875rem; } .atouts li { padding: 6px 11px; } }
-
-/* Maquette : fenêtre de navigateur (ordinateur) + téléphone posé devant, en bas à droite */
-.hero-visuel {
-  position: relative;
-  container-type: inline-size; /* « cqw » = 1 % de la largeur de ce bloc : tout reste proportionné */
-  padding: 0 7cqw 9cqw 0; /* place pour le téléphone qui dépasse */
-}
-.navigateur {
-  margin: 0;
-  overflow: hidden;
-  background: var(--surface);
-  border: 1px solid var(--trait);
-  border-radius: 14px;
-  box-shadow: var(--ombre-forte);
-}
-.navigateur-barre {
-  display: flex; align-items: center; gap: 6px;
-  padding: 9px 12px;
-  background: var(--fond-alt);
-  border-bottom: 1px solid var(--trait);
-}
-.navigateur-barre span { width: 10px; height: 10px; border-radius: 50%; background: #d9d3c8; }
-.navigateur-barre p {
-  flex: 1; margin-left: 10px; padding: 3px 12px;
-  overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
-  background: var(--surface); border-radius: 999px;
-  color: var(--texte-doux); font-size: 0.75rem;
-}
-.navigateur img { width: 100%; aspect-ratio: 1280 / 800; object-fit: cover; object-position: top; }
-
-.telephone {
-  position: absolute; right: 0; bottom: 0;
-  width: 28cqw;
-  margin: 0;
-  padding: 3.6cqw 1cqw 1cqw; /* bord du haut plus épais : il porte la caméra */
-  background: #111;
-  border-radius: 4.5cqw;
-  box-shadow: var(--ombre-forte), 0 0 0 1px rgba(17, 17, 17, 0.08);
-}
-.telephone::before { /* la caméra, dans le bord noir au-dessus de l'écran */
-  content: ""; position: absolute;
-  top: 1.4cqw; left: 50%; translate: -50% 0;
-  width: 7cqw; height: 0.9cqw; border-radius: 999px; background: #2a2a2a;
-}
-.telephone img {
-  width: 100%; aspect-ratio: 390 / 844;
-  object-fit: cover; object-position: top;
-  border-radius: 3.4cqw;
-  background: var(--fond-alt);
-}
 
 /* ---------- Sections ---------- */
 .section { padding-block: clamp(56px, 9vw, 112px); }
