@@ -2,6 +2,7 @@
    Démo « Plomberie Delcourt » (plombier)
    Bleu nuit, bleu eau et cuivre (la matière des tuyaux).
    Formes arrondies, ton rassurant. Signature : le tuyau en cuivre du haut de page.
+   Moderne : ombres douces, dégradés discrets (cuivre, bleu eau), apparition au défilement.
    ========================================================= */
 
 @font-face {
@@ -25,12 +26,15 @@
   --doux: #4a5a67;
   --police: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --gouttiere: 16px;
-  --rayon: 12px;
+  --rayon: 16px;
+  --degrade-bouton: linear-gradient(180deg, #ad6129, #93501f);
+  --degrade-cuivre: linear-gradient(90deg, #c98a4b, #e0a75f);
+  --ombre: 0 1px 2px rgba(14, 38, 56, 0.05), 0 12px 30px -14px rgba(14, 38, 56, 0.28);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-padding-top: 16px; -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--blanc); color: var(--encre); font: 400 1.0625rem/1.6 var(--police); }
+body { margin: 0; background: var(--blanc); color: var(--encre); font: 400 1.0625rem/1.6 var(--police); -webkit-font-smoothing: antialiased; }
 h1, h2, h3, p { margin: 0; }
 h1, h2, h3 { font-weight: 750; font-stretch: 92%; line-height: 1.08; text-wrap: balance; }
 h3 { font-size: 1.2rem; line-height: 1.25; }
@@ -48,13 +52,15 @@ a { color: var(--eau); text-underline-offset: 0.2em; }
 .bouton {
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 52px; padding: 12px 22px;
-  border: 2px solid var(--cuivre); border-radius: 999px;
-  background: var(--cuivre); color: #fff;
+  border: 0; border-radius: 999px;
+  background: var(--degrade-bouton); color: #fff;
+  box-shadow: 0 10px 22px -10px rgba(163, 90, 36, 0.85);
   font: inherit; font-weight: 700; text-decoration: none; cursor: pointer;
+  transition: filter 0.15s;
 }
-.bouton:hover { background: var(--cuivre-survol); border-color: var(--cuivre-survol); }
-.bouton-clair { background: transparent; border-color: currentColor; color: inherit; }
-.bouton-clair:hover { background: rgba(255, 255, 255, 0.1); border-color: currentColor; }
+.bouton:hover { filter: brightness(0.92); }
+.bouton-clair { background: rgba(255, 255, 255, 0.06); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.75); color: inherit; }
+.bouton-clair:hover { background: rgba(255, 255, 255, 0.14); filter: none; }
 
 /* ---------- En-tête ---------- */
 .entete { background: #fff; border-bottom: 1px solid #dbe4ec; }
@@ -96,20 +102,20 @@ a { color: var(--eau); text-underline-offset: 0.2em; }
 
 /* ---------- Sections ---------- */
 .section { padding-block: clamp(56px, 8vw, 96px); }
-.section-bleue { background: var(--eau-pale); }
+.section-bleue { background: linear-gradient(180deg, var(--eau-pale), #f1f6fc); }
 .section h2 { font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem); margin-bottom: 28px; color: var(--nuit); }
 .chapo { color: var(--doux); margin: -16px 0 24px; }
 
 /* Services */
 .cartes { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
 @media (min-width: 640px) { .cartes { grid-template-columns: repeat(2, 1fr); } }
-.cartes li { padding: 24px; background: #fff; border: 1px solid #dbe4ec; border-radius: var(--rayon); }
+.cartes li { padding: 24px; background: #fff; border: 1px solid #dbe4ec; border-radius: var(--rayon); box-shadow: var(--ombre); }
 .cartes h3 { margin-bottom: 6px; color: var(--nuit); }
-.cartes h3::before { content: ""; display: block; width: 36px; height: 4px; margin-bottom: 14px; border-radius: 4px; background: var(--cuivre-clair); }
+.cartes h3::before { content: ""; display: block; width: 36px; height: 4px; margin-bottom: 14px; border-radius: 4px; background: var(--degrade-cuivre); }
 .cartes p { color: var(--doux); }
 
 /* Grille de prix : prestation à gauche, prix à droite */
-.grille-prix { margin: 0; padding: 8px 24px; list-style: none; background: #fff; border-radius: var(--rayon); }
+.grille-prix { margin: 0; padding: 8px 24px; list-style: none; background: #fff; border-radius: var(--rayon); box-shadow: var(--ombre); }
 .grille-prix li { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; padding: 16px 0; border-bottom: 1px dashed #c3d3e2; }
 .grille-prix li:last-child { border-bottom: 0; }
 .grille-prix strong { color: var(--eau); font-size: 1.15rem; white-space: nowrap; }
@@ -117,7 +123,7 @@ a { color: var(--eau); text-underline-offset: 0.2em; }
 /* Avis */
 .avis { display: grid; gap: 16px; }
 @media (min-width: 760px) { .avis { grid-template-columns: 1fr 1fr; } }
-blockquote { margin: 0; padding: 24px; background: #fff; border: 1px solid #dbe4ec; border-radius: var(--rayon); }
+blockquote { margin: 0; padding: 26px; background: #fff; border: 1px solid #dbe4ec; border-radius: var(--rayon); box-shadow: var(--ombre); }
 blockquote p { font-size: 1.2rem; font-weight: 600; line-height: 1.4; }
 blockquote p::before { content: "« "; color: var(--eau); }
 blockquote p::after { content: " »"; color: var(--eau); }
@@ -133,11 +139,11 @@ blockquote footer { margin-top: 12px; color: var(--doux); font-size: 0.95rem; }
 @media (min-width: 860px) { .contact { grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; } }
 .coordonnees { font-size: 1.15rem; line-height: 1.9; }
 .coordonnees a { font-weight: 700; }
-.form-demo { display: grid; gap: 16px; padding: 24px; background: #fff; border: 1px solid #dbe4ec; border-radius: var(--rayon); }
+.form-demo { display: grid; gap: 16px; padding: 26px; background: #fff; border: 1px solid #dbe4ec; border-radius: 20px; box-shadow: var(--ombre); }
 .champ { display: grid; gap: 6px; }
 label { font-weight: 600; }
 input, textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #c3d3e2; border-radius: 10px; background: var(--blanc); color: var(--encre); font: inherit; font-size: 1rem; }
-input:focus, textarea:focus { border-color: var(--eau); outline: 3px solid rgba(23, 105, 194, 0.2); }
+input:focus, textarea:focus { border-color: var(--eau); outline: none; box-shadow: 0 0 0 4px rgba(23, 105, 194, 0.18); }
 .statut:empty { padding: 0; }
 .statut { padding: 10px 12px; border-radius: 10px; background: var(--eau-pale); font-weight: 600; }
 
@@ -153,14 +159,32 @@ input:focus, textarea:focus { border-color: var(--eau); outline: 3px solid rgba(
     position: fixed; inset: auto 0 0 0; z-index: 10;
     display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
     padding: 10px var(--gouttiere) max(10px, env(safe-area-inset-bottom));
-    background: var(--nuit); color: #fff;
+    background: rgba(14, 38, 56, 0.92);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    color: #fff;
   }
   .barre-appel .bouton { min-height: 48px; }
   /* Cachée pendant la saisie : elle gênerait le clavier */
   body:has(input:focus, textarea:focus) .barre-appel { display: none; }
 }
 
-@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+/* ---------- Animations (coupées si le visiteur réduit les animations) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  /* Apparition au défilement (navigateurs récents ; sinon tout reste affiché). Pas sur le haut de page. */
+  @supports (animation-timeline: view()) {
+    .section h2, .cartes li, .grille-prix, blockquote, .form-demo {
+      animation: arrivee linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+@keyframes arrivee {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
 
 /* Empêche la coupure au trait d'union (ex. « Mantes- / la-Jolie ») */
 .insecable { white-space: nowrap; }
