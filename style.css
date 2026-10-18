@@ -189,9 +189,14 @@ a { color: var(--lien); text-underline-offset: 0.2em; }
 .menu .menu-devis { background: var(--accent); color: var(--sur-accent); padding-inline: 14px; }
 .menu .menu-devis:hover { background: var(--accent-survol); }
 
-/* Sur téléphone : le menu passe sous le logo et défile de côté si besoin */
+/* ---------- Téléphone ----------
+   L'en-tête défile avec la page (il prenait trop de place collé en haut),
+   le menu passe sous le logo, et « Devis gratuit » va dans la barre du bas. */
+.barre-mobile { display: none; }
+
 @media (max-width: 759px) {
-  .entete-interieur { position: relative; }
+  html { scroll-padding-top: 16px; }
+  .entete { position: static; }
   .menu {
     width: calc(100% + 2 * var(--gouttiere));
     margin-inline: calc(-1 * var(--gouttiere));
@@ -200,11 +205,28 @@ a { color: var(--lien); text-underline-offset: 0.2em; }
     scrollbar-width: none;
   }
   .menu::-webkit-scrollbar { display: none; }
-  .menu a { padding: 8px 10px; font-size: 0.95rem; }
+  .menu a { padding: 10px 10px; font-size: 0.95rem; }
   .menu li:first-child a { padding-left: 0; }
-  /* Le bouton « Devis gratuit » reste en haut à droite, à côté du logo */
-  .menu .menu-devis { position: absolute; top: 12px; right: 0; padding: 8px 12px; }
-  html { scroll-padding-top: 120px; }
+  .menu li:last-child { display: none; } /* déjà dans la barre du bas */
+
+  /* Barre d'action fixée en bas de l'écran, à portée de pouce */
+  body:has(.barre-mobile) { padding-bottom: 76px; } /* la barre ne cache pas le bas de page */
+  .barre-mobile {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px var(--gouttiere) max(10px, env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--fond) 92%, transparent);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--trait);
+  }
+  .barre-mobile .bouton { min-height: 48px; padding: 10px 12px; }
+  /* Cachée pendant la saisie dans le formulaire : elle gênerait le clavier */
+  body:has(input:focus, textarea:focus) .barre-mobile { display: none; }
 }
 
 /* ---------- Accueil ---------- */
@@ -219,9 +241,11 @@ a { color: var(--lien); text-underline-offset: 0.2em; }
 
 .hero h1 {
   max-width: 14ch;
-  font-size: clamp(2.75rem, 1.4rem + 6.4vw, 6rem);
+  font-size: clamp(2.4rem, 1.2rem + 6.4vw, 6rem);
   line-height: 0.92;
+  overflow-wrap: break-word; /* un mot trop long passe à la ligne au lieu de déborder */
 }
+.fin { white-space: nowrap; } /* le carré orange reste collé au dernier mot */
 
 .hero-logo { display: none; }
 @media (min-width: 960px) {
@@ -278,6 +302,12 @@ a { color: var(--lien); text-underline-offset: 0.2em; }
   font-weight: 600;
 }
 
+/* Téléphone : points forts sur 2 colonnes, le plus long sur toute la largeur */
+@media (max-width: 559px) {
+  .atouts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; margin-top: 28px; padding-top: 20px; font-size: 0.95rem; }
+  .atouts li:last-child { grid-column: 1 / -1; }
+}
+
 /* Petits carrés orange, rappel du logo */
 .atouts li, .inclus li { position: relative; padding-left: 20px; }
 .atouts li::before, .inclus li::before {
@@ -324,6 +354,31 @@ a { color: var(--lien); text-underline-offset: 0.2em; }
 .exemples p { color: var(--texte-doux); }
 .exemples .lien { margin-top: auto; padding-top: 6px; }
 
+/* Téléphone : les exemples forment une rangée qu'on fait glisser du doigt.
+   La carte suivante dépasse un peu, pour montrer qu'il y en a d'autres. */
+@media (max-width: 699px) {
+  .exemples {
+    grid-auto-flow: column;
+    grid-auto-columns: 84%;
+    gap: 12px;
+    margin-inline: calc(-1 * var(--gouttiere));
+    padding: 0 var(--gouttiere) 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gouttiere);
+    scrollbar-width: none;
+  }
+  .exemples::-webkit-scrollbar { display: none; }
+  .exemples li {
+    scroll-snap-align: start;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--trait);
+    border-top: 3px solid var(--accent);
+    border-radius: 10px;
+  }
+}
+
 /* ---------- Méthode (étapes numérotées) ---------- */
 .etapes {
   display: grid;
@@ -348,6 +403,14 @@ a { color: var(--lien); text-underline-offset: 0.2em; }
 }
 .etapes h3 { margin-bottom: 8px; }
 .etapes p { color: var(--texte-doux); }
+
+/* Téléphone et tablette : le numéro se place à gauche du texte (moins haut) */
+@media (max-width: 859px) {
+  .etapes { gap: 28px; }
+  .etapes li { display: grid; grid-template-columns: 44px 1fr; column-gap: 14px; }
+  .etapes li::before { grid-row: 1 / span 2; margin: 0; font-size: 3rem; }
+  .etapes h3, .etapes p { grid-column: 2; }
+}
 
 /* ---------- Tarifs ---------- */
 .formules {
@@ -542,7 +605,8 @@ textarea { resize: vertical; min-height: 120px; }
 
   /* Apparition au défilement (navigateurs récents seulement ; sinon tout reste affiché) */
   @supports (animation-timeline: view()) {
-    .section h2, .exemples li, .etapes li, .formule {
+    /* .exemples entier (pas chaque carte) : sur téléphone les cartes défilent de côté */
+    .section h2, .exemples, .etapes li, .formule {
       animation: arrivee linear both;
       animation-timeline: view();
       animation-range: entry 0% entry 35%;
