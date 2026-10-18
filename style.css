@@ -5,7 +5,8 @@
    ========================================================= */
 
 /* Police Archivo hébergée dans le site (pas de Google Fonts : aucune donnée envoyée).
-   Tant que le fichier fonts/archivo.woff2 n'est pas là, la police de secours s'affiche. */
+   Une seule police « variable » : elle fait toutes les largeurs et toutes les graisses.
+   Licence libre SIL OFL : fonts/OFL.txt doit rester à côté du fichier. */
 @font-face {
   font-family: "Archivo";
   src: url("fonts/archivo.woff2") format("woff2");
@@ -596,12 +597,8 @@ textarea { resize: vertical; min-height: 120px; }
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
 
-  /* Arrivée du titre principal au chargement */
-  .hero h1, .hero .accroche, .hero .actions {
-    animation: arrivee 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  }
-  .hero .accroche { animation-delay: 0.08s; }
-  .hero .actions { animation-delay: 0.16s; }
+  /* Pas d'animation sur le haut de page : le titre et les boutons doivent être
+     visibles tout de suite, même si un navigateur bloque les animations. */
 
   /* Apparition au défilement (navigateurs récents seulement ; sinon tout reste affiché) */
   @supports (animation-timeline: view()) {
