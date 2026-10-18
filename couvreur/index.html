@@ -7,134 +7,177 @@
   <meta name="description" content="Démo KNV.CORP : site vitrine d'un couvreur fictif dans les Yvelines.">
   <!-- Démo : entreprise fictive, ne doit pas apparaître dans Google -->
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#26313a">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- Bandeau obligatoire sur chaque démo -->
-<p><strong>Site de démonstration.</strong> Couverture Vasseur est une entreprise fictive. <a href="../">Retour à KNV.CORP</a></p>
+<p class="bandeau-demo"><strong>Site de démonstration.</strong> Couverture Vasseur est une entreprise fictive. <a href="../">Retour à KNV.CORP</a></p>
 
-<header>
-  <a href="#accueil">Couverture Vasseur</a>
-  <nav aria-label="Menu">
-    <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#realisations">Réalisations</a></li>
-      <li><a href="#zone">Zone d'intervention</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<header class="entete">
+  <div class="conteneur entete-interieur">
+    <a class="marque" href="#accueil">
+      <!-- Petit toit dessiné en SVG : sert de logo -->
+      <svg class="marque-toit" viewBox="0 0 40 28" aria-hidden="true"><path d="M2 24 20 6l18 18" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="miter"/></svg>
+      Couverture Vasseur
+    </a>
+    <nav class="menu" aria-label="Menu">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#realisations">Réalisations</a></li>
+        <li><a href="#zone">Zone d'intervention</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="entete-tel" href="tel:+33199001234">01 99 00 12 34</a>
+  </div>
 </header>
 
 <main>
-  <section id="accueil">
-    <h1>Couvreur à Limay et dans le Mantois</h1>
-    <p>Réfection de toiture, réparation de fuites, zinguerie et démoussage. Entreprise familiale, devis gratuit sous 48 h.</p>
-    <p>
-      <!-- Numéro fictif : plage 01 99 00 xx xx réservée à la fiction -->
-      <a href="tel:+33199001234">Appeler le 01 99 00 12 34</a>
-      <a href="#contact">Demander un devis gratuit</a>
-    </p>
-    <ul>
-      <li>Garantie décennale</li>
-      <li>Intervention rapide en cas de fuite</li>
-      <li>Devis gratuit et détaillé</li>
-    </ul>
-  </section>
-
-  <section id="services">
-    <h2>Nos services</h2>
-    <ul>
-      <li>
-        <h3>Réfection de toiture</h3>
-        <p>Tuiles, ardoises : remplacement complet ou partiel de votre couverture.</p>
-      </li>
-      <li>
-        <h3>Réparation de fuites</h3>
-        <p>Recherche de la fuite et réparation, avec bâchage provisoire si besoin.</p>
-      </li>
-      <li>
-        <h3>Zinguerie</h3>
-        <p>Gouttières, descentes d'eau, solins et noues.</p>
-      </li>
-      <li>
-        <h3>Démoussage et traitement</h3>
-        <p>Nettoyage de la toiture et traitement hydrofuge pour la protéger.</p>
-      </li>
-      <li>
-        <h3>Fenêtres de toit</h3>
-        <p>Pose et remplacement de fenêtres de toit.</p>
-      </li>
-    </ul>
-  </section>
-
-  <section id="realisations">
-    <h2>Nos réalisations</h2>
-    <!-- À AJOUTER avec le design : une photo par chantier (WebP, moins de 200 Ko) -->
-    <ul>
-      <li>
-        <h3>Réfection complète en tuiles mécaniques, Mantes-la-Ville</h3>
-        <p>Maison de 120 m² : dépose de l'ancienne couverture, nouvel écran sous toiture, tuiles neuves. 6 jours de chantier.</p>
-      </li>
-      <li>
-        <h3>Réparation après tempête, Limay</h3>
-        <p>Tuiles arrachées et fuite au plafond : bâchage le jour même, réparation la semaine suivante.</p>
-      </li>
-      <li>
-        <h3>Gouttières en zinc, Gargenville</h3>
-        <p>Remplacement de 25 mètres de gouttières et de 3 descentes d'eau.</p>
-      </li>
-    </ul>
-  </section>
-
-  <section id="avis">
-    <h2>Avis clients</h2>
-    <p>Exemples d'avis pour la démonstration.</p>
-    <blockquote>
-      <p>Fuite réparée en deux jours, travail propre et prix respecté.</p>
-      <footer>Exemple d'avis, Mantes-la-Jolie</footer>
-    </blockquote>
-    <blockquote>
-      <p>Équipe ponctuelle, chantier laissé propre. Je recommande.</p>
-      <footer>Exemple d'avis, Limay</footer>
-    </blockquote>
-  </section>
-
-  <section id="zone">
-    <h2>Zone d'intervention</h2>
-    <p>Limay, Mantes-la-Jolie, Mantes-la-Ville, Gargenville, Porcheville, Buchelay, Magnanville, Rosny-sur-Seine et alentours, dans un rayon de 30 km.</p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact et devis gratuit</h2>
-    <p>
-      Téléphone : <a href="tel:+33199001234">01 99 00 12 34</a><br>
-      Email : <a href="mailto:contact@example.com">contact@example.com</a><br>
-      Du lundi au vendredi, 8 h - 18 h. Samedi sur rendez-vous.
-    </p>
-
-    <!-- Formulaire de démonstration : il n'envoie rien -->
-    <form class="form-demo">
-      <p>
-        <label for="nom">Votre nom</label><br>
-        <input id="nom" name="nom" type="text" autocomplete="name" required>
+  <section id="accueil" class="hero">
+    <div class="conteneur">
+      <h1>Couvreur à Limay et dans le Mantois</h1>
+      <p class="accroche">Réfection de toiture, réparation de fuites, zinguerie et démoussage. Entreprise familiale, devis gratuit sous 48 h.</p>
+      <p class="actions">
+        <!-- Numéro fictif : plage 01 99 00 xx xx réservée à la fiction -->
+        <a class="bouton" href="tel:+33199001234">Appeler le 01 99 00 12 34</a>
+        <a class="bouton bouton-clair" href="#contact">Demander un devis gratuit</a>
       </p>
-      <p>
-        <label for="tel">Téléphone</label><br>
-        <input id="tel" name="tel" type="tel" autocomplete="tel" required>
-      </p>
-      <p>
-        <label for="besoin">Votre besoin</label><br>
-        <textarea id="besoin" name="besoin" rows="4" placeholder="Ex. : fuite au-dessus de la cuisine"></textarea>
-      </p>
-      <button type="submit">Demander un devis</button>
-      <p role="status"></p>
-    </form>
+      <ul class="atouts">
+        <li>Garantie décennale</li>
+        <li>Intervention rapide en cas de fuite</li>
+        <li>Devis gratuit et détaillé</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <div class="conteneur">
+      <h2>Nos services</h2>
+      <ul class="cartes">
+        <li>
+          <h3>Réfection de toiture</h3>
+          <p>Tuiles, ardoises : remplacement complet ou partiel de votre couverture.</p>
+        </li>
+        <li>
+          <h3>Réparation de fuites</h3>
+          <p>Recherche de la fuite et réparation, avec bâchage provisoire si besoin.</p>
+        </li>
+        <li>
+          <h3>Zinguerie</h3>
+          <p>Gouttières, descentes d'eau, solins et noues.</p>
+        </li>
+        <li>
+          <h3>Démoussage et traitement</h3>
+          <p>Nettoyage de la toiture et traitement hydrofuge pour la protéger.</p>
+        </li>
+        <li>
+          <h3>Fenêtres de toit</h3>
+          <p>Pose et remplacement de fenêtres de toit.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="realisations" class="section section-zinc">
+    <div class="conteneur">
+      <h2>Nos réalisations</h2>
+      <!-- À AJOUTER : une photo par chantier (WebP, moins de 200 Ko) -->
+      <ul class="chantiers">
+        <li>
+          <h3>Réfection complète en tuiles mécaniques, Mantes-la-Ville</h3>
+          <p>Maison de 120 m² : dépose de l'ancienne couverture, nouvel écran sous toiture, tuiles neuves. 6 jours de chantier.</p>
+        </li>
+        <li>
+          <h3>Réparation après tempête, Limay</h3>
+          <p>Tuiles arrachées et fuite au plafond : bâchage le jour même, réparation la semaine suivante.</p>
+        </li>
+        <li>
+          <h3>Gouttières en zinc, Gargenville</h3>
+          <p>Remplacement de 25 mètres de gouttières et de 3 descentes d'eau.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="avis" class="section">
+    <div class="conteneur">
+      <h2>Avis clients</h2>
+      <p class="chapo">Exemples d'avis pour la démonstration.</p>
+      <div class="avis">
+        <blockquote>
+          <p>Fuite réparée en deux jours, travail propre et prix respecté.</p>
+          <footer>Exemple d'avis, Mantes-la-Jolie</footer>
+        </blockquote>
+        <blockquote>
+          <p>Équipe ponctuelle, chantier laissé propre. Je recommande.</p>
+          <footer>Exemple d'avis, Limay</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="zone" class="section section-zinc">
+    <div class="conteneur">
+      <h2>Zone d'intervention</h2>
+      <ul class="villes">
+        <li>Limay</li>
+        <li>Mantes-la-Jolie</li>
+        <li>Mantes-la-Ville</li>
+        <li>Gargenville</li>
+        <li>Porcheville</li>
+        <li>Buchelay</li>
+        <li>Magnanville</li>
+        <li>Rosny-sur-Seine</li>
+      </ul>
+      <p class="chapo">Et alentours, dans un rayon de 30 km.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="conteneur contact">
+      <div>
+        <h2>Contact et devis gratuit</h2>
+        <p class="coordonnees">
+          Téléphone : <a href="tel:+33199001234">01 99 00 12 34</a><br>
+          Email : <a href="mailto:contact@example.com">contact@example.com</a><br>
+          Du lundi au vendredi, 8 h - 18 h. Samedi sur rendez-vous.
+        </p>
+      </div>
+
+      <!-- Formulaire de démonstration : il n'envoie rien -->
+      <form class="form-demo">
+        <p class="champ">
+          <label for="nom">Votre nom</label>
+          <input id="nom" name="nom" type="text" autocomplete="name" required>
+        </p>
+        <p class="champ">
+          <label for="tel">Téléphone</label>
+          <input id="tel" name="tel" type="tel" autocomplete="tel" required>
+        </p>
+        <p class="champ">
+          <label for="besoin">Votre besoin</label>
+          <textarea id="besoin" name="besoin" rows="4" placeholder="Ex. : fuite au-dessus de la cuisine"></textarea>
+        </p>
+        <button class="bouton" type="submit">Demander un devis</button>
+        <p class="statut" role="status"></p>
+      </form>
+    </div>
   </section>
 </main>
 
-<footer>
-  <p>Couverture Vasseur, entreprise fictive. Site de démonstration réalisé par <a href="../">KNV.CORP</a>.</p>
+<footer class="pied">
+  <div class="conteneur">
+    <p>Couverture Vasseur, entreprise fictive. Site de démonstration réalisé par <a href="../">KNV.CORP</a>.</p>
+  </div>
 </footer>
+
+<!-- Barre d'appel en bas de l'écran, sur téléphone seulement -->
+<nav class="barre-appel" aria-label="Contact rapide">
+  <a class="bouton" href="tel:+33199001234">Appeler</a>
+  <a class="bouton bouton-clair" href="#contact">Devis gratuit</a>
+</nav>
 
 <script>
   // Démo : on affiche un message au lieu d'envoyer

@@ -1,0 +1,152 @@
+/* =========================================================
+   Démo « Couverture Vasseur » (couvreur)
+   Ardoise, zinc et rouge tuile. Police large et costaude, comme une enseigne.
+   ========================================================= */
+
+@font-face {
+  font-family: "Archivo";
+  src: url("../fonts/archivo.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+}
+
+:root {
+  --ardoise: #26313a;
+  --ardoise-2: #33414c;
+  --zinc: #dfe4e6;       /* fond des sections une sur deux */
+  --zinc-fonce: #4f5b63; /* textes secondaires (assez foncé pour rester lisible sur le zinc) */
+  --clair: #f4f6f6;
+  --encre: #1a2127;
+  --tuile: #b5472a;      /* boutons et accents */
+  --tuile-survol: #993a21;
+  --police: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --gouttiere: 16px;
+}
+
+* , *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: 16px; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--clair); color: var(--encre); font: 400 1.0625rem/1.6 var(--police); }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-weight: 800; font-stretch: 115%; line-height: 1.05; text-wrap: balance; }
+h3 { font-size: 1.15rem; font-stretch: 105%; line-height: 1.25; }
+a { color: var(--tuile); text-underline-offset: 0.2em; }
+:focus-visible { outline: 3px solid var(--tuile); outline-offset: 3px; }
+
+.conteneur { width: min(100% - 2 * var(--gouttiere), 1100px); margin-inline: auto; }
+
+/* Bandeau « démo » */
+.bandeau-demo { padding: 8px var(--gouttiere); background: #111; color: #f4f2ee; font-size: 0.85rem; text-align: center; }
+.bandeau-demo a { color: #f0764f; }
+
+/* ---------- Boutons ---------- */
+.bouton {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 52px; padding: 12px 22px;
+  border: 2px solid var(--tuile); border-radius: 4px;
+  background: var(--tuile); color: #fff;
+  font: inherit; font-weight: 700; text-decoration: none; cursor: pointer;
+}
+.bouton:hover { background: var(--tuile-survol); border-color: var(--tuile-survol); }
+.bouton-clair { background: transparent; border-color: currentColor; color: inherit; }
+.bouton-clair:hover { background: rgba(255, 255, 255, 0.1); border-color: currentColor; }
+
+/* ---------- En-tête ---------- */
+.entete { background: var(--ardoise); color: #fff; }
+.entete-interieur { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.marque { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; font-stretch: 115%; font-size: 1.15rem; text-decoration: none; }
+.marque-toit { width: 34px; height: 24px; color: var(--tuile); }
+.menu ul { display: flex; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.menu a { display: block; padding: 8px 10px; color: #fff; font-weight: 600; text-decoration: none; }
+.menu a:hover { text-decoration: underline; }
+.entete-tel { color: #fff; font-weight: 800; white-space: nowrap; text-decoration: none; }
+/* Téléphone : seul le nom reste en haut, le reste est dans la barre du bas */
+@media (max-width: 859px) { .menu, .entete-tel { display: none; } }
+
+/* ---------- Haut de page : motif d'ardoises en écailles ---------- */
+.hero {
+  padding-block: clamp(56px, 10vw, 128px);
+  background-color: var(--ardoise);
+  background-image:
+    linear-gradient(180deg, rgba(38, 49, 58, 0.2), var(--ardoise) 95%),
+    radial-gradient(circle at 50% 100%, transparent 15px, rgba(255, 255, 255, 0.07) 16px 17px, transparent 18px),
+    radial-gradient(circle at 50% 100%, transparent 15px, rgba(255, 255, 255, 0.07) 16px 17px, transparent 18px);
+  background-size: 100% 100%, 34px 18px, 34px 18px;
+  background-position: 0 0, 0 0, 17px 9px;
+  color: #fff;
+}
+.hero h1 { max-width: 16ch; font-size: clamp(2.3rem, 1.4rem + 4.6vw, 4.5rem); }
+.accroche { max-width: 52ch; margin-top: 20px; color: #c9d1d5; font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem); }
+.actions { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+@media (min-width: 560px) { .actions { flex-direction: row; flex-wrap: wrap; } }
+.atouts { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 32px 0 0; padding: 0; list-style: none; font-weight: 600; }
+.atouts li::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 10px; background: var(--tuile); transform: rotate(45deg); }
+
+/* ---------- Sections ---------- */
+.section { padding-block: clamp(56px, 8vw, 96px); }
+.section-zinc { background: var(--zinc); }
+.section h2 { font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem); margin-bottom: 28px; }
+.chapo { color: var(--zinc-fonce); margin: -16px 0 24px; }
+
+/* Services : cartes avec un liseré ardoise en haut */
+.cartes { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 640px) { .cartes { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .cartes { grid-template-columns: repeat(3, 1fr); } }
+.cartes li { padding: 22px; background: #fff; border-top: 4px solid var(--ardoise); border-radius: 2px; }
+.cartes h3 { margin-bottom: 6px; }
+.cartes p { color: var(--zinc-fonce); }
+
+/* Réalisations : fiches de chantier */
+.chantiers { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 860px) { .chantiers { grid-template-columns: repeat(3, 1fr); } }
+.chantiers li { padding: 24px; background: var(--ardoise); color: #fff; border-radius: 2px; border-left: 6px solid var(--tuile); }
+.chantiers h3 { margin-bottom: 8px; }
+.chantiers p { color: #c9d1d5; }
+
+/* Avis */
+.avis { display: grid; gap: 16px; }
+@media (min-width: 760px) { .avis { grid-template-columns: 1fr 1fr; } }
+blockquote { margin: 0; padding: 24px; background: #fff; border-radius: 2px; }
+blockquote p { font-size: 1.2rem; font-weight: 600; line-height: 1.4; }
+blockquote p::before { content: "« "; color: var(--tuile); }
+blockquote p::after { content: " »"; color: var(--tuile); }
+blockquote footer { margin-top: 12px; color: var(--zinc-fonce); font-size: 0.95rem; }
+
+/* Zone : villes en étiquettes */
+.villes { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 32px; padding: 0; list-style: none; }
+.villes li { padding: 8px 14px; background: #fff; border: 1px solid #c4ccd0; border-radius: 999px; font-weight: 600; }
+.villes + .chapo { margin: 0; }
+
+/* Contact */
+.contact { display: grid; gap: 28px; }
+@media (min-width: 860px) { .contact { grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; } }
+.coordonnees { font-size: 1.15rem; line-height: 1.9; }
+.coordonnees a { font-weight: 700; }
+.form-demo { display: grid; gap: 16px; padding: 24px; background: #fff; border-top: 4px solid var(--tuile); border-radius: 2px; }
+.champ { display: grid; gap: 6px; }
+label { font-weight: 600; }
+input, textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #c4ccd0; border-radius: 4px; background: var(--clair); color: var(--encre); font: inherit; font-size: 1rem; }
+input:focus, textarea:focus { border-color: var(--tuile); outline: 3px solid rgba(181, 71, 42, 0.2); }
+.statut:empty { padding: 0; }
+.statut { padding: 10px 12px; background: var(--zinc); font-weight: 600; }
+
+/* Pied de page */
+.pied { padding-block: 28px; background: var(--ardoise); color: #c9d1d5; font-size: 0.95rem; }
+.pied a { color: #fff; }
+
+/* ---------- Barre d'appel (téléphone) ---------- */
+.barre-appel { display: none; }
+@media (max-width: 859px) {
+  body { padding-bottom: 76px; }
+  .barre-appel {
+    position: fixed; inset: auto 0 0 0; z-index: 10;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    padding: 10px var(--gouttiere) max(10px, env(safe-area-inset-bottom));
+    background: var(--ardoise); color: #fff;
+  }
+  .barre-appel .bouton { min-height: 48px; }
+  /* Cachée pendant la saisie : elle gênerait le clavier */
+  body:has(input:focus, textarea:focus) .barre-appel { display: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }

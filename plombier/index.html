@@ -7,123 +7,167 @@
   <meta name="description" content="Démo KNV.CORP : site vitrine d'un plombier fictif dans les Yvelines.">
   <!-- Démo : entreprise fictive, ne doit pas apparaître dans Google -->
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0e2638">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- Bandeau obligatoire sur chaque démo -->
-<p><strong>Site de démonstration.</strong> Plomberie Delcourt est une entreprise fictive. <a href="../">Retour à KNV.CORP</a></p>
+<p class="bandeau-demo"><strong>Site de démonstration.</strong> Plomberie Delcourt est une entreprise fictive. <a href="../">Retour à KNV.CORP</a></p>
 
-<header>
-  <a href="#accueil">Plomberie Delcourt</a>
-  <nav aria-label="Menu">
-    <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#tarifs">Tarifs</a></li>
-      <li><a href="#zone">Zone d'intervention</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<header class="entete">
+  <div class="conteneur entete-interieur">
+    <a class="marque" href="#accueil">
+      <!-- Goutte d'eau dessinée en SVG : sert de logo -->
+      <svg class="marque-goutte" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 2C9 8 3 14 3 20a9 9 0 0 0 18 0c0-6-6-12-9-18Z" fill="currentColor"/></svg>
+      Plomberie Delcourt
+    </a>
+    <nav class="menu" aria-label="Menu">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#tarifs">Tarifs</a></li>
+        <li><a href="#zone">Zone d'intervention</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="entete-tel" href="tel:+33199005678">01 99 00 56 78</a>
+  </div>
 </header>
 
 <main>
-  <section id="accueil">
-    <h1>Plombier à Mantes-la-Jolie, dépannage et installation</h1>
-    <p>Fuite, chauffe-eau en panne, WC bouché : j'interviens rapidement à Mantes-la-Jolie et dans les environs. Devis gratuit avant toute intervention.</p>
-    <p>
-      <!-- Numéro fictif : plage 01 99 00 xx xx réservée à la fiction -->
-      <a href="tel:+33199005678">Appeler le 01 99 00 56 78</a>
-      <a href="#contact">Demander un devis gratuit</a>
-    </p>
-    <ul>
-      <li>Dépannage 6 jours sur 7</li>
-      <li>Prix annoncé avant l'intervention</li>
-      <li>Garantie décennale</li>
-    </ul>
-  </section>
-
-  <section id="services">
-    <h2>Mes services</h2>
-    <ul>
-      <li>
-        <h3>Dépannage et fuites</h3>
-        <p>Recherche et réparation de fuites, canalisations, robinetterie.</p>
-      </li>
-      <li>
-        <h3>Chauffe-eau</h3>
-        <p>Réparation, remplacement et installation de chauffe-eau électriques et thermodynamiques.</p>
-      </li>
-      <li>
-        <h3>Débouchage</h3>
-        <p>WC, éviers, douches et canalisations.</p>
-      </li>
-      <li>
-        <h3>Salle de bains</h3>
-        <p>Rénovation complète : douche à l'italienne, meuble vasque, WC suspendu.</p>
-      </li>
-    </ul>
-  </section>
-
-  <!-- Une grille de prix rassure le client : c'est un bon argument pour les artisans -->
-  <section id="tarifs">
-    <h2>Tarifs indicatifs</h2>
-    <p>Prix de départ, main-d'œuvre comprise. Le prix exact est annoncé avant l'intervention.</p>
-    <ul>
-      <li>Déplacement et diagnostic : à partir de 49 €</li>
-      <li>Débouchage WC ou évier : à partir de 89 €</li>
-      <li>Remplacement d'un mitigeur : à partir de 120 €</li>
-      <li>Remplacement d'un chauffe-eau 200 L : à partir de 890 €, fourni et posé</li>
-    </ul>
-  </section>
-
-  <section id="avis">
-    <h2>Avis clients</h2>
-    <p>Exemples d'avis pour la démonstration.</p>
-    <blockquote>
-      <p>Venu le jour même pour une fuite sous l'évier. Rapide et prix correct.</p>
-      <footer>Exemple d'avis, Mantes-la-Jolie</footer>
-    </blockquote>
-    <blockquote>
-      <p>Chauffe-eau changé en une matinée, tout a été expliqué clairement.</p>
-      <footer>Exemple d'avis, Buchelay</footer>
-    </blockquote>
-  </section>
-
-  <section id="zone">
-    <h2>Zone d'intervention</h2>
-    <p>Mantes-la-Jolie, Mantes-la-Ville, Buchelay, Magnanville, Limay, Rosny-sur-Seine, Épône, Bonnières-sur-Seine et alentours.</p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact et devis gratuit</h2>
-    <p>
-      Téléphone : <a href="tel:+33199005678">01 99 00 56 78</a><br>
-      Email : <a href="mailto:contact@example.com">contact@example.com</a><br>
-      Du lundi au samedi, 8 h - 19 h.
-    </p>
-
-    <!-- Formulaire de démonstration : il n'envoie rien -->
-    <form class="form-demo">
-      <p>
-        <label for="nom">Votre nom</label><br>
-        <input id="nom" name="nom" type="text" autocomplete="name" required>
+  <section id="accueil" class="hero">
+    <!-- Le « tuyau » en cuivre avec son coude est dessiné en CSS (.hero .conteneur::before) -->
+    <div class="conteneur">
+      <h1>Plombier à <span class="insecable">Mantes-la-Jolie</span>, dépannage et installation</h1>
+      <p class="accroche">Fuite, chauffe-eau en panne, WC bouché : j'interviens rapidement à Mantes-la-Jolie et dans les environs. Devis gratuit avant toute intervention.</p>
+      <p class="actions">
+        <!-- Numéro fictif : plage 01 99 00 xx xx réservée à la fiction -->
+        <a class="bouton" href="tel:+33199005678">Appeler le 01 99 00 56 78</a>
+        <a class="bouton bouton-clair" href="#contact">Demander un devis gratuit</a>
       </p>
-      <p>
-        <label for="tel">Téléphone</label><br>
-        <input id="tel" name="tel" type="tel" autocomplete="tel" required>
-      </p>
-      <p>
-        <label for="besoin">Votre besoin</label><br>
-        <textarea id="besoin" name="besoin" rows="4" placeholder="Ex. : le chauffe-eau ne chauffe plus"></textarea>
-      </p>
-      <button type="submit">Demander un devis</button>
-      <p role="status"></p>
-    </form>
+      <ul class="atouts">
+        <li>Dépannage 6 jours sur 7</li>
+        <li>Prix annoncé avant l'intervention</li>
+        <li>Garantie décennale</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <div class="conteneur">
+      <h2>Mes services</h2>
+      <ul class="cartes">
+        <li>
+          <h3>Dépannage et fuites</h3>
+          <p>Recherche et réparation de fuites, canalisations, robinetterie.</p>
+        </li>
+        <li>
+          <h3>Chauffe-eau</h3>
+          <p>Réparation, remplacement et installation de chauffe-eau électriques et thermodynamiques.</p>
+        </li>
+        <li>
+          <h3>Débouchage</h3>
+          <p>WC, éviers, douches et canalisations.</p>
+        </li>
+        <li>
+          <h3>Salle de bains</h3>
+          <p>Rénovation complète : douche à l'italienne, meuble vasque, WC suspendu.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Une grille de prix rassure les clients : c'est un bon argument de vente -->
+  <section id="tarifs" class="section section-bleue">
+    <div class="conteneur etroit">
+      <h2>Tarifs indicatifs</h2>
+      <p class="chapo">Prix de départ, main-d'œuvre comprise. Le prix exact est annoncé avant l'intervention.</p>
+      <ul class="grille-prix">
+        <li><span>Déplacement et diagnostic</span> <strong>à partir de 49 €</strong></li>
+        <li><span>Débouchage WC ou évier</span> <strong>à partir de 89 €</strong></li>
+        <li><span>Remplacement d'un mitigeur</span> <strong>à partir de 120 €</strong></li>
+        <li><span>Remplacement d'un chauffe-eau 200 L, fourni et posé</span> <strong>à partir de 890 €</strong></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="avis" class="section">
+    <div class="conteneur">
+      <h2>Avis clients</h2>
+      <p class="chapo">Exemples d'avis pour la démonstration.</p>
+      <div class="avis">
+        <blockquote>
+          <p>Venu le jour même pour une fuite sous l'évier. Rapide et prix correct.</p>
+          <footer>Exemple d'avis, Mantes-la-Jolie</footer>
+        </blockquote>
+        <blockquote>
+          <p>Chauffe-eau changé en une matinée, tout a été expliqué clairement.</p>
+          <footer>Exemple d'avis, Buchelay</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="zone" class="section section-bleue">
+    <div class="conteneur">
+      <h2>Zone d'intervention</h2>
+      <ul class="villes">
+        <li>Mantes-la-Jolie</li>
+        <li>Mantes-la-Ville</li>
+        <li>Buchelay</li>
+        <li>Magnanville</li>
+        <li>Limay</li>
+        <li>Rosny-sur-Seine</li>
+        <li>Épône</li>
+        <li>Bonnières-sur-Seine</li>
+      </ul>
+      <p class="chapo">Et alentours.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="conteneur contact">
+      <div>
+        <h2>Contact et devis gratuit</h2>
+        <p class="coordonnees">
+          Téléphone : <a href="tel:+33199005678">01 99 00 56 78</a><br>
+          Email : <a href="mailto:contact@example.com">contact@example.com</a><br>
+          Du lundi au samedi, 8 h - 19 h.
+        </p>
+      </div>
+
+      <!-- Formulaire de démonstration : il n'envoie rien -->
+      <form class="form-demo">
+        <p class="champ">
+          <label for="nom">Votre nom</label>
+          <input id="nom" name="nom" type="text" autocomplete="name" required>
+        </p>
+        <p class="champ">
+          <label for="tel">Téléphone</label>
+          <input id="tel" name="tel" type="tel" autocomplete="tel" required>
+        </p>
+        <p class="champ">
+          <label for="besoin">Votre besoin</label>
+          <textarea id="besoin" name="besoin" rows="4" placeholder="Ex. : le chauffe-eau ne chauffe plus"></textarea>
+        </p>
+        <button class="bouton" type="submit">Demander un devis</button>
+        <p class="statut" role="status"></p>
+      </form>
+    </div>
   </section>
 </main>
 
-<footer>
-  <p>Plomberie Delcourt, entreprise fictive. Site de démonstration réalisé par <a href="../">KNV.CORP</a>.</p>
+<footer class="pied">
+  <div class="conteneur">
+    <p>Plomberie Delcourt, entreprise fictive. Site de démonstration réalisé par <a href="../">KNV.CORP</a>.</p>
+  </div>
 </footer>
+
+<!-- Barre d'appel en bas de l'écran, sur téléphone seulement -->
+<nav class="barre-appel" aria-label="Contact rapide">
+  <a class="bouton" href="tel:+33199005678">Appeler</a>
+  <a class="bouton bouton-clair" href="#contact">Devis gratuit</a>
+</nav>
 
 <script>
   // Démo : on affiche un message au lieu d'envoyer
