@@ -2,6 +2,8 @@
 
 Ce qui est entre {accolades} se remplace à chaque mail. Le {constat} doit être vrai et précis, et une seule phrase suffit. Si le nom du gérant est connu : « Bonjour Madame X, » ou « Bonjour Monsieur X, ». Sinon : « Bonjour, ».
 
+Le nom de l'entreprise : utilise son nom court, comme le dirait un client (« Reinhard Couverture », pas « Entreprise Reinhard Roger (Couvreur Zingueur 68) »), et relis le français : « d'Allo Plomberie », « du Salon Privé », jamais « de Le » ni « de A… ». Dans le corps du mail, « votre site » suffit souvent.
+
 Lien de la démo selon le métier :
 couvreur → knvcorp-portfolio.fr/couvreur/ · plombier → knvcorp-portfolio.fr/plombier/ · coiffure → knvcorp-portfolio.fr/coiffure/ · boulangerie → knvcorp-portfolio.fr/boulangerie/ · kiné → knvcorp-portfolio.fr/kinesitherapie/ · fitness → knvcorp-portfolio.fr/fitness/ · autre métier → knvcorp-portfolio.fr/#exemples
 
@@ -46,6 +48,25 @@ Bonne journée,
 
 {signature}
 {pied de page}
+
+## Cas B2 : site sur un outil gratuit (Wix, e-monsite, free.fr…), mais lisible sur téléphone
+
+Objet : Le site de {nom court}
+
+Bonjour,
+
+Je suis allé sur votre site. {constat, ex. : Il est à l'adresse votre-entreprise.wixsite.com, pas à votre nom, et une publicité Wix s'affiche en haut.} Un site à votre nom (par exemple {nom-entreprise}.fr) inspire plus confiance, et on vous trouve plus facilement sur Google.
+
+Je crée des sites à votre nom pour les petites entreprises, à un tarif pensé pour elles. Voici un exemple pour un {métier} : {lien démo}
+
+Si ça vous intéresse, il suffit de répondre à ce mail. Vous pouvez aussi m'écrire sur WhatsApp : wa.me/33676307231
+
+Bonne journée,
+
+{signature}
+{pied de page}
+
+Si le site sur outil gratuit n'est PAS lisible sur téléphone, utilise le cas B normal.
 
 ## Cas C : seulement Facebook ou Instagram
 
