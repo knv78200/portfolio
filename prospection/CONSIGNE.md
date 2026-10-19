@@ -30,6 +30,8 @@ Date ajout · Entreprise · Métier · Ville · Département · Email · Source 
 
 Statuts : `à valider` → Kerim met `ok` ou `refusé` → `envoyé` → `relance 1` → `relance 2` → `fini`. Ou bien `répondu` ou `STOP` dès qu'une réponse arrive. Si Kerim a corrigé le texte dans la colonne Mail, tu envoies sa version.
 
+Statut `brouillon` : un brouillon existe déjà dans Gmail (son identifiant est dans « Fil Gmail ») et c'est Kerim qui l'envoie lui-même. Tu ne crées JAMAIS un deuxième mail pour une ligne dont la colonne « Fil Gmail » est remplie. À 9 h, ouvre ce fil : si le message est parti, passe la ligne à `envoyé` avec la date d'envoi (les relances partent ensuite normalement). S'il est encore en brouillon, ne touche à rien. Si le brouillon a été supprimé, passe la ligne à `refusé`.
+
 Onglet **Liste noire** : Email · Entreprise · Date · Raison.
 Onglet **Réseaux sans email** : Entreprise · Métier · Ville · Réseau · Lien · Dernière publication · Constat. On y met seulement les gens actifs sur ce réseau (publication de moins de 2 mois), pour que Kerim leur écrive à la main.
 
