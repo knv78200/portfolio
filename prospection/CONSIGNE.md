@@ -35,12 +35,18 @@ Onglet **Réseaux sans email** : Entreprise · Métier · Ville · Réseau · Li
 
 ## Tâche de 7 h : trouver et écrire (lundi à vendredi)
 
-1. **Trouver** des petites entreprises (1 à 10 personnes environ), partout en France, de tous les métiers. Pour le moment, priorité aux métiers qui ont une démo : couvreur, plombier, coiffure, boulangerie, kiné, fitness. Outils gratuits seulement : recherche web, fiches Google Maps, Pages Jaunes, annuaires, l'API publique recherche-entreprises.api.gouv.fr (entreprises actives par métier et par ville), leur site, leurs réseaux.
-2. **Garder seulement** les entreprises sans site (une page Facebook ou Instagram seule compte comme « sans site ») ou avec un site très vieux (pas adapté au téléphone, design des années 2000-2010, lent, cassé, sans HTTPS).
-3. **Fouiller à fond** chaque prospect : site, fiche Google (note, nombre d'avis, photos, horaires), réseaux (date de la dernière publication). Note un constat précis et vrai, que tu as vu toi-même. Jamais de constat inventé.
-4. **Chercher l'email** partout : site, mentions légales, fiche Google, Pages Jaunes, page Facebook, bio Instagram. Pas d'email mais un réseau actif → onglet « Réseaux sans email ». Pas d'email et pas de réseau actif → on laisse tomber.
-5. **Noter** chaque prospect sur 10 (bonne note Google + beaucoup d'avis + pas de site = prospect chaud). Les 3 meilleurs du jour ont droit à une maquette (voir plus bas).
-6. **Écrire** le mail avec les modèles (`prospection/MODELES.md`) en personnalisant vraiment. Ajouter la ligne au Sheets avec le statut `à valider`. Viser 20 lignes par jour.
+**Ne t'arrête pas après quelques recherches ratées.** Il faut examiner 60 à 100 entreprises pour en garder 20. Continue jusqu'à 20 prospects ajoutés ou 45 minutes de travail. Si tu en trouves moins, ajoute quand même ceux que tu as. Une recherche qui ne donne rien, c'est normal : passe à l'entreprise suivante.
+
+1. **Liste de départ** avec l'API publique (gratuite, sans clé), en `curl` :
+   `curl -s "https://recherche-entreprises.api.gouv.fr/search?activite_principale=CODE&departement=DEP&etat_administratif=A&per_page=25&page=N"`
+   Codes métier : couvreur `43.91B`, plombier `43.22A`, coiffure `96.02A`, boulangerie `10.71C`, kiné `86.90E`, fitness `93.13Z`, autres métiers selon le plan de la semaine. Change de département et de page à chaque passage, pour ne pas retomber sur les mêmes. Commence par l'Île-de-France, puis le reste de la France. Écarte les entreprises de plus de 10 salariés (`tranche_effectif_salarie` au-delà de `11`) et celles qui sont déjà dans le Sheets.
+2. **Pour chaque entreprise**, une ou deux recherches web : `"NOM" VILLE` puis `"NOM" VILLE contact email`. Note ce que tu trouves : site, page Facebook ou Instagram, fiche d'annuaire, note Google si elle apparaît dans les résultats.
+3. **Si elle a un site**, ouvre-le avec `curl -sL -A "Mozilla/5.0" URL` (et la page contact ou mentions légales). Regarde : la balise `name="viewport"` (son absence veut dire que le site n'est pas fait pour le téléphone), l'année du « © », l'outil (`generator`), le HTTPS, les adresses `mailto:` ou `@`. Garde le prospect seulement si le site est vraiment vieux : pas de viewport, « © » de plus de 6 ans, page cassée ou sans HTTPS.
+4. **Si elle n'a pas de site** (ou seulement Facebook ou Instagram), garde-la.
+5. **Le constat** ne repose que sur des faits que tu as vus : ce que dit le site, le registre (« créée en 2002 »), l'absence de site, la date de la dernière publication, la note Google si tu l'as vue. Jamais de constat inventé. Si la note Google n'apparaît nulle part, ne parle pas de note.
+6. **L'email** se trouve sur le site, les mentions légales, la page Facebook, la bio Instagram ou les annuaires. Pas d'email mais un réseau actif → onglet « Réseaux sans email ». Pas d'email et pas de réseau actif → on laisse tomber.
+7. **Noter** chaque prospect sur 10 (bonne note Google + beaucoup d'avis + pas de site = prospect chaud). Les 3 meilleurs du jour ont droit à une maquette (voir plus bas).
+8. **Écrire** le mail avec les modèles (`prospection/MODELES.md`) en personnalisant vraiment. Ajouter la ligne au Sheets avec le statut `à valider`. Viser 20 lignes par jour.
 
 ## Tâche de 9 h : envoyer et suivre (lundi à vendredi)
 
