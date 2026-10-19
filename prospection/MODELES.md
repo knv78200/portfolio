@@ -1,120 +1,151 @@
 # Modèles de mails
 
-Ce qui est entre {accolades} se remplace à chaque mail. Le {constat} doit être vrai et précis, et une seule phrase suffit. Si le nom du gérant est connu : « Bonjour Madame X, » ou « Bonjour Monsieur X, ». Sinon : « Bonjour, ».
+## L'état d'esprit
 
-Le nom de l'entreprise : utilise son nom court, comme le dirait un client (« Reinhard Couverture », pas « Entreprise Reinhard Roger (Couvreur Zingueur 68) »), et relis le français : « d'Allo Plomberie », « du Salon Privé », jamais « de Le » ni « de A… ». Dans le corps du mail, « votre site » suffit souvent.
+Tu écris comme un entrepreneur sérieux qui fait attention à chaque détail, et qui écrit à une personne, pas à une liste. Le prospect doit se sentir respecté et à l'aise : on le salue, on se présente, on explique avec tact ce qu'on a remarqué, puis on propose sans insister. Jamais d'infos balancées en vrac.
 
-Lien de la démo selon le métier :
-couvreur → knvcorp-portfolio.fr/couvreur/ · plombier → knvcorp-portfolio.fr/plombier/ · coiffure → knvcorp-portfolio.fr/coiffure/ · boulangerie → knvcorp-portfolio.fr/boulangerie/ · kiné → knvcorp-portfolio.fr/kinesitherapie/ · fitness → knvcorp-portfolio.fr/fitness/ · autre métier → knvcorp-portfolio.fr/#exemples
+Règles de forme, sans exception :
+- **Un seul lien dans tout le mail** : https://knvcorp-portfolio.fr (affiché « knvcorp-portfolio.fr »). Aucun lien vers une démo, ni vers WhatsApp, ni vers les mentions légales. Le numéro WhatsApp s'écrit en clair : 06 76 30 72 31.
+- **Mail en HTML**, avec la mise en page du bloc « Gabarit HTML » plus bas, toujours la même. Envoie aussi la version texte (`body`), qui reprend le même texte sans balises.
+- Vouvoiement, des phrases complètes et naturelles, des paragraphes courts (2 ou 3 lignes). Pas de jargon, pas de mots d'IA : « n'hésitez pas », « je me permets », « solution digitale », « booster » et « visibilité accrue » sont interdits.
+- Si le nom du gérant est connu : « Bonjour Madame X, » ou « Bonjour Monsieur X, ». Sinon : « Bonjour, ».
+- Le nom de l'entreprise s'écrit comme le dirait un client (« Dagorn Couverture », pas « Entreprise Dagorn (Couvreur 22) »), et le français est relu : « d'Allo Plomberie », « du Salon Privé », « des Ets Gronier », jamais « de Le » ni « de A… ».
+- Le constat est vrai, vérifié et dit avec tact : on parle de ce qu'on a vu, sans critiquer. Un compliment seulement s'il repose sur un fait vérifié (ancienneté au registre, note Google vue, photos de chantiers sur le site). Sinon, pas de compliment.
+- Ne dis jamais « mes clients » ni « mes réalisations » : KNV.CORP n'a pas encore de clients. Dis « quelques exemples de sites que j'ai conçus ».
+- Dans la colonne « Mail » du Sheets, écris seulement le texte du message, de « Bonjour » jusqu'à « Kerim ». La signature et le pied de page sont ajoutés à l'envoi par le gabarit.
 
-## Phrases à ajouter selon le cas
+## Phrases selon la situation
 
-- **Maquette faite** : remplacer la phrase de l'exemple par « J'ai préparé une maquette gratuite de ce que pourrait être votre site, juste pour vous montrer : {lien maquette}. Elle ne vous engage à rien. »
-- **Prospect en Île-de-France** : ajouter « Je suis basé à Mantes-la-Jolie, pas très loin de chez vous. »
-- **Prospect à Mantes-la-Jolie** : ajouter « Je suis aussi à Mantes-la-Jolie : si vous préférez, on peut se voir pour en parler. »
+- **Île-de-France** : après la présentation, ajoute « Je suis basé à Mantes-la-Jolie, donc pas très loin de chez vous. »
+- **Mantes-la-Jolie** : ajoute « Je suis moi aussi à Mantes-la-Jolie : si vous préférez, je peux passer vous voir pour en discuter. »
+- **Maquette publiée** (seulement quand elle est en ligne) : remplace la phrase des exemples par « J'ai même préparé une petite maquette de ce que pourrait être votre site, juste pour vous donner une idée : elle est sur knvcorp-portfolio.fr/maquettes/{dossier}/. Elle ne vous engage à rien. » C'est alors le seul lien du mail.
 
 ## Cas A : pas de site
 
-Objet : Un site pour {Entreprise} ?
+Objet : Une petite idée pour {nom court}
 
 Bonjour,
 
-J'ai trouvé {Entreprise} en cherchant un {métier} à {ville}. {constat, ex. : Vous avez 4,8/5 sur Google avec 60 avis, mais je n'ai trouvé aucun site internet.}
+J'espère que vous allez bien.
 
-Aujourd'hui, la plupart des gens regardent sur Google avant d'appeler. Sans site, une partie d'entre eux part chez un concurrent qui en a un.
+Je m'appelle Kerim, et je crée des sites internet pour les petites entreprises. En cherchant un {métier} du côté de {ville}, je suis tombé sur {nom court}. {constat, ex. : Vous avez une très belle note sur Google (4,8 sur 5), mais je n'ai trouvé aucun site internet à votre nom.}
 
-Je crée des sites simples et soignés pour les petites entreprises, à un tarif pensé pour elles. Voici un exemple pour un {métier} : {lien démo}
+Aujourd'hui, beaucoup de gens consultent internet avant d'appeler un professionnel. Un site simple, qui présente votre travail et vos coordonnées, les rassure et leur donne envie de vous contacter.
 
-Si ça vous intéresse, il suffit de répondre à ce mail. Vous pouvez aussi m'écrire sur WhatsApp, c'est souvent plus simple : wa.me/33676307231
+Je peux vous en créer un, soigné et agréable à consulter sur téléphone, à un tarif pensé pour les petites entreprises. Vous trouverez quelques exemples de sites que j'ai conçus sur knvcorp-portfolio.fr.
 
-Bonne journée,
+Si l'idée vous parle, répondez simplement à ce mail, ou écrivez-moi sur WhatsApp au 06 76 30 72 31. Je serai ravi d'en discuter avec vous, sans aucun engagement.
 
-{signature}
-{pied de page}
+Je vous souhaite une très bonne journée,
 
-## Cas B : site très vieux
+Kerim
 
-Objet : Le site de {Entreprise}
+## Cas B : site vieux ou pas adapté au téléphone
 
-Bonjour,
-
-Je suis allé sur le site de {Entreprise}. {constat, ex. : Sur téléphone, il faut zoomer pour lire et le numéro n'est pas cliquable.} C'est dommage, car la plupart de vos clients vous cherchent depuis leur téléphone.
-
-Je refais des sites pour les petites entreprises : modernes, rapides et faciles à lire sur mobile, à un tarif pensé pour elles. Voici un exemple pour un {métier} : {lien démo}
-
-Si ça vous intéresse, il suffit de répondre à ce mail. Vous pouvez aussi m'écrire sur WhatsApp : wa.me/33676307231
-
-Bonne journée,
-
-{signature}
-{pied de page}
-
-## Cas B2 : site sur un outil gratuit (Wix, e-monsite, free.fr…), mais lisible sur téléphone
-
-Objet : Le site de {nom court}
+Objet : Une petite idée pour le site de {nom court}
 
 Bonjour,
 
-Je suis allé sur votre site. {constat, ex. : Il est à l'adresse votre-entreprise.wixsite.com, pas à votre nom, et une publicité Wix s'affiche en haut.} Un site à votre nom (par exemple {nom-entreprise}.fr) inspire plus confiance, et on vous trouve plus facilement sur Google.
+J'espère que vous allez bien.
 
-Je crée des sites à votre nom pour les petites entreprises, à un tarif pensé pour elles. Voici un exemple pour un {métier} : {lien démo}
+Je m'appelle Kerim, et je crée des sites internet pour les petites entreprises. En cherchant un {métier} du côté de {ville}, je suis tombé sur votre site et j'ai pris le temps de le parcourir.
 
-Si ça vous intéresse, il suffit de répondre à ce mail. Vous pouvez aussi m'écrire sur WhatsApp : wa.me/33676307231
+{constat avec tact, ex. : Sur téléphone, il faut zoomer pour lire les textes, et le site semble dater de quelques années.} C'est dommage, car aujourd'hui la plupart des gens vous cherchent depuis leur téléphone.
 
-Bonne journée,
+Je peux vous proposer un site moderne, rapide et agréable à consulter sur mobile, à un tarif pensé pour les petites entreprises. Vous trouverez quelques exemples de sites que j'ai conçus sur knvcorp-portfolio.fr.
 
-{signature}
-{pied de page}
+Si l'idée vous parle, répondez simplement à ce mail, ou écrivez-moi sur WhatsApp au 06 76 30 72 31. Je serai ravi d'en discuter avec vous, sans aucun engagement.
 
-Si le site sur outil gratuit n'est PAS lisible sur téléphone, utilise le cas B normal.
+Je vous souhaite une très bonne journée,
+
+Kerim
+
+## Cas B2 : site sur un outil gratuit (Wix, e-monsite, free.fr…), lisible sur téléphone
+
+Objet : Une petite idée pour le site de {nom court}
+
+Bonjour,
+
+J'espère que vous allez bien.
+
+Je m'appelle Kerim, et je crée des sites internet pour les petites entreprises. En cherchant un {métier} du côté de {ville}, je suis tombé sur votre site et j'ai pris le temps de le parcourir.
+
+J'ai remarqué qu'il est hébergé à une adresse {Wix/free.fr/…} ({adresse courte, ex. : dagorn-sarah.wixsite.com}). Une adresse à votre nom est plus facile à retenir, et elle rassure tout de suite un client qui vous découvre.
+
+Je peux vous créer un site moderne, à votre nom et agréable à consulter sur téléphone, à un tarif pensé pour les petites entreprises. Vous trouverez quelques exemples de sites que j'ai conçus sur knvcorp-portfolio.fr.
+
+Si l'idée vous parle, répondez simplement à ce mail, ou écrivez-moi sur WhatsApp au 06 76 30 72 31. Je serai ravi d'en discuter avec vous, sans aucun engagement.
+
+Je vous souhaite une très bonne journée,
+
+Kerim
+
+Si le site sur outil gratuit n'est PAS lisible sur téléphone, utilise le cas B.
 
 ## Cas C : seulement Facebook ou Instagram
 
-Objet : {Entreprise} sur Google
+Objet : Une petite idée pour {nom court}
 
 Bonjour,
 
-J'ai vu votre page {Instagram/Facebook}. {constat, ex. : Vos photos de chantier sont vraiment belles.} Par contre, quand on cherche {Entreprise} sur Google, on ne trouve pas de site, et les gens qui n'ont pas {Instagram/Facebook} ne vous voient pas.
+J'espère que vous allez bien.
 
-Je crée des sites simples pour les petites entreprises, à un tarif pensé pour elles. On peut même y reprendre ce que vous publiez déjà. Voici un exemple pour un {métier} : {lien démo}
+Je m'appelle Kerim, et je crée des sites internet pour les petites entreprises. Je suis tombé sur votre page {Instagram/Facebook} en cherchant un {métier} du côté de {ville}. {constat, ex. : On voit que vous publiez régulièrement vos chantiers.}
 
-Si ça vous intéresse, il suffit de répondre à ce mail, ou de m'écrire sur WhatsApp : wa.me/33676307231
+Par contre, quand on cherche {nom court} sur Google, on ne trouve pas de site, et les personnes qui n'utilisent pas {Instagram/Facebook} passent à côté de vous.
 
-Bonne journée,
+Je peux vous créer un site simple et soigné, qui reprend ce que vous publiez déjà, à un tarif pensé pour les petites entreprises. Vous trouverez quelques exemples de sites que j'ai conçus sur knvcorp-portfolio.fr.
 
-{signature}
-{pied de page}
+Si l'idée vous parle, répondez simplement à ce mail, ou écrivez-moi sur WhatsApp au 06 76 30 72 31. Je serai ravi d'en discuter avec vous, sans aucun engagement.
+
+Je vous souhaite une très bonne journée,
+
+Kerim
 
 ## Relance 1 (J+4 jours ouvrés, dans le même fil)
 
 Bonjour,
 
-Je reviens vers vous au sujet de mon message de {jour}. Vous avez eu le temps de regarder l'exemple ?
+J'espère que votre semaine se passe bien.
 
-Si ce n'est pas le moment, dites-le-moi simplement, je ne vous embêterai pas.
+Je reviens vers vous au sujet de mon message de {jour} concernant votre site internet. Je sais que les journées sont bien remplies, alors je me contente de le remettre en haut de votre boîte mail.
 
-Bonne journée,
+Si le sujet vous intéresse, je serai content d'en parler avec vous. Et si ce n'est pas le bon moment, aucun souci, dites-le-moi simplement.
 
-{signature}
-{pied de page}
+Belle journée à vous,
+
+Kerim
 
 ## Relance 2 (J+10 jours ouvrés, dans le même fil, la dernière)
 
 Bonjour,
 
-Dernier petit message de ma part. Si un jour vous avez besoin d'un site, même dans plusieurs mois, vous pouvez répondre à ce mail : je m'en occuperai avec plaisir.
+Je ne vais pas vous déranger plus longtemps : c'est mon dernier message.
 
-Bonne continuation,
+Si un jour vous souhaitez créer ou moderniser votre site, même dans quelques mois, il vous suffira de répondre à ce mail. Je m'en occuperai avec plaisir.
 
-{signature}
-{pied de page}
+Je vous souhaite une très belle continuation,
 
-## Signature
+Kerim
 
+## Gabarit HTML (identique pour tous les mails, relances comprises)
+
+Remplace {PARAGRAPHES} par le texte du message, un `<p style="margin:0 0 14px">` par paragraphe, sans la ligne finale « Kerim ». Le seul lien autorisé est celui du gabarit : dans le paragraphe des exemples, remplace « knvcorp-portfolio.fr » par `<a href="https://knvcorp-portfolio.fr" style="color:#c4441f;text-decoration:none;font-weight:600">knvcorp-portfolio.fr</a>`. Dans les relances, il n'y a aucun lien. {source} : « votre site internet », « votre page Facebook »…
+
+```html
+<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#222;max-width:560px">
+{PARAGRAPHES}
+<p style="margin:22px 0 0">Kerim AKGUN<br><span style="color:#c4441f;font-weight:600">KNV.CORP</span> <span style="color:#666">· Création de sites internet</span><br><span style="color:#666;font-size:13px">Kerim AKGUN EI · Mantes-la-Jolie · WhatsApp 06 76 30 72 31</span></p>
+<p style="margin:26px 0 0;padding-top:10px;border-top:1px solid #eee;font-size:11px;line-height:1.5;color:#999">J'ai trouvé votre adresse sur {source}. Elle ne sert qu'à cet échange (plus de détails dans la rubrique Confidentialité de mon site). Si vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.</p>
+</div>
+```
+
+Version texte (`body`) : le même message, suivi de :
+
+```
 Kerim AKGUN
-Kerim AKGUN EI – KNV.CORP · Mantes-la-Jolie · knv.corp.78@gmail.com
-knvcorp-portfolio.fr · WhatsApp : wa.me/33676307231
+KNV.CORP · Création de sites internet
+Kerim AKGUN EI · Mantes-la-Jolie · WhatsApp 06 76 30 72 31
 
-## Pied de page (sur TOUS les mails, relances comprises)
-
-Kerim AKGUN EI – KNV.CORP · Adresse trouvée sur {source} · Confidentialité : knvcorp-portfolio.fr/mentions-legales.html#confidentialite · Pour ne plus recevoir de message, répondez STOP.
+J'ai trouvé votre adresse sur {source}. Elle ne sert qu'à cet échange (plus de détails dans la rubrique Confidentialité de mon site). Si vous ne souhaitez plus recevoir de message de ma part, répondez simplement STOP.
+```

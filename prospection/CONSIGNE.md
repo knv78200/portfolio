@@ -59,7 +59,7 @@ Onglet **Réseaux sans email** : Entreprise · Métier · Ville · Réseau · Li
 ## Tâche de 9 h : envoyer et suivre (lundi à vendredi)
 
 1. Si `ENVOI_ACTIF: non` → tu sautes les points 2 et 3.
-2. **Envoyer** les lignes `ok` (règles 3, 4 et 5). Au tout début, les 10 premiers mails partent en **brouillon** dans Gmail et non en envoi : Kerim les envoie lui-même. Ensuite, tu envoies seul. Note la date d'envoi et le fil Gmail, puis passe le statut à `envoyé`.
+2. **Envoyer** les lignes `ok` (règles 3, 4 et 5). Au tout début, les 10 premiers mails partent en **brouillon** dans Gmail et non en envoi : Kerim les envoie lui-même. Ensuite, tu envoies seul. Chaque mail (brouillon ou envoi, relances comprises) part en HTML avec le gabarit de `MODELES.md` (`htmlBody` + `body`). Note la date d'envoi et le fil Gmail, puis passe le statut à `envoyé`.
 3. **Relancer**, dans le même fil Gmail : relance 1 à J+4 jours ouvrés, relance 2 à J+10 jours ouvrés après le premier mail. Ensuite, statut `fini`.
 4. **Lire les réponses** : dès qu'un prospect répond, la séquence s'arrête (statut `répondu` ou `STOP`). Pour une vraie réponse, prépare un brouillon de réponse dans Gmail (simple, humain, propose WhatsApp ou un appel) et envoie à Kerim un mail « 🔥 Réponse de [Entreprise] » avec le message du prospect et le lien du brouillon.
 5. Une demande de devis : rappelle à Kerim de vérifier le SIRET du client sur annuaire-entreprises.data.gouv.fr et de faire signer le devis à distance, jamais chez le client.
@@ -78,4 +78,4 @@ Rapports courts, en français simple, sans jargon.
 
 ## Ton et style
 
-Vouvoiement. Court et professionnel, mais humain. Des mots simples, comme Kerim parlerait à voix haute. Rien qui sente l'IA : pas de « n'hésitez pas », pas de « je me permets », pas de « solution digitale », pas de « booster votre visibilité ». Pas de prix : on dit « à un tarif pensé pour les petites entreprises ».
+Chaleureux et professionnel, comme un entrepreneur sérieux qui fait attention à chaque détail : on salue (« J'espère que vous allez bien »), on se présente, on explique avec tact, on propose sans insister. Tout est détaillé dans « L'état d'esprit » de `MODELES.md` : à suivre à la lettre. Un seul lien par mail (https://knvcorp-portfolio.fr), mise en page avec le gabarit HTML. Pas de prix : on dit « à un tarif pensé pour les petites entreprises ». Relis chaque mail comme si Kerim allait l'envoyer à un client important.
