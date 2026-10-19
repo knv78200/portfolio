@@ -16,7 +16,7 @@ Notes de travail. Ce fichier n'est pas publié sur le site (exclu dans `_config.
 - [x] **Test réel du formulaire, téléphone seul**, depuis le site en ligne.
 - [ ] **CGV : 2 règles par défaut à confirmer** (`cgv.html`) : défauts signalés sous 7 jours après la livraison (article 8), et droit de citer le site du client comme référence sauf refus (article 13).
 
-- [ ] **CGV article 11 : règle par défaut à confirmer** : une vidéo non réalisée (faute de contenu ou de validation du client) est reportée au mois suivant, une seule fois.
+- [x] **CGV article 11 : règle confirmée par Kerim (19/10/2026)** : une vidéo non réalisée (faute de contenu ou de validation du client) est reportée au mois suivant, une seule fois.
 - [ ] **Démo vidéo motion design** (plus tard) : créer 1 ou 2 vidéos d'exemple pour un faux artisan et les montrer dans la carte « Suivi + Visibilité ».
 
 ## Règles de travail (obligations légales hors site)
