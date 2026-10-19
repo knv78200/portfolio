@@ -259,6 +259,7 @@ a { color: var(--accent-fonce); text-underline-offset: 0.2em; }
     margin-inline: calc(-1 * var(--gouttiere));
     padding: 4px var(--gouttiere) 16px;
     overflow-x: auto;
+    overflow-y: hidden; /* sinon le premier glissement vertical sur une carte ne fait pas défiler la page */
     scroll-snap-type: x mandatory;
     scroll-padding-inline: var(--gouttiere);
     scrollbar-width: none;

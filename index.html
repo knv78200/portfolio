@@ -478,6 +478,8 @@
   const statut = document.getElementById('form-statut');
   const bouton = form.querySelector('button');
   const texteBouton = bouton.textContent;
+  // Après la pop-up, on revient sur le bouton « Envoyer » (navigation au clavier)
+  popup.addEventListener('close', () => bouton.focus());
 
   // Anti-spam, sans cookie ni stockage sur l'appareil du visiteur :
   // 1. le champ piège « _gotcha » (invisible pour les humains, rempli par les robots) ;
@@ -493,6 +495,7 @@
     if (!form.email.value.trim() && !form.telephone.value.trim()) {
       // Pas de focus sur le champ : sur téléphone, le clavier cacherait ce message
       statut.textContent = 'Indiquez votre email ou votre téléphone pour que je puisse vous répondre.';
+      statut.scrollIntoView({ block: 'center' }); // pour ne pas qu'il reste caché sous la barre du bas
       return;
     }
 
@@ -507,8 +510,6 @@
       ouvrirPopup('succes', 'Demande envoyée !', 'Je vous réponds sous 24 h.', 'Parfait');
       return;
     }
-
-    const prenom = form.nom.value.trim().split(/\s+/)[0];
 
     // Bouton bloqué pendant l'envoi : évite les doubles demandes
     bouton.disabled = true;
@@ -530,7 +531,7 @@
       dejaEnvoye = true;
       form.reset();
       statut.textContent = 'Message envoyé, je vous réponds sous 24 h.';
-      ouvrirPopup('succes', prenom ? 'Merci ' + prenom + ' !' : 'Demande envoyée !', 'Votre demande est bien partie. Je vous réponds sous 24 h, par email ou par téléphone.', 'Parfait');
+      ouvrirPopup('succes', 'Merci !', 'Votre demande est bien partie. Je vous réponds sous 24 h, par email ou par téléphone.', 'Parfait');
     } catch {
       statut.textContent = "Le message n'est pas parti. Réessayez, ou écrivez-moi à knv.corp.78@gmail.com ou sur WhatsApp.";
       ouvrirPopup('erreur', "Le message n'est pas parti", 'Vérifiez votre connexion et réessayez, ou écrivez-moi directement :', 'Réessayer');

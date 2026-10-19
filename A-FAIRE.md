@@ -13,7 +13,7 @@ Notes de travail. Ce fichier n'est pas publié sur le site (exclu dans `_config.
 - [ ] **Formspree et transfert des données aux États-Unis** : leur politique ne cite aucune garantie précise. **Kerim** : écrire à support@formspree.io pour demander leur DPA (accord de traitement des données) et la garantie de transfert (clauses contractuelles types ou Data Privacy Framework), puis me transmettre la réponse (commentaire `À COMPLÉTER` dans `mentions-legales.html`).
 - [x] **Identifiant Formspree** : `mwlvznrw`, en place dans `index.html`.
 - [x] **Test réel du formulaire, email seul** : reçu dans Gmail le 18/10/2026. Un message avec « test » et une fausse adresse part dans l'onglet Spam de Formspree, sans email.
-- [ ] **Test réel du formulaire, téléphone seul**, depuis le site en ligne.
+- [x] **Test réel du formulaire, téléphone seul**, depuis le site en ligne.
 - [ ] **CGV : 2 règles par défaut à confirmer** (`cgv.html`) : défauts signalés sous 7 jours après la livraison (article 8), et droit de citer le site du client comme référence sauf refus (article 13).
 
 ## Règles de travail (obligations légales hors site)
