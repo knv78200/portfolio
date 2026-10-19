@@ -493,20 +493,100 @@ textarea { resize: vertical; min-height: 120px; }
     transition: block-size 0.3s ease, content-visibility 0.3s allow-discrete;
   }
   details[open]::details-content { block-size: auto; }
+}
 
-  /* Apparition au défilement (navigateurs récents seulement ; sinon tout reste affiché).
-     Pas d'animation sur le haut de page : il doit être visible tout de suite. */
-  @supports (animation-timeline: view()) {
-    /* .exemples entier (pas chaque carte) : sur téléphone les cartes défilent de côté */
-    .section h2, .exemples, .etapes li, .formule, .formulaire {
-      animation: arrivee linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 35%;
-    }
+/* ---------- Mouvements : défilement, clic, survol ----------
+   Le script en bas de index.html ajoute la classe « anim » sur <html> seulement si
+   le visiteur n'a pas demandé à réduire les animations. Sans script : tout reste affiché, immobile. */
+
+/* Apparition au défilement : le bloc glisse doucement vers le haut en apparaissant.
+   --rang (posé par le script) décale les cartes voisines pour un effet « l'une après l'autre ». */
+/* « translate » sert à l'apparition, « transform » au survol : les deux effets ne se gênent pas */
+.anim .apparait {
+  opacity: 0;
+  translate: 0 26px;
+  transition:
+    opacity 0.6s ease calc(var(--rang, 0) * 90ms),
+    translate 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) calc(var(--rang, 0) * 90ms),
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.anim .apparait.visible { opacity: 1; translate: none; }
+
+/* Clic : le bouton s'enfonce légèrement sous le doigt */
+.anim .bouton, .anim .menu a, .anim summary { transition: transform 0.12s ease, filter 0.15s, box-shadow 0.15s, background-color 0.15s; }
+.anim .bouton:active, .anim .menu a:active { transform: scale(0.96); }
+.anim summary:active { transform: scale(0.99); }
+
+/* Survol (ordinateur seulement) : cartes qui se soulèvent, capture qui zoome doucement */
+@media (hover: hover) {
+  .anim .bouton:hover { transform: translateY(-1px); }
+  .anim .bouton:active { transform: scale(0.96); }
+  .anim .exemples li.visible:hover, .anim .etapes li.visible:hover, .anim .formule.visible:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--ombre-forte);
   }
+  .capture { overflow: hidden; }
+  .anim .capture img { transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); transform-origin: top center; }
+  .anim .exemples li:hover .capture img { transform: scale(1.04); }
 }
 
-@keyframes arrivee {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: none; }
+/* Menu du haut : ombre douce dès qu'on descend, et section en cours surlignée */
+.entete { transition: box-shadow 0.3s ease, background-color 0.3s ease; }
+.entete.defile { box-shadow: 0 6px 24px -12px rgba(17, 17, 17, 0.25); }
+.menu a[aria-current="true"] { background: var(--fond-alt); }
+
+/* Barre du bas (téléphone) : cachée tant que les boutons du haut de page sont visibles,
+   et quand on est déjà sur le formulaire. Elle glisse depuis le bas. */
+@media (max-width: 759px) {
+  .anim .barre-mobile { transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), visibility 0s linear 0s; }
+  .anim .barre-mobile.cachee { transform: translateY(110%); visibility: hidden; transition: transform 0.35s ease, visibility 0s linear 0.35s; }
 }
+
+/* ---------- Pop-up après l'envoi du formulaire ---------- */
+.popup {
+  width: min(100% - 32px, 420px);
+  margin: auto;
+  padding: 34px 28px 26px;
+  border: 0;
+  border-radius: 24px;
+  background: var(--surface);
+  color: var(--texte);
+  box-shadow: var(--ombre-forte);
+  text-align: center;
+}
+.popup::backdrop { background: rgba(17, 17, 17, 0.45); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.popup h2 { margin-top: 18px; font-size: 1.6rem; }
+.popup p { margin-top: 10px; color: var(--texte-doux); }
+.popup .popup-secours { display: grid; gap: 6px; margin-top: 14px; }
+.popup .popup-secours[hidden] { display: none; }
+.popup .bouton { width: 100%; margin-top: 22px; }
+
+/* Icône ronde en dégradé, avec une coche (réussite) ou une croix (erreur) */
+.popup-icone {
+  display: grid; place-items: center;
+  width: 76px; height: 76px; margin: 0 auto;
+  border-radius: 50%;
+  background: var(--degrade);
+  box-shadow: 0 12px 28px -10px rgba(196, 68, 31, 0.7);
+}
+.popup-icone svg { width: 40px; height: 40px; fill: none; stroke: #fff; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.popup .popup-croix { display: none; }
+.popup[data-etat="erreur"] .popup-icone { background: linear-gradient(135deg, #3a3633, #111); box-shadow: 0 12px 28px -10px rgba(17, 17, 17, 0.6); }
+.popup[data-etat="erreur"] .popup-coche { display: none; }
+.popup[data-etat="erreur"] .popup-croix { display: inline; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Entrée en « pop » : la fenêtre grossit légèrement en apparaissant, puis la coche se dessine */
+  .popup[open] { animation: popup-entree 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.25); }
+  .popup[open]::backdrop { animation: popup-fond 0.3s ease; }
+  .popup[open] .popup-icone { animation: popup-icone 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.4) 0.1s both; }
+  .popup[open] .popup-coche, .popup[open] .popup-croix { stroke-dasharray: 40; animation: popup-trait 0.45s ease 0.35s both; }
+  .popup.sortie { animation: popup-sortie 0.2s ease forwards; }
+  .popup.sortie::backdrop { animation: popup-fond 0.2s ease reverse forwards; }
+}
+@keyframes popup-entree { from { opacity: 0; transform: translateY(16px) scale(0.92); } to { opacity: 1; transform: none; } }
+@keyframes popup-sortie { to { opacity: 0; transform: translateY(8px) scale(0.96); } }
+@keyframes popup-fond { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popup-icone { from { transform: scale(0.4); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes popup-trait { from { stroke-dashoffset: 40; } to { stroke-dashoffset: 0; } }

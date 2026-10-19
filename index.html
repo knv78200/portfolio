@@ -355,13 +355,136 @@
   <a class="bouton bouton-ligne" href="https://wa.me/33676307231?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20un%20site%20internet.">WhatsApp</a>
 </nav>
 
+<!-- Pop-up affichée après l'envoi du formulaire (réussite ou erreur) -->
+<dialog id="popup" class="popup" aria-labelledby="popup-titre" aria-describedby="popup-texte">
+  <div class="popup-icone" aria-hidden="true">
+    <svg viewBox="0 0 40 40"><path class="popup-coche" d="M9 21l7 7 15-15"/><path class="popup-croix" d="M12 12l16 16M28 12L12 28"/></svg>
+  </div>
+  <h2 id="popup-titre">Demande envoyée !</h2>
+  <p id="popup-texte">Je vous réponds sous 24 h.</p>
+  <p class="popup-secours" hidden>
+    <a class="lien" href="mailto:knv.corp.78@gmail.com?subject=Demande%20de%20devis">knv.corp.78@gmail.com</a>
+    <a class="lien" href="https://wa.me/33676307231?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20un%20site%20internet.">Écrire sur WhatsApp</a>
+  </p>
+  <button class="bouton" type="button" data-fermer autofocus>Parfait</button>
+</dialog>
+
 <script>
-  // Envoi du formulaire sans quitter la page.
-  // Sans JavaScript, le formulaire marche quand même : Formspree affiche alors sa propre page de confirmation.
+  // ===================== MOUVEMENTS (défilement, menu, barre du bas) =====================
+  // Seulement si le visiteur n'a pas demandé à réduire les animations.
+  // Sans ce script, tout le site reste affiché normalement, sans mouvement.
+  const bouger = !matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window;
+  const entete = document.querySelector('.entete');
+  const barre = document.querySelector('.barre-mobile');
+
+  if (bouger) {
+    document.documentElement.classList.add('anim');
+
+    // Apparition au défilement : chaque bloc glisse doucement quand il arrive à l'écran
+    const blocs = document.querySelectorAll('.section h2, .section .chapo, .exemples li, .etapes li, .formule, #faq details, .formulaire, .secours, .note');
+    const observateur = new IntersectionObserver((entrees) => {
+      entrees.forEach((entree) => {
+        if (entree.isIntersecting) { entree.target.classList.add('visible'); observateur.unobserve(entree.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    blocs.forEach((bloc) => {
+      // Cartes voisines : petit décalage pour qu'elles arrivent l'une après l'autre (4 au plus)
+      const freres = [...bloc.parentElement.children].filter((e) => e.matches('li, .formule, details'));
+      if (freres.length > 1) bloc.style.setProperty('--rang', Math.min(freres.indexOf(bloc), 3));
+      bloc.classList.add('apparait');
+      // Déjà à l'écran au chargement : affiché tout de suite, sans effet
+      if (bloc.getBoundingClientRect().top < innerHeight) bloc.classList.add('visible');
+      else observateur.observe(bloc);
+    });
+
+    // Barre du bas (téléphone) : cachée tant qu'on voit les boutons du haut de page ou le formulaire
+    const visibles = new Set();
+    const surveilleBarre = new IntersectionObserver((entrees) => {
+      entrees.forEach((e) => (e.isIntersecting ? visibles.add(e.target) : visibles.delete(e.target)));
+      barre.classList.toggle('cachee', visibles.size > 0);
+    });
+    surveilleBarre.observe(document.querySelector('.hero .actions'));
+    surveilleBarre.observe(document.getElementById('devis'));
+  }
+
+  // Menu : ombre dès qu'on descend un peu
+  addEventListener('scroll', () => entete.classList.toggle('defile', scrollY > 8), { passive: true });
+
+  // Menu : la section en cours est surlignée
+  if ('IntersectionObserver' in window) {
+    const liens = document.querySelectorAll('.menu a[href^="#"]');
+    const enCours = new IntersectionObserver((entrees) => {
+      entrees.forEach((e) => {
+        if (!e.isIntersecting) return;
+        liens.forEach((a) => {
+          if (a.getAttribute('href') === '#' + e.target.id) a.setAttribute('aria-current', 'true');
+          else a.removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    liens.forEach((a) => { const s = document.querySelector(a.getAttribute('href')); if (s) enCours.observe(s); });
+  }
+
+  // ===================== POP-UP =====================
+  const popup = document.getElementById('popup');
+  const popupTitre = document.getElementById('popup-titre');
+  const popupTexte = document.getElementById('popup-texte');
+  const popupSecours = popup.querySelector('.popup-secours');
+  const popupBouton = popup.querySelector('[data-fermer]');
+
+  // Chaque ouverture annule une fermeture encore en cours (sinon la pop-up rouverte se refermerait)
+  let fermeture = 0;
+
+  // etat : 'succes', 'deja' ou 'erreur'
+  function ouvrirPopup(etat, titre, texte, boutonTexte) {
+    if (typeof popup.showModal !== 'function') return; // très vieux navigateur : le message sous le bouton suffit
+    popup.dataset.etat = etat;
+    popupTitre.textContent = titre;
+    popupTexte.textContent = texte;
+    popupSecours.hidden = etat !== 'erreur';
+    popupBouton.textContent = boutonTexte;
+    fermeture++;
+    popup.classList.remove('sortie');
+    if (!popup.open) popup.showModal();
+  }
+
+  // Fermeture avec une petite animation (ou tout de suite si les animations sont coupées)
+  function fermerPopup() {
+    if (!popup.open) return;
+    if (!bouger) return popup.close();
+    const numero = ++fermeture;
+    popup.classList.add('sortie');
+    const fin = () => {
+      if (numero !== fermeture) return; // la pop-up a été rouverte entre-temps
+      popup.classList.remove('sortie');
+      if (popup.open) popup.close();
+    };
+    popup.addEventListener('animationend', fin, { once: true });
+    setTimeout(fin, 300); // sécurité si l'animation ne se lance pas
+  }
+  popupBouton.addEventListener('click', fermerPopup);
+  popup.addEventListener('cancel', (e) => { e.preventDefault(); fermerPopup(); }); // touche Échap
+  // Clic à côté de la fenêtre (sur le fond assombri) : on ferme. Un clic dans la marge intérieure ne ferme pas.
+  popup.addEventListener('click', (e) => {
+    if (e.target !== popup) return;
+    const r = popup.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) fermerPopup();
+  });
+
+  // ===================== FORMULAIRE =====================
+  // Envoi sans quitter la page. Sans JavaScript, le formulaire marche quand même :
+  // Formspree affiche alors sa propre page de confirmation.
   const form = document.getElementById('form-devis');
   const statut = document.getElementById('form-statut');
   const bouton = form.querySelector('button');
   const texteBouton = bouton.textContent;
+
+  // Anti-spam, sans cookie ni stockage sur l'appareil du visiteur :
+  // 1. le champ piège « _gotcha » (invisible pour les humains, rempli par les robots) ;
+  // 2. un envoi moins de 3 secondes après l'ouverture de la page vient d'un robot ;
+  // 3. une seule demande par visite (un second envoi affiche « demande déjà reçue »).
+  const ouverture = Date.now();
+  let dejaEnvoye = false;
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -373,23 +496,46 @@
       return;
     }
 
+    if (dejaEnvoye) {
+      ouvrirPopup('deja', 'Demande déjà reçue', 'Votre demande est bien arrivée : je vous réponds sous 24 h. Pour ajouter une précision, écrivez-moi sur WhatsApp ou par email.', 'Compris');
+      return;
+    }
+
+    // Robot probable : on fait comme si c'était envoyé, sans rien envoyer
+    if (form._gotcha.value || Date.now() - ouverture < 3000) {
+      form.reset();
+      ouvrirPopup('succes', 'Demande envoyée !', 'Je vous réponds sous 24 h.', 'Parfait');
+      return;
+    }
+
+    const prenom = form.nom.value.trim().split(/\s+/)[0];
+
     // Bouton bloqué pendant l'envoi : évite les doubles demandes
     bouton.disabled = true;
     bouton.textContent = 'Envoi en cours…';
     statut.textContent = '';
 
+    // Abandon au bout de 15 secondes si le réseau ne répond pas
+    const arret = new AbortController();
+    const minuteur = setTimeout(() => arret.abort(), 15000);
+
     try {
       const reponse = await fetch(form.action, {
         method: 'POST',
         body: new FormData(form),
-        headers: { Accept: 'application/json' }
+        headers: { Accept: 'application/json' },
+        signal: arret.signal
       });
       if (!reponse.ok) throw new Error();
+      dejaEnvoye = true;
       form.reset();
       statut.textContent = 'Message envoyé, je vous réponds sous 24 h.';
+      ouvrirPopup('succes', prenom ? 'Merci ' + prenom + ' !' : 'Demande envoyée !', 'Votre demande est bien partie. Je vous réponds sous 24 h, par email ou par téléphone.', 'Parfait');
     } catch {
       statut.textContent = "Le message n'est pas parti. Réessayez, ou écrivez-moi à knv.corp.78@gmail.com ou sur WhatsApp.";
+      ouvrirPopup('erreur', "Le message n'est pas parti", 'Vérifiez votre connexion et réessayez, ou écrivez-moi directement :', 'Réessayer');
     } finally {
+      clearTimeout(minuteur);
       bouton.disabled = false;
       bouton.textContent = texteBouton;
     }
