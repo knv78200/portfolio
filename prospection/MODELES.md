@@ -12,7 +12,7 @@ Règles de forme, sans exception :
 - Le nom de l'entreprise s'écrit comme le dirait un client (« Dagorn Couverture », pas « Entreprise Dagorn (Couvreur 22) »), et le français est relu : « d'Allo Plomberie », « du Salon Privé », « des Ets Gronier », jamais « de Le » ni « de A… ».
 - Le constat est vrai, vérifié et dit avec tact : on parle de ce qu'on a vu, sans critiquer. Un compliment seulement s'il repose sur un fait vérifié (ancienneté au registre, note Google vue, photos de chantiers sur le site). Sinon, pas de compliment.
 - Ne dis jamais « mes clients » ni « mes réalisations » : KNV.CORP n'a pas encore de clients. Dis « quelques exemples de sites que j'ai conçus ».
-- Dans la colonne « Mail » du Sheets, écris seulement le texte du message, de « Bonjour » jusqu'à la formule de politesse finale. La signature et le pied de page sont ajoutés à l'envoi par le gabarit.
+- Dans le champ `mail` de la fiche (KNV Prospects), écris seulement le texte du message, de « Bonjour » jusqu'à la formule de politesse finale incluse, paragraphes séparés par une ligne vide. La signature et le pied de page sont ajoutés à l'envoi par le gabarit.
 
 ## Phrases selon la situation
 
