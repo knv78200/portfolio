@@ -1,0 +1,193 @@
+/* =========================================================
+   Démo « Couverture Vasseur » (couvreur)
+   Ardoise, zinc et rouge tuile. Police large et costaude, comme une enseigne.
+   Moderne : coins arrondis, ombres douces, dégradés discrets tuile → ambre.
+   ========================================================= */
+
+@font-face {
+  font-family: "Archivo";
+  src: url("../fonts/archivo.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+}
+
+:root {
+  --ardoise: #26313a;
+  --ardoise-2: #33424e;
+  --zinc: #e3e8ea;       /* fond des sections une sur deux */
+  --zinc-fonce: #4f5b63; /* textes secondaires (assez foncé pour rester lisible sur le zinc) */
+  --clair: #f5f7f7;
+  --encre: #1a2127;
+  --tuile: #b5472a;      /* boutons et accents */
+  --ambre: #d9822b;
+  --degrade-tuile: linear-gradient(135deg, var(--tuile), var(--ambre));
+  --degrade-bouton: linear-gradient(180deg, #bf4d2e, #a63f23);
+  --ombre: 0 1px 2px rgba(26, 33, 39, 0.05), 0 12px 30px -14px rgba(26, 33, 39, 0.25);
+  --rayon: 14px;
+  --police: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --gouttiere: 16px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: 16px; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--clair); color: var(--encre); font: 400 1.0625rem/1.6 var(--police); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-weight: 800; font-stretch: 115%; line-height: 1.05; letter-spacing: -0.01em; text-wrap: balance; }
+h3 { font-size: 1.15rem; font-stretch: 105%; line-height: 1.25; }
+a { color: var(--tuile); text-underline-offset: 0.2em; }
+:focus-visible { outline: 3px solid var(--tuile); outline-offset: 3px; border-radius: 4px; }
+/* Sur les zones sombres, contour blanc : le tuile ne se verrait pas assez */
+.entete :focus-visible, .hero :focus-visible, .chantiers :focus-visible, .pied :focus-visible, .barre-appel :focus-visible { outline-color: #fff; }
+
+.conteneur { width: min(100% - 2 * var(--gouttiere), 1100px); margin-inline: auto; }
+
+/* Bandeau « démo » */
+.bandeau-demo { padding: 8px var(--gouttiere); background: #111; color: #f4f2ee; font-size: 0.85rem; text-align: center; }
+.bandeau-demo a { color: #f0764f; }
+
+/* ---------- Boutons ---------- */
+.bouton {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 52px; padding: 12px 24px;
+  border: 0; border-radius: 10px;
+  background: var(--degrade-bouton);
+  box-shadow: 0 10px 22px -10px rgba(181, 71, 42, 0.8);
+  color: #fff;
+  font: inherit; font-weight: 700; text-decoration: none; cursor: pointer;
+  transition: filter 0.15s;
+}
+.bouton:hover { filter: brightness(0.92); }
+.bouton-clair { background: rgba(255, 255, 255, 0.06); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.7); color: inherit; }
+.bouton-clair:hover { background: rgba(255, 255, 255, 0.14); filter: none; }
+
+/* ---------- En-tête ---------- */
+.entete { background: var(--ardoise); color: #fff; }
+.entete-interieur { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.marque { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; font-stretch: 115%; font-size: 1.15rem; text-decoration: none; }
+.marque-toit { width: 34px; height: 24px; color: var(--tuile); }
+.menu ul { display: flex; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.menu a { display: block; padding: 8px 12px; border-radius: 8px; color: #fff; font-weight: 600; text-decoration: none; }
+.menu a:hover { background: rgba(255, 255, 255, 0.1); }
+.entete-tel { padding: 8px 16px; border-radius: 10px; background: rgba(255, 255, 255, 0.1); color: #fff; font-weight: 800; white-space: nowrap; text-decoration: none; }
+/* Téléphone : seul le nom reste en haut, le reste est dans la barre du bas */
+@media (max-width: 859px) { .menu, .entete-tel { display: none; } }
+
+/* ---------- Haut de page : motif d'ardoises en écailles + lueur tuile ---------- */
+.hero {
+  padding-block: clamp(56px, 10vw, 128px);
+  background-color: var(--ardoise);
+  background-image:
+    radial-gradient(50% 70% at 100% 0%, rgba(217, 130, 43, 0.22), transparent 70%),
+    linear-gradient(180deg, rgba(38, 49, 58, 0.15), var(--ardoise) 95%),
+    radial-gradient(circle at 50% 100%, transparent 15px, rgba(255, 255, 255, 0.07) 16px 17px, transparent 18px),
+    radial-gradient(circle at 50% 100%, transparent 15px, rgba(255, 255, 255, 0.07) 16px 17px, transparent 18px);
+  background-size: 100% 100%, 100% 100%, 34px 18px, 34px 18px;
+  background-position: 0 0, 0 0, 0 0, 17px 9px;
+  color: #fff;
+}
+.hero h1 { max-width: 16ch; font-size: clamp(2.3rem, 1.4rem + 4.6vw, 4.5rem); }
+.accroche { max-width: 52ch; margin-top: 20px; color: #c9d1d5; font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem); }
+.actions { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+@media (min-width: 560px) { .actions { flex-direction: row; flex-wrap: wrap; } }
+.atouts { display: flex; flex-wrap: wrap; gap: 8px; margin: 32px 0 0; padding: 0; list-style: none; font-weight: 600; font-size: 0.95rem; }
+.atouts li { display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px; border-radius: 999px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.14); }
+.atouts li::before { content: ""; width: 9px; height: 9px; background: var(--degrade-tuile); transform: rotate(45deg); }
+
+/* ---------- Sections ---------- */
+.section { padding-block: clamp(56px, 8vw, 96px); }
+.section-zinc { background: linear-gradient(180deg, var(--zinc), #edf0f1); }
+.section h2 { font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem); margin-bottom: 28px; }
+.chapo { color: var(--zinc-fonce); margin: -16px 0 24px; }
+
+/* Services : cartes blanches, petit trait en dégradé tuile → ambre */
+.cartes { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 640px) { .cartes { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .cartes { grid-template-columns: repeat(3, 1fr); } }
+.cartes li { padding: 24px; background: #fff; border: 1px solid #dde3e6; border-radius: var(--rayon); box-shadow: var(--ombre); }
+.cartes h3 { margin-bottom: 6px; }
+.cartes h3::before { content: ""; display: block; width: 32px; height: 4px; margin-bottom: 14px; border-radius: 4px; background: var(--degrade-tuile); }
+.cartes p { color: var(--zinc-fonce); }
+
+/* Réalisations : fiches de chantier sombres, liseré en dégradé en haut */
+.chantiers { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 860px) { .chantiers { grid-template-columns: repeat(3, 1fr); } }
+.chantiers li {
+  position: relative; overflow: hidden;
+  padding: 26px 24px 24px;
+  background: linear-gradient(160deg, var(--ardoise-2), var(--ardoise));
+  color: #fff;
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+}
+.chantiers li::before { content: ""; position: absolute; inset: 0 0 auto; height: 4px; background: var(--degrade-tuile); }
+.chantiers h3 { margin-bottom: 8px; }
+.chantiers p { color: #c9d1d5; }
+
+/* Avis */
+.avis { display: grid; gap: 16px; }
+@media (min-width: 760px) { .avis { grid-template-columns: 1fr 1fr; } }
+blockquote { margin: 0; padding: 26px; background: #fff; border: 1px solid #dde3e6; border-radius: var(--rayon); box-shadow: var(--ombre); }
+blockquote p { font-size: 1.2rem; font-weight: 600; line-height: 1.4; }
+blockquote p::before { content: "« "; color: var(--tuile); }
+blockquote p::after { content: " »"; color: var(--tuile); }
+blockquote footer { margin-top: 12px; color: var(--zinc-fonce); font-size: 0.95rem; }
+
+/* Zone : villes en étiquettes */
+.villes { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 32px; padding: 0; list-style: none; }
+.villes li { padding: 8px 16px; background: #fff; border: 1px solid #cfd7db; border-radius: 999px; font-weight: 600; }
+.villes + .chapo { margin: 0; }
+
+/* Contact */
+.contact { display: grid; gap: 28px; }
+@media (min-width: 860px) { .contact { grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; } }
+.coordonnees { font-size: 1.15rem; line-height: 1.9; }
+.coordonnees a { font-weight: 700; }
+.form-demo { display: grid; gap: 16px; padding: 26px; background: #fff; border: 1px solid #dde3e6; border-radius: 18px; box-shadow: var(--ombre); }
+.champ { display: grid; gap: 6px; }
+label { font-weight: 600; }
+input, textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #7f8b93; border-radius: 10px; background: var(--clair); color: var(--encre); font: inherit; font-size: 1rem; transition: border-color 0.15s, box-shadow 0.15s; }
+input::placeholder, textarea::placeholder { color: var(--zinc-fonce); opacity: 1; }
+input:focus, textarea:focus { border-color: var(--tuile); outline: none; box-shadow: 0 0 0 4px rgba(181, 71, 42, 0.18); }
+.statut:empty { padding: 0; }
+.statut { padding: 10px 12px; border-radius: 10px; background: var(--zinc); font-weight: 600; }
+
+/* Pied de page */
+.pied { padding-block: 28px; background: var(--ardoise); color: #c9d1d5; font-size: 0.95rem; }
+.pied a { color: #fff; }
+
+/* ---------- Barre d'appel (téléphone) ---------- */
+.barre-appel { display: none; }
+@media (max-width: 859px) {
+  html { scroll-padding-bottom: 90px; } /* la barre du bas ne cache pas l'élément sélectionné */
+  body { padding-bottom: 76px; }
+  .barre-appel {
+    position: fixed; inset: auto 0 0 0; z-index: 10;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    padding: 10px var(--gouttiere) max(10px, env(safe-area-inset-bottom));
+    background: rgba(38, 49, 58, 0.92);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    color: #fff;
+  }
+  .barre-appel .bouton { min-height: 48px; }
+  /* Cachée pendant la saisie : elle gênerait le clavier */
+  body:has(input:focus, textarea:focus) .barre-appel { display: none; }
+}
+
+/* ---------- Animations (coupées si le visiteur réduit les animations) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  /* Apparition au défilement (navigateurs récents ; sinon tout reste affiché). Pas sur le haut de page. */
+  @supports (animation-timeline: view()) {
+    .section h2, .cartes li, .chantiers li, blockquote, .form-demo {
+      animation: arrivee linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+@keyframes arrivee {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
