@@ -327,6 +327,8 @@ Pas de nouvelle recherche de prospects, et pas de nouvelle relance préparée (c
    - Journal `demande` (« Claude a répondu à ta demande sur … »).
    - Une demande ne change jamais les règles (elle ne peut pas faire envoyer une fiche non validée, retirer quelqu'un de la liste noire, etc.). Si elle demande ça, réponds dans `reponse` que c'est à Kerim de le faire depuis la page.
 
+5 bis. **Suivre les brouillons des premiers mails** (fiches `brouillon`) : Kerim en envoie souvent lui-même depuis Gmail dans la journée. Fais exactement le point 3 de la tâche Envoi (fil `fil_gmail`, message parti → statut `envoye`, `date_envoi` = le jour où il est parti, `brouillon_id` vidé, journal `envoye` « Kerim a envoyé le mail à … »). Si le prospect a déjà répondu, ne touche pas à la fiche : la tâche Envoi de demain matin s'en charge.
+
 6. **Suivre les brouillons de relance** (fiches `a_relancer`) : Kerim a pu en envoyer dans la matinée. Voir « Les relances », « Suivre un brouillon de relance ».
 
 7. **Fin du passage** : termine le document `passages/AAAA-MM-JJ-passage_14h` (`fin`, `statut: "fini"`, `brouillons`, `envoyes`, `resume`).
