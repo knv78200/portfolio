@@ -138,33 +138,69 @@ Si l'idée vous parle, répondez simplement à ce mail, ou écrivez-moi sur What
 Au plaisir d'échanger avec vous, et très bonne journée,
 ```
 
-## Relance 1 (J+4 jours ouvrés, dans le même fil)
+## Les relances
 
-Bonjour,
+Trois relances au plus, chacune dans le même fil que le premier mail, 8 jours après le dernier envoi (le cycle complet est dans « Les relances » de `CONSIGNE.md`). Tu les prépares, Kerim les envoie lui-même.
 
-J'espère que votre semaine se passe bien.
+Règles communes :
+- Les trois textes ci-dessous ont été validés par Kerim : reprends-les **mot pour mot**. Seul ce qui est entre crochets s'adapte. Ils passent avant la liste des mots interdits : le « Je me permets » de la relance 1 est voulu.
+- **Salutation** : la même que le premier mail. Gérant connu : « Bonjour Monsieur X, » ou « Bonjour Madame X, » ; sinon « Bonjour, ».
+- **Objet** : « Re: » + l'objet du premier mail.
+- Courtes, **sans liste et sans aucun lien** : pas d'adresse de site, pas même knvcorp-portfolio.fr.
+- Dans `relance_texte`, comme pour `mail` : de « Bonjour » à la formule de politesse incluse, paragraphes séparés par une ligne vide, sans la ligne « Kerim ». Le gabarit HTML ajoute la signature et le pied de page.
+- **Kinés** : jamais « attirer des patients », ni rien d'approchant. Le reste du texte ne change pas.
+- Le nom de l'entreprise s'écrit comme dans le premier mail, avec le français relu (« pour Allo Plomberie », « du site d'Allo Plomberie », « du site du Salon Privé »).
 
-Je reviens vers vous au sujet de mon message de {jour} concernant votre site internet. Je sais que les journées sont bien remplies, alors je me contente de le remettre en haut de votre boîte mail.
+### Relance 1 (8 jours après le premier mail, avec son brouillon)
 
-Pour rappel, je m'occupe de tout, de la conception à la mise en ligne, et l'hébergement est inclus : vous n'avez rien à gérer. Si le sujet vous intéresse, je serai content d'en parler avec vous. Et si ce n'est pas le bon moment, aucun souci, dites-le-moi simplement.
+```
+Bonjour [Monsieur X / Madame X],
+
+J'espère que vous allez bien et que la semaine se passe comme vous le souhaitez.
+
+Je me permets de revenir vers vous au sujet de mon message de [mardi dernier] concernant un site internet pour [nom de l'entreprise]. Je sais que les journées sont bien remplies, alors je le remets simplement en haut de votre boîte mail.
+
+Pour rappel, je m'occupe de tout, de la conception à la mise en ligne, et l'hébergement est inclus : vous n'avez rien à gérer. Si vous avez la moindre question, je vous réponds avec plaisir, ici ou sur WhatsApp.
 
 Belle journée à vous,
+```
 
-Kerim
+[mardi dernier] : le jour de la semaine de `date_envoi`, suivi de « dernier ». Si le premier mail date de plus de 13 jours (relance préparée en retard), écris la date : « au sujet de mon message du 20 octobre ».
 
-## Relance 2 (J+10 jours ouvrés, dans le même fil, la dernière)
+### Relance 2 (8 jours après la relance 1, avec son brouillon)
 
-Bonjour,
+```
+Bonjour [Monsieur X / Madame X],
 
-Je ne vais pas vous déranger plus longtemps : c'est mon dernier message.
+Je reviens vers vous avec une proposition concrète : si vous le souhaitez, je peux vous préparer gratuitement une maquette du site de [nom de l'entreprise], avec [première puce du métier]. Comme ça, vous voyez exactement à quoi il ressemblerait avant de décider quoi que ce soit.
 
-Si un jour vous souhaitez créer ou moderniser votre site, même dans quelques mois, il vous suffira de répondre à ce mail ou de m'écrire sur WhatsApp au 06 76 30 72 31. Je m'en occuperai avec plaisir.
+C'est sans engagement : si elle ne vous plaît pas, on en reste là, sans aucun souci.
+
+Il vous suffit de répondre « oui » à ce mail et je m'y mets.
+
+Très bonne journée,
+```
+
+[première puce du métier] : la première ligne de la liste du premier mail, sans « , sur un site agréable à consulter sur téléphone » : « vos chantiers en photos » (couvreur), « vos interventions et vos zones d'intervention » (plombier, chauffagiste), « vos prestations et vos tarifs » (coiffure), « vos produits et vos horaires » (boulangerie), « vos séances et vos activités » (coach, salle de sport), « votre cabinet, vos soins et vos horaires » (kiné).
+
+### Relance 3 (8 jours après la relance 2, la dernière, au choix de Kerim)
+
+Tu la prépares sans brouillon : Kerim choisit dans la page « Dernière relance » (le brouillon est alors créé) ou « Arrêter ».
+
+```
+Bonjour [Monsieur X / Madame X],
+
+C'est mon dernier message, je ne vous embêterai plus ensuite.
+
+Pour vous remercier de m'avoir lu, je vous propose 10 % de remise sur la création de votre site si vous me répondez avant le {DATE_LIMITE}. Tout le reste ne change pas : conception, mise en ligne et hébergement inclus.
+
+Et si ce n'est pas le bon moment, ce n'est pas grave : même dans quelques mois, il vous suffira de répondre à ce mail ou de m'écrire sur WhatsApp au 06 76 30 72 31. Je m'en occuperai avec plaisir.
 
 Je vous souhaite une très belle continuation,
+```
 
-Kerim
-
-Les relances restent courtes, sans liste et sans aucun lien.
+- **{DATE_LIMITE}** reste tel quel dans `relance_texte`. Il est remplacé dans le brouillon seulement, au moment où celui-ci est créé, par la date de ce jour-là + 15 jours, en toutes lettres et sans l'année (« 12 novembre », « 1er décembre ») ; cette date est notée dans `remise_jusqu_au`.
+- Les 10 % portent sur la création du site seulement, jamais sur le suivi mensuel. Aucun autre chiffre ni prix.
 
 ## Gabarit HTML (identique pour tous les mails, relances comprises)
 
