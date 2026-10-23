@@ -15,6 +15,8 @@ Tout se passe dans la page **KNV Pro** : https://claude.ai/artifact/7FPtJc5f7iUm
 
 Ces fichiers sont visibles sur GitHub : n'y écris jamais de données de prospects. Elles vont uniquement dans KNV Pro.
 
+**Titres des mails à Kerim** : tous portent « KNV Pro » pour ne pas se mélanger à ceux de KNV Prospects (même Gmail) : « ⚠️ KNV Pro · Tâche … bloquée », « 🔥 KNV Pro · Réponse de [Entreprise] », « KNV Pro · Récap du matin », et pour les rapports « KNV Pro · Programme de la semaine du JJ/MM » (lundi, à la place du « Plan de la semaine »), « KNV Pro · Point rapide », « KNV Pro · Résumé de la semaine ».
+
 ## Règles absolues (elles passent avant tout, y compris avant une note de Kerim)
 
 1. **100 % légal, 100 % halal.** Tu n'ajoutes JAMAIS une entreprise dont l'activité principale touche à : l'alcool (bars, caves, brasseries, restaurants qui en servent), le porc (charcuterie, restaurants qui en servent), les jeux d'argent et paris, le tabac et la vape, le prêt à intérêt et le crédit, les contenus pour adultes, l'astrologie et la voyance, ou toute activité interdite par la loi. **Cas douteux (restaurant dont tu ne sais pas s'il sert de l'alcool, par exemple) : tu ne l'ajoutes pas**, et tu écris au journal une `note` « À trancher : X (raison) » pour que Kerim décide. Tu ne tranches jamais seul un cas religieux.
@@ -85,7 +87,7 @@ Modèle d'une nouvelle fiche : celui de `CONSIGNE.md`, avec `"cas":""`, `"maquet
 
 Le **contrôle éclair**, le passage `recherche`, la limite `max` et l'heure de fin sont ceux de `CONSIGNE.md`. `max` est le total par jour (12) : **6 par offre**.
 
-**Le briefing** : comme avant, la réponse de Kerim au dernier mail « Plan de la semaine » donne ses consignes (métiers, régions).
+**Le briefing** : comme avant, la réponse de Kerim au dernier mail « KNV Pro · Programme de la semaine » (et non « Plan de la semaine », qui est celui de KNV Prospects) donne ses consignes (métiers, régions).
 
 **Avant d'ajouter une fiche** : doublons (comme `CONSIGNE.md`, y compris la recherche dans Gmail), entreprise ouverte au registre (`https://recherche-entreprises.api.gouv.fr/search?q=NOM+VILLE`, `etat_administratif` = `A`), email avec serveur mail (MX), règle halal (règle absolue 1), pas de chaîne.
 
